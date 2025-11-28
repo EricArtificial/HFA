@@ -423,6 +423,18 @@
             
             /* Hide Login Text on Mobile if needed, or keep small */
             #loginBtn { padding: 6px 12px; font-size: 13px; }
+
+            /* Hospital Filter Mobile Fix */
+            .hospital-header { flex-direction: column !important; align-items: flex-start !important; gap: 16px; }
+            .filter-group { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+            .filter-group .form-select { width: 100% !important; }
+
+            /* Guide Modal Tabs Mobile Fix */
+            #guide-tabs { gap: 12px; }
+            #guide-tabs .tab-btn { 
+                text-align: center; line-height: 1.4; padding: 10px 0; font-size: 13px; flex: 1;
+            }
+            .tab-num { font-size: 16px; font-weight: 800; display: block; margin-bottom: 4px; color: var(--primary); }
         }
     </style>
 </head>
@@ -613,9 +625,9 @@
                 </div>
             </div>
 
-            <div style="margin: 40px 0 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div class="hospital-header" style="margin: 40px 0 20px; display: flex; justify-content: space-between; align-items: center;">
                 <h3 class="section-title" style="margin:0;">🏥 推荐医院列表</h3>
-                <div style="display: flex; gap: 12px;">
+                <div class="filter-group" style="display: flex; gap: 12px;">
                     <select id="filter-area" class="form-select" style="width: 140px; padding-right: 30px;">
                         <option value="all">所有区域</option>
                         <option value="futian">福田区</option>
@@ -1080,9 +1092,9 @@
             <h3 style="text-align:center; margin-bottom: 24px;">港人北上就医通关详解</h3>
             
             <div class="tabs" id="guide-tabs" style="justify-content: center;">
-                <div class="tab-btn active" data-tab="guide-pre">01 行前准备</div>
-                <div class="tab-btn" data-tab="guide-day">02 就诊当日</div>
-                <div class="tab-btn" data-tab="guide-post">03 后续与理赔</div>
+                <div class="tab-btn active" data-tab="guide-pre"><span class="tab-num">01</span> <span class="tab-text">行前准备</span></div>
+                <div class="tab-btn" data-tab="guide-day"><span class="tab-num">02</span> <span class="tab-text">就诊当日</span></div>
+                <div class="tab-btn" data-tab="guide-post"><span class="tab-num">03</span> <span class="tab-text">后续与理赔</span></div>
             </div>
 
             <!-- Tab 1 -->
