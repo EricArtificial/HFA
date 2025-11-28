@@ -438,10 +438,11 @@
             .close-modal { top: 16px; right: 16px; }
             
             /* Hide Login Text on Mobile if needed, or keep small */
-            #loginBtn { padding: 6px 12px; font-size: 13px; }
+            #loginBtn { padding: 0 12px; font-size: 13px; height: 34px; }
 
             /* Language Selector Mobile */
-            .lang-selector { display: none; } /* Hide on mobile for simplicity or adapt */
+            .lang-selector { display: block; }
+            .lang-selector .btn { padding: 0 10px !important; font-size: 13px !important; height: 34px; }
             
             /* Hospital Filter Mobile Fix */
             .hospital-header { flex-direction: column !important; align-items: flex-start !important; gap: 16px; }
@@ -507,16 +508,16 @@
                     <div class="hero-card c1">
                         <div class="flex-center gap-2 mb-4" style="justify-content: flex-start;">
                             <span style="background:#dbeafe; color:#2563eb; padding:8px; border-radius:10px; font-size: 18px;">🏥</span>
-                            <div style="font-weight: 600; font-size: 16px;">预约成功</div>
+                            <div style="font-weight: 600; font-size: 16px;" data-i18n="hero.card1.title">预约成功</div>
                         </div>
-                        <div style="font-size: 14px; color: #64748b; line-height: 1.5;">港大深圳医院 - 消化内科<br><span style="color: var(--text-main); font-weight: 500;">2024-03-15 09:30</span></div>
+                        <div style="font-size: 14px; color: #64748b; line-height: 1.5;" data-i18n="hero.card1.desc">港大深圳医院 - 消化内科<br><span style="color: var(--text-main); font-weight: 500;">2024-03-15 09:30</span></div>
                     </div>
                     <div class="hero-card c2">
                         <div class="flex-center gap-2 mb-4" style="justify-content: flex-start;">
                             <span style="background:#dcfce7; color:#10b981; padding:8px; border-radius:10px; font-size: 18px;">💰</span>
-                            <div style="font-weight: 600; font-size: 16px;">理赔预估</div>
+                            <div style="font-weight: 600; font-size: 16px;" data-i18n="hero.card2.title">理赔预估</div>
                         </div>
-                        <div style="font-size: 14px; color: #64748b;">预计可报销额度<br><span style="font-size:24px; font-weight:800; color:#10b981; letter-spacing: -0.5px;">HK$ 4,500</span></div>
+                        <div style="font-size: 14px; color: #64748b;" data-i18n="hero.card2.desc">预计可报销额度<br><span style="font-size:24px; font-weight:800; color:#10b981; letter-spacing: -0.5px;">HK$ 4,500</span></div>
                     </div>
                 </div>
             </div>
@@ -546,16 +547,16 @@
             
             <div class="guide-section">
                 <div class="text-center mb-4">
-                    <h3 class="section-title">新手通关指南</h3>
-                    <p class="section-desc" style="margin: 10px auto 0;">跨境医疗全流程详解，三步搞定</p>
+                    <h3 class="section-title" data-i18n="guide.title">新手通关指南</h3>
+                    <p class="section-desc" style="margin: 10px auto 0;" data-i18n="guide.desc">跨境医疗全流程详解，三步搞定</p>
                 </div>
                 
                 <div class="guide-steps">
                     <div class="guide-step">
                         <div class="guide-step-num">01</div>
                         <div class="guide-step-content">
-                            <h4>行前准备</h4>
-                            <p>
+                            <h4 data-i18n="guide.step1.title">行前准备</h4>
+                            <p data-i18n="guide.step1.desc">
                                 • <strong>支付绑定：</strong> 微信/支付宝关联香港卡。<br>
                                 • <strong>预约挂号：</strong> Care Hub 智能导诊。<br>
                                 • <strong>资料备份：</strong> 证件与过往病历。
@@ -565,8 +566,8 @@
                     <div class="guide-step">
                          <div class="guide-step-num">02</div>
                         <div class="guide-step-content">
-                            <h4>就诊当日</h4>
-                            <p>
+                            <h4 data-i18n="guide.step2.title">就诊当日</h4>
+                            <p data-i18n="guide.step2.desc">
                                 • <strong>报到取号：</strong> 身份证/回乡证自助报到。<br>
                                 • <strong>分段缴费：</strong> 挂号/检查/取药分别付。<br>
                                 • <strong>关键动作：</strong> 索要签名病历与发票。
@@ -576,8 +577,8 @@
                     <div class="guide-step">
                          <div class="guide-step-num">03</div>
                         <div class="guide-step-content">
-                            <h4>后续与理赔</h4>
-                            <p>
+                            <h4 data-i18n="guide.step3.title">后续与理赔</h4>
+                            <p data-i18n="guide.step3.desc">
                                 • <strong>取药代煎：</strong> 中药可快递回港。<br>
                                 • <strong>自动提醒：</strong> 系统推送复诊日期。<br>
                                 • <strong>理赔包：</strong> Protection Hub 自动生成。
@@ -586,7 +587,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-secondary" id="btn-view-guide">查看图文详解 📖</button>
+                    <button class="btn btn-secondary" id="btn-view-guide" data-i18n="guide.btn">查看图文详解 📖</button>
                 </div>
             </div>
         </section>
@@ -599,14 +600,14 @@
             <div class="grid-2">
                 <!-- 路径规划器 -->
                 <div class="card">
-                    <h3>🩺 智能导诊</h3>
+                    <h3 data-i18n="care.triage.title">🩺 智能导诊</h3>
                     <div class="form-group">
-                        <label class="form-label">症状描述</label>
+                        <label class="form-label" data-i18n="care.triage.symptom">症状描述</label>
                         <input type="text" id="care-symptom" class="form-input" placeholder="例如：反复胃痛、胃胀、头晕、骨折...">
                     </div>
                     <div class="grid-2">
                         <div class="form-group">
-                            <label class="form-label">就诊类型</label>
+                            <label class="form-label" data-i18n="care.triage.type">就诊类型</label>
                             <select class="form-select">
                                 <option>普通门诊</option>
                                 <option>专家门诊</option>
@@ -614,7 +615,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">香港保险</label>
+                            <label class="form-label" data-i18n="care.triage.insurance">香港保险</label>
                             <select class="form-select">
                                 <option>有，包含内地医疗</option>
                                 <option>有，但不确定</option>
@@ -622,7 +623,7 @@
                             </select>
                         </div>
                     </div>
-                    <button class="btn btn-primary" id="btn-care-plan" style="width: 100%;">生成就医建议</button>
+                    <button class="btn btn-primary" id="btn-care-plan" style="width: 100%;" data-i18n="care.triage.btn">生成就医建议</button>
                     
                     <div id="care-result" class="hidden" style="margin-top: 20px; background: #f0f9ff; padding: 20px; border-radius: 12px; border: 1px solid #e0f2fe;">
                         <!-- JS Populate -->
@@ -631,29 +632,29 @@
 
                 <!-- 费用估算 -->
                 <div class="card">
-                    <h3>💰 费用区间估算</h3>
+                    <h3 data-i18n="care.cost.title">💰 费用区间估算</h3>
                     <div class="form-group">
-                        <label class="form-label">医院类型</label>
+                        <label class="form-label" data-i18n="care.cost.hospitalType">医院类型</label>
                         <select id="cost-hospital-type" class="form-select">
                             <option value="public">公立三甲 (性价比高)</option>
                             <option value="private">私立/高端 (服务好)</option>
                         </select>
                     </div>
-                    <label class="form-label">预计检查项目 (系统自动推荐)</label>
+                    <label class="form-label" data-i18n="care.cost.checkups">预计检查项目 (系统自动推荐)</label>
                     <div id="cost-checkboxes" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
                         <!-- Dynamic checkboxes will be rendered here -->
                          <div style="color:#94a3b8; font-size:14px; padding:10px 0;">请先左侧输入症状生成建议...</div>
                     </div>
                     
                     <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-size:14px; color:#64748b;">预估总费用 (CNY)</span>
+                        <span style="font-size:14px; color:#64748b;" data-i18n="care.cost.total">预估总费用 (CNY)</span>
                         <span style="font-size: 28px; font-weight: 800; color: var(--accent);" id="cost-display">--</span>
                     </div>
                 </div>
             </div>
 
             <div class="hospital-header" style="margin: 40px 0 20px; display: flex; justify-content: space-between; align-items: center;">
-                <h3 class="section-title" style="margin:0;">🏥 推荐医院列表</h3>
+                <h3 class="section-title" style="margin:0;" data-i18n="care.hospital.list">🏥 推荐医院列表</h3>
                 <div class="filter-group" style="display: flex; gap: 12px;">
                     <select id="filter-area" class="form-select" style="width: 140px; padding-right: 30px;">
                         <option value="all">所有区域</option>
@@ -685,27 +686,27 @@
 
             <div class="grid-2">
                 <div class="card">
-                    <h3>🧐 可报销性自查</h3>
+                    <h3 data-i18n="protection.check.title">🧐 可报销性自查</h3>
                     <div class="form-group">
-                        <label class="form-label">收费项目名称</label>
+                        <label class="form-label" data-i18n="protection.check.item">收费项目名称</label>
                         <div class="input-group">
                             <input type="text" class="form-input" placeholder="例如：胃镜检查、洗牙">
                             <button class="input-group-btn" title="上传单据自动识别">📷</button>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">费用金额 (CNY)</label>
+                        <label class="form-label" data-i18n="protection.check.amount">费用金额 (CNY)</label>
                         <input type="number" id="claim-amount" class="form-input" placeholder="0" min="0">
                     </div>
-                    <button class="btn btn-primary" id="btn-check-claim">判断可能性</button>
+                    <button class="btn btn-primary" id="btn-check-claim" data-i18n="protection.check.btn">判断可能性</button>
                     <div id="claim-result" class="hidden" style="margin-top: 16px; padding: 12px; border-radius: 8px;"></div>
                 </div>
 
                 <div class="card">
-                    <h3>📑 理赔材料清单</h3>
+                    <h3 data-i18n="protection.mat.title">📑 理赔材料清单</h3>
                     <div class="grid-2">
                          <div class="form-group">
-                            <label class="form-label">保险公司</label>
+                            <label class="form-label" data-i18n="protection.mat.company">保险公司</label>
                             <select id="insurance-company-select" class="form-select">
                                 <option value="AIA">AIA 友邦</option>
                                 <option value="Prudential">Prudential 保诚</option>
@@ -714,7 +715,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">具体险种</label>
+                            <label class="form-label" data-i18n="protection.mat.plan">具体险种</label>
                             <select id="insurance-plan-select" class="form-select">
                                 <!-- Dynamic options -->
                             </select>
@@ -722,8 +723,8 @@
                     </div>
 
                     <div class="tabs" style="margin-bottom: 16px; gap: 20px;">
-                        <div class="tab-btn active" data-tab="mat-outpatient">门诊就医</div>
-                        <div class="tab-btn" data-tab="mat-inpatient">住院治疗</div>
+                        <div class="tab-btn active" data-tab="mat-outpatient" data-i18n="protection.mat.tab1">门诊就医</div>
+                        <div class="tab-btn" data-tab="mat-inpatient" data-i18n="protection.mat.tab2">住院治疗</div>
                     </div>
                     <div id="mat-content" style="background: #f8fafc; padding: 16px; border-radius: 12px; min-height: 120px;">
                         <!-- Content -->
@@ -732,7 +733,7 @@
             </div>
 
             <div style="margin-top: 32px;">
-                <h3 class="section-title">🛡️ 港人内地保险精选推荐</h3>
+                <h3 class="section-title" data-i18n="protection.rec.title">🛡️ 港人内地保险精选推荐</h3>
                 <p class="section-desc">补充香港保险的不足，性价比极高的内地医疗保障。</p>
                 <div class="grid-3">
                     <div class="card">
@@ -783,10 +784,10 @@
             <div class="card" style="margin-top: 32px; background: linear-gradient(to right, #ecfdf5, #ffffff); border: 1px solid #d1fae5;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <h3>我的健康积分: <span style="color: var(--secondary); font-size: 32px; font-weight:800;">1,250</span></h3>
+                        <h3><span data-i18n="wellness.mall.title">我的健康积分:</span> <span style="color: var(--secondary); font-size: 32px; font-weight:800;">1,250</span></h3>
                         <p style="font-size: 14px; color: #065f46;">通过体检、就医打卡获取积分，可兑换免费洁牙或抵扣现金。</p>
                     </div>
-                    <button class="btn btn-secondary" onclick="window.modals.open('mall-modal')">进入积分商城</button>
+                    <button class="btn btn-secondary" onclick="window.modals.open('mall-modal')" data-i18n="wellness.mall.btn">进入积分商城</button>
                 </div>
             </div>
         </section>
@@ -799,15 +800,15 @@
             </div>
             
             <div class="card" style="margin-top: 32px; background: #fefce8; border: 1px solid #fef08a;">
-                <h4 style="color: #854d0e; margin-bottom: 8px;">🔔 家庭健康提醒</h4>
+                <h4 style="color: #854d0e; margin-bottom: 8px;" data-i18n="family.alert.title">🔔 家庭健康提醒</h4>
                 <ul style="list-style: none; padding: 0;">
                     <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eab308; color: #a16207; font-size:14px;">
-                        <span>母亲的降压药快用完了，请提醒复诊。</span>
-                        <span style="font-weight:600;">3天后</span>
+                        <span data-i18n="family.alert.item1">母亲的降压药快用完了，请提醒复诊。</span>
+                        <span style="font-weight:600;" data-i18n="family.alert.item1.time">3天后</span>
                     </li>
                      <li style="display: flex; justify-content: space-between; padding: 8px 0; color: #a16207; font-size:14px;">
-                        <span>配偶洁牙预约建议。</span>
-                        <span>下周</span>
+                        <span data-i18n="family.alert.item2">配偶洁牙预约建议。</span>
+                        <span data-i18n="family.alert.item2.time">下周</span>
                     </li>
                 </ul>
             </div>
@@ -823,28 +824,28 @@
                         <div>
                             <h3>Chan Tai Man</h3>
                             <div style="display:flex; gap:8px; margin-top:8px;">
-                                <span class="tag blue">普通会员</span>
-                                <span class="tag green">积分 1250</span>
+                                <span class="tag blue" data-i18n="myhfa.user.role">普通会员</span>
+                                <span class="tag green" data-i18n="myhfa.user.points">积分 1250</span>
                             </div>
                         </div>
                     </div>
                     <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-                        <button class="btn btn-secondary" style="font-size:13px;" onclick="window.modals.open('upload-data-modal')">📂 上传医疗文档</button>
-                        <button class="btn btn-secondary" style="font-size:13px;">⚙️ 账户设置</button>
+                        <button class="btn btn-secondary" style="font-size:13px;" onclick="window.modals.open('upload-data-modal')" data-i18n="myhfa.upload">📂 上传医疗文档</button>
+                        <button class="btn btn-secondary" style="font-size:13px;" data-i18n="myhfa.settings">⚙️ 账户设置</button>
                     </div>
                 </div>
                 
                 <div class="card" style="background:#f8fafc;">
-                    <h3 style="margin-bottom:16px;">未来医疗支出预测模型</h3>
+                    <h3 style="margin-bottom:16px;" data-i18n="myhfa.predict.title">未来医疗支出预测模型</h3>
                     <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;">
-                        <span style="color:#64748b; font-size:14px;">预计年度总支出</span>
+                        <span style="color:#64748b; font-size:14px;" data-i18n="myhfa.predict.expense">预计年度总支出</span>
                         <span id="predicted-expense" style="font-size:32px; font-weight:800; color:var(--text-main);">--</span>
                     </div>
                     <div style="margin-bottom:20px;">
-                        <span style="color:#64748b; font-size:14px;">风险等级：</span>
-                        <span id="risk-badge" class="tag" style="background:#e2e8f0; color:#64748b;">需完善数据</span>
+                        <span style="color:#64748b; font-size:14px;" data-i18n="myhfa.predict.risk">风险等级：</span>
+                        <span id="risk-badge" class="tag" style="background:#e2e8f0; color:#64748b;" data-i18n="myhfa.predict.badge">需完善数据</span>
                     </div>
-                    <button class="btn btn-primary" style="width:100%;" onclick="window.modals.open('prediction-modal')">完善画像以获取预测</button>
+                    <button class="btn btn-primary" style="width:100%;" onclick="window.modals.open('prediction-modal')" data-i18n="myhfa.predict.btn">完善画像以获取预测</button>
                 </div>
             </div>
         </section>
@@ -855,16 +856,16 @@
     <div id="login-modal" class="modal-overlay">
         <div class="modal" style="width:400px;">
             <div class="close-modal">&times;</div>
-            <h3 style="text-align:center; margin-bottom:24px;">欢迎回到 HFA</h3>
+            <h3 style="text-align:center; margin-bottom:24px;" data-i18n="modal.login.title">欢迎回到 HFA</h3>
             <div class="form-group">
-                <label class="form-label">手机号 / 邮箱</label>
+                <label class="form-label" data-i18n="modal.login.account">手机号 / 邮箱</label>
                 <input type="text" class="form-input" placeholder="输入账号">
             </div>
             <div class="form-group">
-                <label class="form-label">密码</label>
+                <label class="form-label" data-i18n="modal.login.password">密码</label>
                 <input type="password" class="form-input" placeholder="输入密码">
             </div>
-            <button class="btn btn-primary" style="width:100%;">登录</button>
+            <button class="btn btn-primary" style="width:100%;" data-i18n="modal.login.btn">登录</button>
         </div>
     </div>
 
@@ -875,14 +876,14 @@
             <h3 id="hospital-modal-title" style="margin-bottom: 10px;">医院名称</h3>
             <div id="hospital-modal-tags" style="margin-bottom: 20px;"></div>
             
-            <p class="section-separator">简介</p>
+            <p class="section-separator" data-i18n="modal.hospital.intro">简介</p>
             <p id="hospital-modal-desc" style="color: #475569; margin-bottom: 20px;"></p>
             
-            <p class="section-separator">地址与交通</p>
+            <p class="section-separator" data-i18n="modal.hospital.address">地址与交通</p>
             <p style="margin-bottom: 5px;">📍 <span id="hospital-modal-addr"></span></p>
             <p style="margin-bottom: 20px;">🚇 <span id="hospital-modal-transport"></span></p>
             
-            <button id="hospital-book-btn" class="btn btn-primary" style="width: 100%;">立即预约</button>
+            <button id="hospital-book-btn" class="btn btn-primary" style="width: 100%;" data-i18n="modal.hospital.bookBtn">立即预约</button>
         </div>
     </div>
 
@@ -890,42 +891,42 @@
     <div id="booking-modal" class="modal-overlay">
         <div class="modal" style="width: 500px;">
             <div class="close-modal">&times;</div>
-            <h3 style="margin-bottom: 20px;">确认预约信息</h3>
+            <h3 style="margin-bottom: 20px;" data-i18n="modal.booking.title">确认预约信息</h3>
             <div style="background: #f1f5f9; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; color: var(--primary);" id="booking-item-name">
                 --
             </div>
             <div class="grid-2">
                 <div class="form-group">
-                    <label class="form-label">就诊科室</label>
+                    <label class="form-label" data-i18n="modal.booking.dept">就诊科室</label>
                     <select id="booking-dept" class="form-select">
-                        <option>全科</option>
-                        <option>消化内科</option>
-                        <option>骨科</option>
-                        <option>妇产科</option>
-                        <option>中医科</option>
-                        <option>口腔科</option>
+                        <option data-i18n="modal.booking.options.dept.general">全科</option>
+                        <option data-i18n="modal.booking.options.dept.digestive">消化内科</option>
+                        <option data-i18n="modal.booking.options.dept.orthopedics">骨科</option>
+                        <option data-i18n="modal.booking.options.dept.obgyn">妇产科</option>
+                        <option data-i18n="modal.booking.options.dept.tcm">中医科</option>
+                        <option data-i18n="modal.booking.options.dept.dental">口腔科</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">意向医师</label>
+                    <label class="form-label" data-i18n="modal.booking.doctor">意向医师</label>
                     <select id="booking-doctor" class="form-select">
-                        <option>系统智能推荐</option>
-                        <option>主任医师 (需加收诊金)</option>
-                        <option>副主任医师</option>
+                        <option data-i18n="modal.booking.options.doc.auto">系统智能推荐</option>
+                        <option data-i18n="modal.booking.options.doc.chief">主任医师 (需加收诊金)</option>
+                        <option data-i18n="modal.booking.options.doc.deputy">副主任医师</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="form-label">期望日期</label>
+                <label class="form-label" data-i18n="modal.booking.date">期望日期</label>
                 <input type="date" class="form-input">
             </div>
             <div class="form-group">
-                <label class="form-label">就诊人</label>
+                <label class="form-label" data-i18n="modal.booking.patient">就诊人</label>
                 <select id="booking-patient-select" class="form-select">
                     <!-- Dynamic -->
                 </select>
             </div>
-            <button class="btn btn-primary" style="width: 100%;" onclick="window.modals.close('booking-modal'); window.toast('预约提交成功！请留意短信通知', 'success');">提交预约申请</button>
+            <button class="btn btn-primary" style="width: 100%;" onclick="window.modals.close('booking-modal'); window.toast('预约提交成功！请留意短信通知', 'success');" data-i18n="modal.booking.submit">提交预约申请</button>
         </div>
     </div>
 
@@ -939,32 +940,32 @@
             </div>
             
             <div class="card" style="padding: 20px; background: #f8fafc; border:none; margin-bottom: 20px;">
-                <h4 style="font-size:16px; margin-bottom:12px;">健康档案备注</h4>
+                <h4 style="font-size:16px; margin-bottom:12px;" data-i18n="modal.member.notes">健康档案备注</h4>
                 <p id="member-health-notes" style="font-size:14px; color:#64748b; line-height: 1.6;">--</p>
             </div>
 
             <div class="card" style="padding: 20px; background: #fffbeb; border:none; margin-bottom: 20px;">
-                <h4 style="font-size:16px; margin-bottom:12px;">最近动态</h4>
+                <h4 style="font-size:16px; margin-bottom:12px;" data-i18n="modal.member.recent">最近动态</h4>
                 <p id="member-last-record" style="font-size:14px; color:#854d0e;">--</p>
             </div>
 
-            <h4 style="font-size:16px; margin-bottom:12px;">核心健康指标</h4>
+            <h4 style="font-size:16px; margin-bottom:12px;" data-i18n="modal.member.metrics">核心健康指标</h4>
             <div style="margin-bottom: 16px;">
                 <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
-                    <span>血压 (mmHg)</span>
+                    <span data-i18n="modal.member.bp">血压 (mmHg)</span>
                     <span id="member-bp-val" style="font-weight:600;">--</span>
                 </div>
                 <div class="progress-bar"><div id="member-bp-bar" class="progress-fill" style="width:0%; background:#10b981;"></div></div>
             </div>
              <div style="margin-bottom: 24px;">
                 <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
-                    <span>血糖 (mmol/L)</span>
+                    <span data-i18n="modal.member.bs">血糖 (mmol/L)</span>
                     <span id="member-bs-val" style="font-weight:600;">--</span>
                 </div>
                 <div class="progress-bar"><div id="member-bs-bar" class="progress-fill" style="width:0%; background:#3b82f6;"></div></div>
             </div>
 
-            <button class="btn btn-secondary" style="width:100%;">查看完整健康档案</button>
+            <button class="btn btn-secondary" style="width:100%;" data-i18n="modal.member.fullRecord">查看完整健康档案</button>
         </div>
     </div>
 
@@ -972,25 +973,25 @@
     <div id="add-member-modal" class="modal-overlay">
         <div class="modal" style="width:400px;">
             <div class="close-modal">&times;</div>
-            <h3>添加家庭成员</h3>
+            <h3 data-i18n="modal.addMember.title">添加家庭成员</h3>
             <div class="form-group" style="margin-top:20px;">
-                <label class="form-label">真实姓名</label>
+                <label class="form-label" data-i18n="modal.addMember.name">真实姓名</label>
                 <input type="text" id="new-member-name" class="form-input" placeholder="请输入姓名">
             </div>
             <div class="form-group">
-                <label class="form-label">关系</label>
+                <label class="form-label" data-i18n="modal.addMember.role">关系</label>
                 <select id="new-member-role" class="form-select">
-                    <option>父亲</option>
-                    <option>母亲</option>
-                    <option>配偶</option>
-                    <option>子女</option>
+                    <option data-i18n="modal.addMember.options.father">父亲</option>
+                    <option data-i18n="modal.addMember.options.mother">母亲</option>
+                    <option data-i18n="modal.addMember.options.spouse">配偶</option>
+                    <option data-i18n="modal.addMember.options.child">子女</option>
                 </select>
             </div>
             <div class="form-group">
-                <label class="form-label">健康状况/既往病史</label>
+                <label class="form-label" data-i18n="modal.addMember.health">健康状况/既往病史</label>
                 <textarea id="new-member-notes" class="form-textarea" placeholder="例如：花粉过敏、高血压二级、正在服用降压药..."></textarea>
             </div>
-            <button class="btn btn-primary" style="width:100%;" onclick="window.logic.addMember()">确认添加</button>
+            <button class="btn btn-primary" style="width:100%;" onclick="window.logic.addMember()" data-i18n="modal.addMember.btn">确认添加</button>
         </div>
     </div>
     
@@ -998,18 +999,18 @@
     <div id="mall-modal" class="modal-overlay">
         <div class="modal" style="width:600px;">
             <div class="close-modal">&times;</div>
-            <h3>积分兑换商城</h3>
-            <p style="color:#64748b; margin-bottom:20px;">当前可用积分：<strong style="color:var(--secondary);">1,250</strong></p>
+            <h3 data-i18n="modal.mall.title">积分兑换商城</h3>
+            <p style="color:#64748b; margin-bottom:20px;" data-i18n="modal.mall.points">当前可用积分：<strong style="color:var(--secondary);">1,250</strong></p>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
                 <div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px;">
-                    <h4>免费洁牙券</h4>
-                    <p style="color:#f59e0b; font-weight:bold; margin:8px 0;">1,000 积分</p>
-                    <button class="btn btn-primary" style="width:100%; font-size:13px; padding:8px;" onclick="window.toast('兑换成功！券码已发送至手机', 'success')">立即兑换</button>
+                    <h4 data-i18n="modal.mall.item1.title">免费洁牙券</h4>
+                    <p style="color:#f59e0b; font-weight:bold; margin:8px 0;" data-i18n="modal.mall.item1.cost">1,000 积分</p>
+                    <button class="btn btn-primary" style="width:100%; font-size:13px; padding:8px;" onclick="window.toast('兑换成功！券码已发送至手机', 'success')" data-i18n="modal.mall.btn">立即兑换</button>
                 </div>
                  <div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px;">
-                    <h4>HK$ 100 体检抵扣</h4>
-                    <p style="color:#f59e0b; font-weight:bold; margin:8px 0;">500 积分</p>
-                    <button class="btn btn-primary" style="width:100%; font-size:13px; padding:8px;" onclick="window.toast('兑换成功！下单时自动抵扣', 'success')">立即兑换</button>
+                    <h4 data-i18n="modal.mall.item2.title">HK$ 100 体检抵扣</h4>
+                    <p style="color:#f59e0b; font-weight:bold; margin:8px 0;" data-i18n="modal.mall.item2.cost">500 积分</p>
+                    <button class="btn btn-primary" style="width:100%; font-size:13px; padding:8px;" onclick="window.toast('兑换成功！下单时自动抵扣', 'success')" data-i18n="modal.mall.btn">立即兑换</button>
                 </div>
             </div>
         </div>
@@ -1019,73 +1020,73 @@
     <div id="prediction-modal" class="modal-overlay">
         <div class="modal" style="width: 700px;">
             <div class="close-modal">&times;</div>
-            <h3 style="margin-bottom: 24px;">完善健康画像</h3>
+            <h3 style="margin-bottom: 24px;" data-i18n="modal.pred.title">完善健康画像</h3>
             <div class="grid-2">
                 <div>
-                    <p class="section-separator">1. 人口学特征</p>
+                    <p class="section-separator" data-i18n="modal.pred.sec1">1. 人口学特征</p>
                     <div class="form-group">
-                        <label class="form-label">年龄</label>
+                        <label class="form-label" data-i18n="modal.pred.age">年龄</label>
                         <input type="number" id="pred-age" class="form-input" value="35">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">性别</label>
-                        <select id="pred-gender" class="form-select"><option value="m">男</option><option value="f">女</option></select>
+                        <label class="form-label" data-i18n="modal.pred.gender">性别</label>
+                        <select id="pred-gender" class="form-select"><option value="m" data-i18n="modal.pred.options.gender.m">男</option><option value="f" data-i18n="modal.pred.options.gender.f">女</option></select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">家族病史 (多选)</label>
+                        <label class="form-label" data-i18n="modal.pred.history">家族病史 (多选)</label>
                         <div style="display:flex; flex-wrap:wrap; gap:10px;">
-                            <label><input type="checkbox"> 高血压</label>
-                            <label><input type="checkbox"> 糖尿病</label>
-                            <label><input type="checkbox"> 肿瘤</label>
+                            <label><input type="checkbox"> <span data-i18n="modal.pred.options.history.bp">高血压</span></label>
+                            <label><input type="checkbox"> <span data-i18n="modal.pred.options.history.db">糖尿病</span></label>
+                            <label><input type="checkbox"> <span data-i18n="modal.pred.options.history.tumor">肿瘤</span></label>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <p class="section-separator">2. 行为特征</p>
+                    <p class="section-separator" data-i18n="modal.pred.sec2">2. 行为特征</p>
                     <div class="form-group">
-                        <label class="form-label">每周运动频率</label>
+                        <label class="form-label" data-i18n="modal.pred.exercise">每周运动频率</label>
                         <select id="pred-exercise" class="form-select">
-                            <option value="0">从不</option>
-                            <option value="1">1-2次</option>
-                            <option value="3">3次以上</option>
+                            <option value="0" data-i18n="modal.pred.options.exercise.0">从不</option>
+                            <option value="1" data-i18n="modal.pred.options.exercise.1">1-2次</option>
+                            <option value="3" data-i18n="modal.pred.options.exercise.3">3次以上</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">生活习惯</label>
+                        <label class="form-label" data-i18n="modal.pred.habit">生活习惯</label>
                         <select id="pred-habit" class="form-select">
-                            <option value="none">无不良嗜好</option>
-                            <option value="smoke">吸烟</option>
-                            <option value="drink">饮酒</option>
-                            <option value="both">烟酒均沾</option>
+                            <option value="none" data-i18n="modal.pred.options.habit.none">无不良嗜好</option>
+                            <option value="smoke" data-i18n="modal.pred.options.habit.smoke">吸烟</option>
+                            <option value="drink" data-i18n="modal.pred.options.habit.drink">饮酒</option>
+                            <option value="both" data-i18n="modal.pred.options.habit.both">烟酒均沾</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="grid-2">
                 <div>
-                    <p class="section-separator">3. 医疗特征</p>
+                    <p class="section-separator" data-i18n="modal.pred.sec3">3. 医疗特征</p>
                     <div class="form-group">
-                        <label class="form-label">现有慢病数量</label>
+                        <label class="form-label" data-i18n="modal.pred.chronic">现有慢病数量</label>
                         <input type="number" id="pred-chronic" class="form-input" value="0">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">去年医疗总支出 (HKD)</label>
+                        <label class="form-label" data-i18n="modal.pred.expense">去年医疗总支出 (HKD)</label>
                         <input type="number" id="pred-expense-last" class="form-input" value="2000">
                     </div>
                 </div>
                 <div>
-                     <p class="section-separator">4. 金融特征</p>
+                     <p class="section-separator" data-i18n="modal.pred.sec4">4. 金融特征</p>
                      <div class="form-group">
-                        <label class="form-label">商业保险配置</label>
+                        <label class="form-label" data-i18n="modal.pred.insurance">商业保险配置</label>
                         <select id="pred-insurance" class="form-select">
-                            <option value="none">无商业保险</option>
-                            <option value="basic">仅基础住院险</option>
-                            <option value="high">高端医疗险</option>
+                            <option value="none" data-i18n="modal.pred.options.ins.none">无商业保险</option>
+                            <option value="basic" data-i18n="modal.pred.options.ins.basic">仅基础住院险</option>
+                            <option value="high" data-i18n="modal.pred.options.ins.high">高端医疗险</option>
                         </select>
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="window.logic.calculatePrediction()">生成预测报告</button>
+            <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="window.logic.calculatePrediction()" data-i18n="modal.pred.btn">生成预测报告</button>
         </div>
     </div>
     
@@ -1093,22 +1094,22 @@
     <div id="upload-data-modal" class="modal-overlay">
         <div class="modal" style="width:500px;">
             <div class="close-modal">&times;</div>
-            <h3>上传医疗数据</h3>
+            <h3 data-i18n="modal.upload.title">上传医疗数据</h3>
             <div style="border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px; text-align: center; margin: 20px 0; background: #f8fafc; cursor: pointer;">
                 <div style="font-size: 40px; margin-bottom: 10px;">☁️</div>
-                <p style="color: #64748b;">点击选择文件 或 拖拽至此</p>
-                <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">支持 JPG, PNG, PDF (最大 10MB)</p>
+                <p style="color: #64748b;" data-i18n="modal.upload.drag">点击选择文件 或 拖拽至此</p>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;" data-i18n="modal.upload.hint">支持 JPG, PNG, PDF (最大 10MB)</p>
             </div>
             <div class="form-group">
-                <label class="form-label">文档类型</label>
+                <label class="form-label" data-i18n="modal.upload.type">文档类型</label>
                 <select class="form-select">
-                    <option>体检报告</option>
-                    <option>门诊病历</option>
-                    <option>医疗发票</option>
-                    <option>其他</option>
+                    <option data-i18n="modal.upload.options.report">体检报告</option>
+                    <option data-i18n="modal.upload.options.record">门诊病历</option>
+                    <option data-i18n="modal.upload.options.invoice">医疗发票</option>
+                    <option data-i18n="modal.upload.options.other">其他</option>
                 </select>
             </div>
-            <button class="btn btn-primary" style="width:100%;" onclick="window.toast('文件上传成功！正在解析...', 'success'); window.modals.close('upload-data-modal')">开始上传</button>
+            <button class="btn btn-primary" style="width:100%;" onclick="window.toast('文件上传成功！正在解析...', 'success'); window.modals.close('upload-data-modal')" data-i18n="modal.upload.btn">开始上传</button>
         </div>
     </div>
 
@@ -1116,96 +1117,96 @@
     <div id="guide-modal" class="modal-overlay">
         <div class="modal" style="width: 800px;">
             <div class="close-modal">&times;</div>
-            <h3 style="text-align:center; margin-bottom: 24px;">港人北上就医通关详解</h3>
+            <h3 style="text-align:center; margin-bottom: 24px;" data-i18n="modal.guide.title">港人北上就医通关详解</h3>
             
             <div class="tabs" id="guide-tabs" style="justify-content: center;">
-                <div class="tab-btn active" data-tab="guide-pre"><span class="tab-num">01</span> <span class="tab-text">行前准备</span></div>
-                <div class="tab-btn" data-tab="guide-day"><span class="tab-num">02</span> <span class="tab-text">就诊当日</span></div>
-                <div class="tab-btn" data-tab="guide-post"><span class="tab-num">03</span> <span class="tab-text">后续与理赔</span></div>
+                <div class="tab-btn active" data-tab="guide-pre"><span class="tab-num">01</span> <span class="tab-text" data-i18n="modal.guide.tab1">行前准备</span></div>
+                <div class="tab-btn" data-tab="guide-day"><span class="tab-num">02</span> <span class="tab-text" data-i18n="modal.guide.tab2">就诊当日</span></div>
+                <div class="tab-btn" data-tab="guide-post"><span class="tab-num">03</span> <span class="tab-text" data-i18n="modal.guide.tab3">后续与理赔</span></div>
             </div>
 
             <!-- Tab 1 -->
             <div id="guide-pre" class="guide-content active">
                 <div class="guide-block">
-                    <h4>1. 绑定支付方式 <span class="tag red">重点</span></h4>
-                    <p>深圳医院 90% 采用线上自助缴费，未绑定支付可能导致无法缴费或排队时间极长。</p>
+                    <h4 data-i18n="modal.guide.t1.b1.title">1. 绑定支付方式 <span class="tag red" data-i18n="modal.guide.t1.b1.tag">重点</span></h4>
+                    <p data-i18n="modal.guide.t1.b1.desc">深圳医院 90% 采用线上自助缴费，未绑定支付可能导致无法缴费或排队时间极长。</p>
                     <div class="tips-box">
-                        <strong>建议提前在香港完成：</strong>
+                        <strong data-i18n="modal.guide.t1.b1.tip.title">建议提前在香港完成：</strong>
                         <ul>
-                            <li><strong>微信支付 (WeChat Pay HK)：</strong> 在钱包中选择“内地”地区，绑定香港信用卡或银行账户。</li>
-                            <li><strong>支付宝 (AlipayHK)：</strong> 开通“跨境支付”功能，或下载内地版支付宝绑定香港信用卡。</li>
-                            <li>确保手机已开通漫游数据，能接收银行验证码。</li>
-                            <li>完成后可进入 HFA App →「支付设置」进行授权绑定，方便一键支付挂号费。</li>
+                            <li data-i18n="modal.guide.t1.b1.tip.li1"><strong>微信支付 (WeChat Pay HK)：</strong> 在钱包中选择“内地”地区，绑定香港信用卡或银行账户。</li>
+                            <li data-i18n="modal.guide.t1.b1.tip.li2"><strong>支付宝 (AlipayHK)：</strong> 开通“跨境支付”功能，或下载内地版支付宝绑定香港信用卡。</li>
+                            <li data-i18n="modal.guide.t1.b1.tip.li3">确保手机已开通漫游数据，能接收银行验证码。</li>
+                            <li data-i18n="modal.guide.t1.b1.tip.li4">完成后可进入 HFA App →「支付设置」进行授权绑定，方便一键支付挂号费。</li>
                         </ul>
                     </div>
                 </div>
                 <div class="guide-block">
-                    <h4>2. 身份证件检查</h4>
-                    <p>必须携带<strong>回乡证 (港澳居民来往内地通行证)</strong> 原件。建议手机拍照备份以防遗失。部分医院支持回乡证电子版，但建议携带实体证件。</p>
+                    <h4 data-i18n="modal.guide.t1.b2.title">2. 身份证件检查</h4>
+                    <p data-i18n="modal.guide.t1.b2.desc">必须携带<strong>回乡证 (港澳居民来往内地通行证)</strong> 原件。建议手机拍照备份以防遗失。部分医院支持回乡证电子版，但建议携带实体证件。</p>
                 </div>
                 <div class="guide-block">
-                    <h4>3. HFA 预约挂号 (核心步骤)</h4>
-                    <p>通过 Care Hub 完成一键预约，平台会自动推荐合适科室、医生级别（普通/专家）及显示排期。</p>
+                    <h4 data-i18n="modal.guide.t1.b3.title">3. HFA 预约挂号 (核心步骤)</h4>
+                    <p data-i18n="modal.guide.t1.b3.desc">通过 Care Hub 完成一键预约，平台会自动推荐合适科室、医生级别（普通/专家）及显示排期。</p>
                     <div class="tips-box">
-                        <strong>预约优势：</strong>
+                        <strong data-i18n="modal.guide.t1.b3.tip.title">预约优势：</strong>
                         <ul>
-                            <li>提前查看预计费用区间（短期支出预测）。</li>
-                            <li>知晓可能需要的检查项（如需空腹，系统会提示）。</li>
-                            <li>建议提前 3–7 天在 HFA 完成预约，热门专家号需更早。</li>
+                            <li data-i18n="modal.guide.t1.b3.tip.li1">提前查看预计费用区间（短期支出预测）。</li>
+                            <li data-i18n="modal.guide.t1.b3.tip.li2">知晓可能需要的检查项（如需空腹，系统会提示）。</li>
+                            <li data-i18n="modal.guide.t1.b3.tip.li3">建议提前 3–7 天在 HFA 完成预约，热门专家号需更早。</li>
                         </ul>
                     </div>
                 </div>
                 <div class="guide-block">
-                    <h4>4. 准备资料</h4>
-                    <p>可在 HFA 上传香港既往病历、化验报告、影像资料及服用中的药物列表。医生能更精准判断，减少不必要检查。</p>
+                    <h4 data-i18n="modal.guide.t1.b4.title">4. 准备资料</h4>
+                    <p data-i18n="modal.guide.t1.b4.desc">可在 HFA 上传香港既往病历、化验报告、影像资料及服用中的药物列表。医生能更精准判断，减少不必要检查。</p>
                 </div>
             </div>
 
             <!-- Tab 2 -->
             <div id="guide-day" class="guide-content">
                 <div class="guide-block">
-                    <h4>1. 报到流程</h4>
-                    <p>到院前 30 分钟 HFA 会自动发送提醒。到达医院后，根据 HFA 院内导航前往自助报到机。使用回乡证或预约二维码进行报到。</p>
+                    <h4 data-i18n="modal.guide.t2.b1.title">1. 报到流程</h4>
+                    <p data-i18n="modal.guide.t2.b1.desc">到院前 30 分钟 HFA 会自动发送提醒。到达医院后，根据 HFA 院内导航前往自助报到机。使用回乡证或预约二维码进行报到。</p>
                 </div>
                 <div class="guide-block">
-                    <h4>2. 缴费方式 (分段式)</h4>
-                    <p>内地就医通常分阶段缴费：挂号费 → 医生开单 → 检查费 → 检查完回诊 → 药费。每个环节都支持手机支付（微信/支付宝）。</p>
+                    <h4 data-i18n="modal.guide.t2.b2.title">2. 缴费方式 (分段式)</h4>
+                    <p data-i18n="modal.guide.t2.b2.desc">内地就医通常分阶段缴费：挂号费 → 医生开单 → 检查费 → 检查完回诊 → 药费。每个环节都支持手机支付（微信/支付宝）。</p>
                 </div>
                 <div class="guide-block">
-                    <h4>3. 就诊关键动作 <span class="tag red">理赔必看</span></h4>
-                    <p>为了后续回港报销保险，请务必向医生或护士明确提出以下要求：</p>
+                    <h4 data-i18n="modal.guide.t2.b3.title">3. 就诊关键动作 <span class="tag red" data-i18n="modal.guide.t2.b3.tag">理赔必看</span></h4>
+                    <p data-i18n="modal.guide.t2.b3.desc">为了后续回港报销保险，请务必向医生或护士明确提出以下要求：</p>
                     <div class="tips-box">
                         <ul>
-                            <li><strong>打印病历：</strong> 必须包含医生签名和医院盖章。</li>
-                            <li><strong>打印发票：</strong> 需要正式的纸质发票（收据），而非仅有刷卡小票。</li>
-                            <li><strong>出具证明：</strong> 如有需要，请医生开具病假条或转诊单。</li>
+                            <li data-i18n="modal.guide.t2.b3.tip.li1"><strong>打印病历：</strong> 必须包含医生签名和医院盖章。</li>
+                            <li data-i18n="modal.guide.t2.b3.tip.li2"><strong>打印发票：</strong> 需要正式的纸质发票（收据），而非仅有刷卡小票。</li>
+                            <li data-i18n="modal.guide.t2.b3.tip.li3"><strong>出具证明：</strong> 如有需要，请医生开具病假条或转诊单。</li>
                         </ul>
                     </div>
                 </div>
                 <div class="guide-block">
-                    <h4>4. 检查指引</h4>
-                    <p>HFA 会根据医院流程提示您检查科室所在的楼层、窗口号以及平均等待时间。检查后是否需要回诊室找医生看报告，系统也会提示。</p>
+                    <h4 data-i18n="modal.guide.t2.b4.title">4. 检查指引</h4>
+                    <p data-i18n="modal.guide.t2.b4.desc">HFA 会根据医院流程提示您检查科室所在的楼层、窗口号以及平均等待时间。检查后是否需要回诊室找医生看报告，系统也会提示。</p>
                 </div>
             </div>
 
             <!-- Tab 3 -->
             <div id="guide-post" class="guide-content">
                 <div class="guide-block">
-                    <h4>1. 取药 / 代煎</h4>
-                    <p>中药可选择当场取药或选择快递回港（部分机构支持）。HFA 会提示药房位置与排队时段。</p>
+                    <h4 data-i18n="modal.guide.t3.b1.title">1. 取药 / 代煎</h4>
+                    <p data-i18n="modal.guide.t3.b1.desc">中药可选择当场取药或选择快递回港（部分机构支持）。HFA 会提示药房位置与排队时段。</p>
                 </div>
                 <div class="guide-block">
-                    <h4>2. 复诊预约</h4>
-                    <p>医生建议复诊时间后，HFA 会在对应日期自动弹出「是否复诊」提醒，支持一键再次预约，无需重复填写资料。</p>
+                    <h4 data-i18n="modal.guide.t3.b2.title">2. 复诊预约</h4>
+                    <p data-i18n="modal.guide.t3.b2.desc">医生建议复诊时间后，HFA 会在对应日期自动弹出「是否复诊」提醒，支持一键再次预约，无需重复填写资料。</p>
                 </div>
                 <div class="guide-block">
-                    <h4>3. 理赔材料整理 (Protection Hub)</h4>
-                    <p>将病历、发票、检查报告、药单拍照上传至 Protection Hub。系统会自动完成：</p>
+                    <h4 data-i18n="modal.guide.t3.b3.title">3. 理赔材料整理 (Protection Hub)</h4>
+                    <p data-i18n="modal.guide.t3.b3.desc">将病历、发票、检查报告、药单拍照上传至 Protection Hub。系统会自动完成：</p>
                     <div class="tips-box">
                         <ul>
-                            <li>可报项目识别与金额预测。</li>
-                            <li>拒赔风险提示（如检查缺材料、报告格式不符）。</li>
-                            <li>自动生成「完整理赔包」，可直接下载提交给保险代理人。</li>
+                            <li data-i18n="modal.guide.t3.b3.tip.li1">可报项目识别与金额预测。</li>
+                            <li data-i18n="modal.guide.t3.b3.tip.li2">拒赔风险提示（如检查缺材料、报告格式不符）。</li>
+                            <li data-i18n="modal.guide.t3.b3.tip.li3">自动生成「完整理赔包」，可直接下载提交给保险代理人。</li>
                         </ul>
                     </div>
                 </div>
@@ -1241,20 +1242,258 @@ const i18nData = {
         "card.family.desc": "一站式管理父母与子女健康档案，远程预约更放心。",
         "care.title": "Care Hub 就医关怀中心",
         "care.desc": "智能规划您的深圳就医路径，透明化费用与流程。",
+        "care.triage.title": "🩺 智能导诊",
+        "care.triage.symptom": "症状描述",
+        "care.triage.type": "就诊类型",
+        "care.triage.insurance": "香港保险",
+        "care.triage.btn": "生成就医建议",
+        "care.cost.title": "💰 费用区间估算",
+        "care.cost.hospitalType": "医院类型",
+        "care.cost.checkups": "预计检查项目 (系统自动推荐)",
+        "care.cost.total": "预估总费用 (CNY)",
+        "care.hospital.list": "🏥 推荐医院列表",
         "protection.title": "Protection Hub 理赔保障中心",
         "protection.warn.title": "⚠️ 重要提示：",
         "protection.warn.desc": "本平台仅提供信息辅助与资料整理，不代表保险公司官方承诺。具体赔付以您的保单条款为准。",
+        "protection.check.title": "🧐 可报销性自查",
+        "protection.check.item": "收费项目名称",
+        "protection.check.amount": "费用金额 (CNY)",
+        "protection.check.btn": "判断可能性",
+        "protection.mat.title": "📑 理赔材料清单",
+        "protection.mat.company": "保险公司",
+        "protection.mat.plan": "具体险种",
+        "protection.mat.tab1": "门诊就医",
+        "protection.mat.tab2": "住院治疗",
+        "protection.rec.title": "🛡️ 港人内地保险精选推荐",
         "wellness.title": "Wellness Hub 健康增值中心",
+        "wellness.mall.title": "我的健康积分:",
+        "wellness.mall.btn": "进入积分商城",
         "family.title": "Family Hub 家庭健康协同",
-        "myhfa.title": "My HFA 个人中心"
+        "family.alert.title": "🔔 家庭健康提醒",
+        "myhfa.title": "My HFA 个人中心",
+        "myhfa.upload": "📂 上传医疗文档",
+        "myhfa.settings": "⚙️ 账户设置",
+        "myhfa.predict.title": "未来医疗支出预测模型",
+        "myhfa.predict.expense": "预计年度总支出",
+        "myhfa.predict.risk": "风险等级：",
+        "myhfa.predict.btn": "完善画像以获取预测",
+        "hero.card1.title": "预约成功",
+        "hero.card1.desc": "港大深圳医院 - 消化内科<br><span style='color: var(--text-main); font-weight: 500;'>2024-03-15 09:30</span>",
+        "hero.card2.title": "理赔预估",
+        "hero.card2.desc": "预计可报销额度<br><span style='font-size:24px; font-weight:800; color:#10b981; letter-spacing: -0.5px;'>HK$ 4,500</span>",
+        "guide.title": "新手通关指南",
+        "guide.desc": "跨境医疗全流程详解，三步搞定",
+        "guide.step1.title": "行前准备",
+        "guide.step1.desc": "• <strong>支付绑定：</strong> 微信/支付宝关联香港卡。<br>• <strong>预约挂号：</strong> Care Hub 智能导诊。<br>• <strong>资料备份：</strong> 证件与过往病历。",
+        "guide.step2.title": "就诊当日",
+        "guide.step2.desc": "• <strong>报到取号：</strong> 身份证/回乡证自助报到。<br>• <strong>分段缴费：</strong> 挂号/检查/取药分别付。<br>• <strong>关键动作：</strong> 索要签名病历与发票。",
+        "guide.step3.title": "后续与理赔",
+        "guide.step3.desc": "• <strong>取药代煎：</strong> 中药可快递回港。<br>• <strong>自动提醒：</strong> 系统推送复诊日期。<br>• <strong>理赔包：</strong> Protection Hub 自动生成。",
+        "guide.btn": "查看图文详解 📖",
+        "protection.card1.tag": "百万医疗险",
+        "protection.card1.title": "内地百万医疗险 (e.g. 众安尊享e生)",
+        "protection.card1.desc": "<strong>保额：</strong> 300万-600万<br><strong>保费：</strong> 约 ¥300-1000/年<br><strong>特点：</strong> 覆盖住院大病，免赔额通常1万。适合作为大病兜底。",
+        "protection.card1.btn": "查看详情",
+        "protection.card2.tag": "大湾区专属",
+        "protection.card2.title": "大湾区专属重疾险",
+        "protection.card2.desc": "<strong>保额：</strong> 灵活可选<br><strong>特点：</strong> 针对湾区高发重疾额外赔付，费率较香港重疾险有优势，投保简便。",
+        "protection.card2.btn": "查看详情",
+        "protection.card3.tag": "高端门诊",
+        "protection.card3.title": "高端门诊医疗险 (Msh/Bupa)",
+        "protection.card3.desc": "<strong>范围：</strong> 私立医院/昂贵医院直付<br><strong>特点：</strong> 覆盖日常门诊、牙科、体检，无需排队，体验极佳。",
+        "protection.card3.btn": "查看详情",
+        "family.alert1": "母亲的降压药快用完了，请提醒复诊。",
+        "family.alert2": "配偶洁牙预约建议。",
+        "myhfa.member.type": "普通会员",
+        "myhfa.member.points": "积分 1250",
+        "modal.login.title": "欢迎回到 HFA",
+        "modal.login.account": "手机号 / 邮箱",
+        "modal.login.password": "密码",
+        "modal.login.btn": "登录",
+        "modal.hospital.intro": "简介",
+        "modal.hospital.address": "地址与交通",
+        "modal.hospital.bookBtn": "立即预约",
+        "modal.booking.title": "确认预约信息",
+        "modal.booking.dept": "就诊科室",
+        "modal.booking.doctor": "意向医师",
+        "modal.booking.date": "期望日期",
+        "modal.booking.patient": "就诊人",
+        "modal.booking.submit": "提交预约申请",
+        "modal.member.notes": "健康档案备注",
+        "modal.member.recent": "最近动态",
+        "modal.member.metrics": "核心健康指标",
+        "modal.member.bp": "血压 (mmHg)",
+        "modal.member.bs": "血糖 (mmol/L)",
+        "modal.member.fullRecord": "查看完整健康档案",
+        "modal.addMember.title": "添加家庭成员",
+        "modal.addMember.name": "真实姓名",
+        "modal.addMember.role": "关系",
+        "modal.addMember.health": "健康状况/既往病史",
+        "modal.addMember.btn": "确认添加",
+        "modal.mall.title": "积分兑换商城",
+        "modal.mall.points": "当前可用积分：",
+        "modal.mall.item1.title": "免费洁牙券",
+        "modal.mall.item1.cost": "1,000 积分",
+        "modal.mall.item2.title": "HK$ 100 体检抵扣",
+        "modal.mall.item2.cost": "500 积分",
+        "modal.mall.btn": "立即兑换",
+        "modal.pred.title": "完善健康画像",
+        "modal.pred.sec1": "1. 人口学特征",
+        "modal.pred.age": "年龄",
+        "modal.pred.gender": "性别",
+        "modal.pred.history": "家族病史 (多选)",
+        "modal.pred.sec2": "2. 行为特征",
+        "modal.pred.exercise": "每周运动频率",
+        "modal.pred.habit": "生活习惯",
+        "modal.pred.sec3": "3. 医疗特征",
+        "modal.pred.chronic": "现有慢病数量",
+        "modal.pred.expense": "去年医疗总支出 (HKD)",
+        "modal.pred.sec4": "4. 金融特征",
+        "modal.pred.insurance": "商业保险配置",
+        "modal.pred.btn": "生成预测报告",
+        "modal.upload.title": "上传医疗数据",
+        "modal.upload.drag": "点击选择文件 或 拖拽至此",
+        "modal.upload.hint": "支持 JPG, PNG, PDF (最大 10MB)",
+        "modal.upload.type": "文档类型",
+        "modal.upload.btn": "开始上传",
+        "modal.guide.title": "港人北上就医通关详解",
+        "modal.guide.tab1": "行前准备",
+        "modal.guide.tab2": "就诊当日",
+        "modal.guide.tab3": "后续与理赔",
+        "modal.guide.t1.b1.title": "1. 绑定支付方式",
+        "modal.guide.t1.b1.tag": "重点",
+        "modal.guide.t1.b1.desc": "深圳医院 90% 采用线上自助缴费，未绑定支付可能导致无法缴费或排队时间极长。",
+        "modal.guide.t1.b1.tip.title": "建议提前在香港完成：",
+        "modal.guide.t1.b1.tip.li1": "<strong>微信支付 (WeChat Pay HK)：</strong> 在钱包中选择“内地”地区，绑定香港信用卡或银行账户。",
+        "modal.guide.t1.b1.tip.li2": "<strong>支付宝 (AlipayHK)：</strong> 开通“跨境支付”功能，或下载内地版支付宝绑定香港信用卡。",
+        "modal.guide.t1.b1.tip.li3": "确保手机已开通漫游数据，能接收银行验证码。",
+        "modal.guide.t1.b1.tip.li4": "完成后可进入 HFA App →「支付设置」进行授权绑定，方便一键支付挂号费。",
+        "modal.guide.t1.b2.title": "2. 身份证件检查",
+        "modal.guide.t1.b2.desc": "必须携带<strong>回乡证 (港澳居民来往内地通行证)</strong> 原件。建议手机拍照备份以防遗失。部分医院支持回乡证电子版，但建议携带实体证件。",
+        "modal.guide.t1.b3.title": "3. HFA 预约挂号 (核心步骤)",
+        "modal.guide.t1.b3.desc": "通过 Care Hub 完成一键预约，平台会自动推荐合适科室、医生级别（普通/专家）及显示排期。",
+        "modal.guide.t1.b3.tip.title": "预约优势：",
+        "modal.guide.t1.b3.tip.li1": "提前查看预计费用区间（短期支出预测）。",
+        "modal.guide.t1.b3.tip.li2": "知晓可能需要的检查项（如需空腹，系统会提示）。",
+        "modal.guide.t1.b3.tip.li3": "建议提前 3–7 天在 HFA 完成预约，热门专家号需更早。",
+        "modal.guide.t1.b4.title": "4. 准备资料",
+        "modal.guide.t1.b4.desc": "可在 HFA 上传香港既往病历、化验报告、影像资料及服用中的药物列表。医生能更精准判断，减少不必要检查。",
+        "modal.guide.t2.b1.title": "1. 报到流程",
+        "modal.guide.t2.b1.desc": "到院前 30 分钟 HFA 会自动发送提醒。到达医院后，根据 HFA 院内导航前往自助报到机。使用回乡证或预约二维码进行报到。",
+        "modal.guide.t2.b2.title": "2. 缴费方式 (分段式)",
+        "modal.guide.t2.b2.desc": "内地就医通常分阶段缴费：挂号费 → 医生开单 → 检查费 → 检查完回诊 → 药费。每个环节都支持手机支付（微信/支付宝）。",
+        "modal.guide.t2.b3.title": "3. 就诊关键动作",
+        "modal.guide.t2.b3.tag": "理赔必看",
+        "modal.guide.t2.b3.desc": "为了后续回港报销保险，请务必向医生或护士明确提出以下要求：",
+        "modal.guide.t2.b3.tip.li1": "<strong>打印病历：</strong> 必须包含医生签名和医院盖章。",
+        "modal.guide.t2.b3.tip.li2": "<strong>打印发票：</strong> 需要正式的纸质发票（收据），而非仅有刷卡小票。",
+        "modal.guide.t2.b3.tip.li3": "<strong>出具证明：</strong> 如有需要，请医生开具病假条或转诊单。",
+        "modal.guide.t2.b4.title": "4. 检查指引",
+        "modal.guide.t2.b4.desc": "HFA 会根据医院流程提示您检查科室所在的楼层、窗口号以及平均等待时间。检查后是否需要回诊室找医生看报告，系统也会提示。",
+        "modal.guide.t3.b1.title": "1. 取药 / 代煎",
+        "modal.guide.t3.b1.desc": "中药可选择当场取药或选择快递回港（部分机构支持）。HFA 会提示药房位置与排队时段。",
+        "modal.guide.t3.b2.title": "2. 复诊预约",
+        "modal.guide.t3.b2.desc": "医生建议复诊时间后，HFA 会在对应日期自动弹出「是否复诊」提醒，支持一键再次预约，无需重复填写资料。",
+        "modal.guide.t3.b3.title": "3. 理赔材料整理 (Protection Hub)",
+        "modal.guide.t3.b3.desc": "将病历、发票、检查报告、药单拍照上传至 Protection Hub。系统会自动完成：",
+        "modal.guide.t3.b3.tip.li1": "可报项目识别与金额预测。",
+        "modal.guide.t3.b3.tip.li2": "拒赔风险提示（如检查缺材料、报告格式不符）。",
+        "modal.guide.t3.b3.tip.li3": "自动生成「完整理赔包」，可直接下载提交给保险代理人。",
+        "family.alert.item1": "母亲的降压药快用完了，请提醒复诊。",
+        "family.alert.item1.time": "3天后",
+        "family.alert.item2": "配偶洁牙预约建议。",
+        "family.alert.item2.time": "下周",
+        "myhfa.user.role": "普通会员",
+        "myhfa.user.points": "积分 1250",
+        "myhfa.predict.badge": "需完善数据",
+        "db.h1.name": "香港大学深圳医院",
+        "db.h1.desc": "全科门诊打包收费200元，国际化标准。提供英语粤语服务，适合港人就医习惯。",
+        "db.h1.addr": "深圳市福田区海园一路1号",
+        "db.h1.trans": "地铁9号线深圳湾公园站D1出口",
+        "db.h2.name": "深圳市中医院",
+        "db.h2.desc": "针灸推拿科室全国知名，拥有众多国家级名老中医。",
+        "db.h2.addr": "深圳市福田区福华路1号",
+        "db.h2.trans": "地铁1号线华强路站C出口",
+        "db.h3.name": "罗湖区人民医院",
+        "db.h3.desc": "距离罗湖口岸仅10分钟车程，消化内科与生殖医学科实力强劲。",
+        "db.h3.addr": "深圳市罗湖区友谊路47号",
+        "db.h3.trans": "地铁1号线国贸站A出口",
+        "db.h4.name": "卓正医疗 (私立)",
+        "db.h4.desc": "无需排队，注重隐私，适合商业保险用户。医生多具有国际背景。",
+        "db.h4.addr": "深圳市南山区深南大道9668号华润置地大厦",
+        "db.h4.trans": "地铁1号线高新园站",
+        "db.h5.name": "和睦家医院",
+        "db.h5.desc": "提供全英文就诊环境，24小时急诊服务，与国际主流保险直付。",
+        "db.h5.addr": "深圳市福田区福强路4033号",
+        "db.h5.trans": "地铁4号线沙尾站",
+        "db.h6.name": "南方医科大学深圳医院",
+        "db.h6.desc": "广东省高水平医院建设单位，医疗技术领先，急危重症救治能力强。",
+        "db.h6.addr": "深圳市宝安区新湖路1333号",
+        "db.h6.trans": "地铁1号线新安站E出口",
+        "db.h7.name": "深圳港龙医院",
+        "db.h7.desc": "位于龙岗区，提供优质的妇产科及全科服务，环境温馨。",
+        "db.h7.addr": "深圳市龙岗区龙岗大道3012号",
+        "db.h7.trans": "地铁3号线吉祥站B出口",
+        "db.tags.hk_managed": "港资管理",
+        "db.tags.insurance": "可刷医保",
+        "db.tags.tcm_strong": "中医强项",
+        "db.tags.grade_3a": "三甲",
+        "db.tags.near_port": "近口岸",
+        "db.tags.internet_hosp": "互联网医院",
+        "db.tags.high_end": "高端服务",
+        "db.tags.good_env": "环境好",
+        "db.tags.intl_brand": "国际品牌",
+        "db.tags.multi_lang": "多语言",
+        "db.tags.uni_affiliate": "大学附属",
+        "db.tags.advanced_equip": "设备先进",
+        "db.tags.obgyn": "妇产特色",
+        "db.tags.hk_service": "港式服务",
+        "db.w1.title": "港人年度基础体检",
+        "db.w1.desc": "含CT、彩超、肿瘤筛查等50项。",
+        "db.w1.loc": "罗湖区人民医院体检中心",
+        "db.w2.title": "心脑血管专项筛查",
+        "db.w2.desc": "针对三高人群，深度排查隐患。",
+        "db.w2.loc": "港大深圳医院",
+        "db.w3.title": "深港家庭洁牙套餐",
+        "db.w3.desc": "3人共享，超声波洁牙+抛光。",
+        "db.w3.loc": "爱康健口腔 (罗湖口岸店)",
+        "db.w4.title": "名老中医问诊",
+        "db.w4.desc": "三甲名医号源，含针灸一次。",
+        "db.w4.loc": "深圳市中医院 (福田院区)",
+        "db.m1.role": "本人",
+        "db.m1.status": "健康",
+        "db.m1.notes": "无既往病史，青霉素过敏。",
+        "db.m2.role": "配偶",
+        "db.m2.status": "健康良好",
+        "db.m2.notes": "无明显过敏史，每年定期体检。",
+        "db.m3.role": "母亲",
+        "db.m3.status": "血压随访",
+        "db.m3.notes": "确诊高血压二级，每日服用硝苯地平。需注意关节疼痛。",
+        "db.ins.AIA.normal": "AIA 友邦及早康复",
+        "db.ins.AIA.high_end": "AIA 友邦全程守护 (高端)",
+        "db.ins.Prudential.normal": "Prudential 保诚医疗加倍保",
+        "db.ins.Prudential.high_end": "Prudential 高端医疗计划",
+        "db.ins.Manulife.normal": "Manulife 宏利全护航",
+        "db.ins.Manulife.vivid": "Manulife 活耀人生",
+        "db.ins.Others.normal": "一般住院保险",
+        "db.ins.Others.accident": "意外险",
+        "mat.op.rec": "门诊病历", "mat.op.rec.d": "需医生签名及医院盖章",
+        "mat.inv": "发票原件", "mat.inv.d": "含收费项目明细",
+        "mat.ref": "转诊证明", "mat.ref.d": "部分计划如无指定诊所需提供",
+        "mat.dir": "直付授权书", "mat.dir.d": "如已使用直付卡",
+        "mat.dis": "出院小结", "mat.dis.d": "需医院盖章",
+        "mat.hinv": "住院发票", "mat.hinv.d": "财政专用章",
+        "mat.fee": "费用总清单", "mat.fee.d": "详细耗材明细",
+        "mat.pre": "预授权书 (Pre-auth)", "mat.pre.d": "住院前申请的批准函",
+        "btn.upload": "📷 上传"
     },
     "zh-HK": {
-        "nav.home": "首頁",
-        "nav.care": "就醫中心",
-        "nav.protection": "理賠中心",
-        "nav.wellness": "健康增值",
-        "nav.family": "家庭協同",
-        "nav.myhfa": "個人中心",
+        "nav.home": "Home",
+        "nav.care": "Care Hub",
+        "nav.protection": "Protection Hub",
+        "nav.wellness": "Wellness Hub",
+        "nav.family": "Family Hub",
+        "nav.myhfa": "My HFA",
         "nav.login": "登入 / 註冊",
         "hero.title": "港人跨境就醫<br>安心無憂新選擇",
         "hero.desc": "連接香港與深圳優質醫療資源。全流程就醫指導、費用透明預估、理賠材料輔助及家庭健康協同，一站式解決您的跨境醫療煩惱。",
@@ -1270,12 +1509,250 @@ const i18nData = {
         "card.family.desc": "一站式管理父母與子女健康檔案，遠程預約更放心。",
         "care.title": "Care Hub 就醫關懷中心",
         "care.desc": "智能規劃您的深圳就醫路徑，透明化費用與流程。",
+        "care.triage.title": "🩺 智能導診",
+        "care.triage.symptom": "症狀描述",
+        "care.triage.type": "就診類型",
+        "care.triage.insurance": "香港保險",
+        "care.triage.btn": "生成就醫建議",
+        "care.cost.title": "💰 費用區間估算",
+        "care.cost.hospitalType": "醫院類型",
+        "care.cost.checkups": "預計檢查項目 (系統自動推薦)",
+        "care.cost.total": "預估總費用 (CNY)",
+        "care.hospital.list": "🏥 推薦醫院列表",
         "protection.title": "Protection Hub 理賠保障中心",
         "protection.warn.title": "⚠️ 重要提示：",
         "protection.warn.desc": "本平台僅提供信息輔助與資料整理，不代表保險公司官方承諾。具體賠付以您的保單條款為準。",
+        "protection.check.title": "🧐 可報銷性自查",
+        "protection.check.item": "收費項目名稱",
+        "protection.check.amount": "費用金額 (CNY)",
+        "protection.check.btn": "判斷可能性",
+        "protection.mat.title": "📑 理賠材料清單",
+        "protection.mat.company": "保險公司",
+        "protection.mat.plan": "具體險種",
+        "protection.mat.tab1": "門診就醫",
+        "protection.mat.tab2": "住院治療",
+        "protection.rec.title": "🛡️ 港人內地保險精選推薦",
         "wellness.title": "Wellness Hub 健康增值中心",
+        "wellness.mall.title": "我的健康積分:",
+        "wellness.mall.btn": "進入積分商城",
         "family.title": "Family Hub 家庭健康協同",
-        "myhfa.title": "My HFA 個人中心"
+        "family.alert.title": "🔔 家庭健康提醒",
+        "myhfa.title": "My HFA 個人中心",
+        "myhfa.upload": "📂 上傳醫療文檔",
+        "myhfa.settings": "⚙️ 賬戶設置",
+        "myhfa.predict.title": "未來醫療支出預測模型",
+        "myhfa.predict.expense": "預計年度總支出",
+        "myhfa.predict.risk": "風險等級：",
+        "myhfa.predict.btn": "完善畫像以獲取預測",
+        "hero.card1.title": "預約成功",
+        "hero.card1.desc": "港大深圳醫院 - 消化內科<br><span style='color: var(--text-main); font-weight: 500;'>2024-03-15 09:30</span>",
+        "hero.card2.title": "理賠預估",
+        "hero.card2.desc": "預計可報銷額度<br><span style='font-size:24px; font-weight:800; color:#10b981; letter-spacing: -0.5px;'>HK$ 4,500</span>",
+        "guide.title": "新手通關指南",
+        "guide.desc": "跨境醫療全流程詳解，三步搞定",
+        "guide.step1.title": "行前準備",
+        "guide.step1.desc": "• <strong>支付綁定：</strong> 微信/支付寶關聯香港卡。<br>• <strong>預約掛號：</strong> Care Hub 智能導診。<br>• <strong>資料備份：</strong> 證件與過往病歷。",
+        "guide.step2.title": "就診當日",
+        "guide.step2.desc": "• <strong>報到取號：</strong> 身份證/回鄉證自助報到。<br>• <strong>分段繳費：</strong> 掛號/檢查/取藥分別付。<br>• <strong>關鍵動作：</strong> 索要簽名病歷與發票。",
+        "guide.step3.title": "後續與理賠",
+        "guide.step3.desc": "• <strong>取藥代煎：</strong> 中藥可快遞回港。<br>• <strong>自動提醒：</strong> 系統推送複診日期。<br>• <strong>理賠包：</strong> Protection Hub 自動生成。",
+        "guide.btn": "查看圖文詳解 📖",
+        "protection.card1.tag": "百萬醫療險",
+        "protection.card1.title": "內地百萬醫療險 (e.g. 眾安尊享e生)",
+        "protection.card1.desc": "<strong>保額：</strong> 300萬-600萬<br><strong>保費：</strong> 約 ¥300-1000/年<br><strong>特點：</strong> 覆蓋住院大病，免賠額通常1萬。適合作為大病兜底。",
+        "protection.card1.btn": "查看詳情",
+        "protection.card2.tag": "大灣區專屬",
+        "protection.card2.title": "大灣區專屬重疾險",
+        "protection.card2.desc": "<strong>保額：</strong> 靈活可選<br><strong>特點：</strong> 針對灣區高發重疾額外賠付，費率較香港重疾險有優勢，投保簡便。",
+        "protection.card2.btn": "查看詳情",
+        "protection.card3.tag": "高端門診",
+        "protection.card3.title": "高端門診醫療險 (Msh/Bupa)",
+        "protection.card3.desc": "<strong>範圍：</strong> 私立醫院/昂貴醫院直付<br><strong>特點：</strong> 覆蓋日常門診、牙科、體檢，無需排隊，體驗極佳。",
+        "protection.card3.btn": "查看詳情",
+        "family.alert1": "母親的降壓藥快用完了，請提醒複診。",
+        "family.alert2": "配偶潔牙預約建議。",
+        "myhfa.member.type": "普通會員",
+        "myhfa.member.points": "积分 1250",
+        "modal.login.title": "歡迎回到 HFA",
+        "modal.login.account": "手機號 / 郵箱",
+        "modal.login.password": "密碼",
+        "modal.login.btn": "登入",
+        "modal.hospital.intro": "簡介",
+        "modal.hospital.address": "地址與交通",
+        "modal.hospital.bookBtn": "立即預約",
+        "modal.booking.title": "確認預約信息",
+        "modal.booking.dept": "就診科室",
+        "modal.booking.doctor": "意向醫師",
+        "modal.booking.date": "期望日期",
+        "modal.booking.patient": "就診人",
+        "modal.booking.submit": "提交預約申請",
+        "modal.member.notes": "健康檔案備註",
+        "modal.member.recent": "最近動態",
+        "modal.member.metrics": "核心健康指標",
+        "modal.member.bp": "血壓 (mmHg)",
+        "modal.member.bs": "血糖 (mmol/L)",
+        "modal.member.fullRecord": "查看完整健康檔案",
+        "modal.addMember.title": "添加家庭成員",
+        "modal.addMember.name": "真實姓名",
+        "modal.addMember.role": "關係",
+        "modal.addMember.health": "健康狀況/既往病史",
+        "modal.addMember.btn": "確認添加",
+        "modal.mall.title": "積分兌換商城",
+        "modal.mall.points": "當前可用積分：",
+        "modal.mall.item1.title": "免費潔牙券",
+        "modal.mall.item1.cost": "1,000 積分",
+        "modal.mall.item2.title": "HK$ 100 體檢抵扣",
+        "modal.mall.item2.cost": "500 積分",
+        "modal.mall.btn": "立即兌換",
+        "modal.pred.title": "完善健康畫像",
+        "modal.pred.sec1": "1. 人口學特徵",
+        "modal.pred.age": "年齡",
+        "modal.pred.gender": "性別",
+        "modal.pred.history": "家族病史 (多選)",
+        "modal.pred.sec2": "2. 行為特徵",
+        "modal.pred.exercise": "每週運動頻率",
+        "modal.pred.habit": "生活習慣",
+        "modal.pred.sec3": "3. 醫療特徵",
+        "modal.pred.chronic": "現有慢病數量",
+        "modal.pred.expense": "去年醫療總支出 (HKD)",
+        "modal.pred.sec4": "4. 金融特徵",
+        "modal.pred.insurance": "商業保險配置",
+        "modal.pred.btn": "生成預測報告",
+        "modal.upload.title": "上傳醫療數據",
+        "modal.upload.drag": "點擊選擇文件 或 拖拽至此",
+        "modal.upload.hint": "支持 JPG, PNG, PDF (最大 10MB)",
+        "modal.upload.type": "文檔類型",
+        "modal.upload.btn": "開始上傳",
+        "modal.guide.title": "港人北上就醫通關詳解",
+        "modal.guide.tab1": "行前準備",
+        "modal.guide.tab2": "就診當日",
+        "modal.guide.tab3": "後續與理賠",
+        "modal.guide.t1.b1.title": "1. 綁定支付方式",
+        "modal.guide.t1.b1.tag": "重點",
+        "modal.guide.t1.b1.desc": "深圳醫院 90% 採用線上自助繳費，未綁定支付可能導致無法繳費或排隊時間極長。",
+        "modal.guide.t1.b1.tip.title": "建議提前在香港完成：",
+        "modal.guide.t1.b1.tip.li1": "<strong>微信支付 (WeChat Pay HK)：</strong> 在錢包中選擇“內地”地區，綁定香港信用卡或銀行賬戶。",
+        "modal.guide.t1.b1.tip.li2": "<strong>支付寶 (AlipayHK)：</strong> 開通“跨境支付”功能，或下載內地版支付寶綁定香港信用卡。",
+        "modal.guide.t1.b1.tip.li3": "確保手機已開通漫遊數據，能接收銀行驗證碼。",
+        "modal.guide.t1.b1.tip.li4": "完成後可進入 HFA App →「支付設置」進行授權綁定，方便一鍵支付掛號費。",
+        "modal.guide.t1.b2.title": "2. 身份證件檢查",
+        "modal.guide.t1.b2.desc": "必須攜帶<strong>回鄉證 (港澳居民來往內地通行證)</strong> 原件。建議手機拍照備份以防遺失。部分醫院支持回鄉證電子版，但建議攜帶實體證件。",
+        "modal.guide.t1.b3.title": "3. HFA 預約掛號 (核心步驟)",
+        "modal.guide.t1.b3.desc": "通過 Care Hub 完成一鍵預約，平台會自動推薦合適科室、醫生級別（普通/專家）及顯示排期。",
+        "modal.guide.t1.b3.tip.title": "預約優勢：",
+        "modal.guide.t1.b3.tip.li1": "提前查看預計費用區間（短期支出預測）。",
+        "modal.guide.t1.b3.tip.li2": "知曉可能需要的檢查項（如需空腹，系統會提示）。",
+        "modal.guide.t1.b3.tip.li3": "建議提前 3–7 天在 HFA 完成預約，熱門專家號需更早。",
+        "modal.guide.t1.b4.title": "4. 準備資料",
+        "modal.guide.t1.b4.desc": "可在 HFA 上傳香港既往病歷、化驗報告、影像資料及服用中的藥物列表。醫生能更精準判斷，減少不必要檢查。",
+        "modal.guide.t2.b1.title": "1. 報到流程",
+        "modal.guide.t2.b1.desc": "到院前 30 分鐘 HFA 會自動發送提醒。到達醫院後，根據 HFA 院內導航前往自助報到機。使用回鄉證或預約二維碼進行報到。",
+        "modal.guide.t2.b2.title": "2. 繳費方式 (分段式)",
+        "modal.guide.t2.b2.desc": "內地就醫通常分階段繳費：掛號費 → 醫生開單 → 檢查費 → 檢查完回診 → 藥費。每個環節都支持手機支付（微信/支付寶）。",
+        "modal.guide.t2.b3.title": "3. 就診關鍵動作",
+        "modal.guide.t2.b3.tag": "理賠必看",
+        "modal.guide.t2.b3.desc": "為了後續回港報銷保險，請務必向醫生或護士明確提出以下要求：",
+        "modal.guide.t2.b3.tip.li1": "<strong>打印病歷：</strong> 必須包含醫生簽名和醫院蓋章。",
+        "modal.guide.t2.b3.tip.li2": "<strong>打印發票：</strong> 需要正式的紙質發票（收據），而非僅有刷卡小票。",
+        "modal.guide.t2.b3.tip.li3": "<strong>出具證明：</strong> 如有需要，請醫生開具病假條或轉診單。",
+        "modal.guide.t2.b4.title": "4. 檢查指引",
+        "modal.guide.t2.b4.desc": "HFA 會根據醫院流程提示您檢查科室所在的樓層、窗口号以及平均等待時間。檢查後是否需要回診室找醫生看報告，系統也會提示。",
+        "modal.guide.t3.b1.title": "1. 取藥 / 代煎",
+        "modal.guide.t3.b1.desc": "中藥可選擇當場取藥或選擇快遞回港（部分機構支持）。HFA 會提示藥房位置與排隊時段。",
+        "modal.guide.t3.b2.title": "2. 複診預約",
+        "modal.guide.t3.b2.desc": "醫生建議複診時間後，HFA 會在對應日期自動彈出「是否複診」提醒，支持一鍵再次預約，無需重複填寫資料。",
+        "modal.guide.t3.b3.title": "3. 理賠材料整理 (Protection Hub)",
+        "modal.guide.t3.b3.desc": "將病歷、發票、檢查報告、藥單拍照上傳至 Protection Hub。系統會自動完成：",
+        "modal.guide.t3.b3.tip.li1": "可報項目識別與金額預測。",
+        "modal.guide.t3.b3.tip.li2": "拒賠風險提示（如檢查缺材料、報告格式不符）。",
+        "modal.guide.t3.b3.tip.li3": "自動生成「完整理賠包」，可直接下載提交給保險代理人。",
+        "family.alert.item1": "母親的降壓藥快用完了，請提醒複診。",
+        "family.alert.item1.time": "3天後",
+        "family.alert.item2": "配偶潔牙預約建議。",
+        "family.alert.item2.time": "下週",
+        "myhfa.user.role": "普通會員",
+        "myhfa.user.points": "積分 1250",
+        "myhfa.predict.badge": "需完善數據",
+        "db.h1.name": "香港大學深圳醫院",
+        "db.h1.desc": "全科門診打包收費200元，國際化標準。提供英語粵語服務，適合港人就醫習慣。",
+        "db.h1.addr": "深圳市福田區海園一路1號",
+        "db.h1.trans": "地鐵9號線深圳灣公園站D1出口",
+        "db.h2.name": "深圳市中醫院",
+        "db.h2.desc": "針灸推拿科室全國知名，擁有眾多國家級名老中醫。",
+        "db.h2.addr": "深圳市福田區福華路1號",
+        "db.h2.trans": "地鐵1號線華強路站C出口",
+        "db.h3.name": "羅湖區人民醫院",
+        "db.h3.desc": "距離羅湖口岸僅10分鐘車程，消化內科與生殖醫學科實力強勁。",
+        "db.h3.addr": "深圳市羅湖區友誼路47號",
+        "db.h3.trans": "地鐵1號線國貿站A出口",
+        "db.h4.name": "卓正醫療 (私立)",
+        "db.h4.desc": "無需排隊，注重隱私，適合商業保險用戶。醫生多具有國際背景。",
+        "db.h4.addr": "深圳市南山區深南大道9668號華潤置地大廈",
+        "db.h4.trans": "地鐵1號線高新園站",
+        "db.h5.name": "和睦家醫院",
+        "db.h5.desc": "提供全英文就診環境，24小時急診服務，與國際主流保險直付。",
+        "db.h5.addr": "深圳市福田區福強路4033號",
+        "db.h5.trans": "地鐵4號線沙尾站",
+        "db.h6.name": "南方醫科大學深圳醫院",
+        "db.h6.desc": "廣東省高水平醫院建設單位，醫療技術領先，急危重症救治能力強。",
+        "db.h6.addr": "深圳市寶安區新湖路1333號",
+        "db.h6.trans": "地鐵1號線新安站E出口",
+        "db.h7.name": "深圳港龍醫院",
+        "db.h7.desc": "位於龍崗區，提供優質的婦產科及全科服務，環境溫馨。",
+        "db.h7.addr": "深圳市龍崗區龍崗大道3012號",
+        "db.h7.trans": "地鐵3號線吉祥站B出口",
+        "db.tags.hk_managed": "港資管理",
+        "db.tags.insurance": "可刷醫保",
+        "db.tags.tcm_strong": "中醫強項",
+        "db.tags.grade_3a": "三甲",
+        "db.tags.near_port": "近口岸",
+        "db.tags.internet_hosp": "互聯網醫院",
+        "db.tags.high_end": "高端服務",
+        "db.tags.good_env": "環境好",
+        "db.tags.intl_brand": "國際品牌",
+        "db.tags.multi_lang": "多語言",
+        "db.tags.uni_affiliate": "大學附屬",
+        "db.tags.advanced_equip": "設備先進",
+        "db.tags.obgyn": "婦產特色",
+        "db.tags.hk_service": "港式服務",
+        "db.w1.title": "港人年度基礎體檢",
+        "db.w1.desc": "含CT、彩超、腫瘤篩查等50項。",
+        "db.w1.loc": "羅湖區人民醫院體檢中心",
+        "db.w2.title": "心腦血管專項篩查",
+        "db.w2.desc": "針對三高人群，深度排查隱患。",
+        "db.w2.loc": "港大深圳醫院",
+        "db.w3.title": "深港家庭潔牙套餐",
+        "db.w3.desc": "3人共享，超聲波潔牙+拋光。",
+        "db.w3.loc": "愛康健口腔 (羅湖口岸店)",
+        "db.w4.title": "名老中醫問診",
+        "db.w4.desc": "三甲名醫號源，含針灸一次。",
+        "db.w4.loc": "深圳市中醫院 (福田院區)",
+        "db.m1.role": "本人",
+        "db.m1.status": "健康",
+        "db.m1.notes": "無既往病史，青黴素過敏。",
+        "db.m2.role": "配偶",
+        "db.m2.status": "健康良好",
+        "db.m2.notes": "無明顯過敏史，每年定期體檢。",
+        "db.m3.role": "母親",
+        "db.m3.status": "血壓隨訪",
+        "db.m3.notes": "確診高血壓二級，每日服用硝苯地平。需注意關節疼痛。",
+        "db.ins.AIA.normal": "AIA 友邦及早康復",
+        "db.ins.AIA.high_end": "AIA 友邦全程守護 (高端)",
+        "db.ins.Prudential.normal": "Prudential 保誠醫療加倍保",
+        "db.ins.Prudential.high_end": "Prudential 高端醫療計劃",
+        "db.ins.Manulife.normal": "Manulife 宏利全護航",
+        "db.ins.Manulife.vivid": "Manulife 活耀人生",
+        "db.ins.Others.normal": "一般住院保險",
+        "db.ins.Others.accident": "意外險",
+        "mat.op.rec": "門診病歷", "mat.op.rec.d": "需醫生簽名及醫院蓋章",
+        "mat.inv": "發票原件", "mat.inv.d": "含收費項目明細",
+        "mat.ref": "轉診證明", "mat.ref.d": "部分計劃如無指定診所需提供",
+        "mat.dir": "直付授權書", "mat.dir.d": "如已使用直付卡",
+        "mat.dis": "出院小結", "mat.dis.d": "需醫院蓋章",
+        "mat.hinv": "住院發票", "mat.hinv.d": "財政專用章",
+        "mat.fee": "費用總清單", "mat.fee.d": "詳細耗材明細",
+        "mat.pre": "預授權書 (Pre-auth)", "mat.pre.d": "住院前申請的批准函",
+        "btn.upload": "📷 上傳"
     },
     "en-US": {
         "nav.home": "Home",
@@ -1299,17 +1776,260 @@ const i18nData = {
         "card.family.desc": "Manage health records for parents & children remotely.",
         "care.title": "Care Hub",
         "care.desc": "Smart planning for your medical journey in Shenzhen.",
+        "care.triage.title": "🩺 Smart Triage",
+        "care.triage.symptom": "Symptoms",
+        "care.triage.type": "Visit Type",
+        "care.triage.insurance": "HK Insurance",
+        "care.triage.btn": "Generate Plan",
+        "care.cost.title": "💰 Cost Estimator",
+        "care.cost.hospitalType": "Hospital Type",
+        "care.cost.checkups": "Estimated Items (Auto)",
+        "care.cost.total": "Est. Total (CNY)",
+        "care.hospital.list": "🏥 Recommended Hospitals",
         "protection.title": "Protection Hub",
         "protection.warn.title": "⚠️ Important:",
         "protection.warn.desc": "Information provided is for reference only. Please refer to your insurance policy for actual coverage.",
+        "protection.check.title": "🧐 Reimbursement Check",
+        "protection.check.item": "Item Name",
+        "protection.check.amount": "Amount (CNY)",
+        "protection.check.btn": "Check Possibility",
+        "protection.mat.title": "📑 Claim Materials",
+        "protection.mat.company": "Insurance Co.",
+        "protection.mat.plan": "Plan",
+        "protection.mat.tab1": "Outpatient",
+        "protection.mat.tab2": "Inpatient",
+        "protection.rec.title": "🛡️ Recommended Mainland Insurance",
         "wellness.title": "Wellness Hub",
+        "wellness.mall.title": "My Health Points:",
+        "wellness.mall.btn": "Points Mall",
         "family.title": "Family Hub",
-        "myhfa.title": "My HFA Profile"
+        "family.alert.title": "🔔 Health Alerts",
+        "myhfa.title": "My HFA Profile",
+        "myhfa.upload": "📂 Upload Docs",
+        "myhfa.settings": "⚙️ Settings",
+        "myhfa.predict.title": "Expense Prediction Model",
+        "myhfa.predict.expense": "Est. Annual Expense",
+        "myhfa.predict.risk": "Risk Level:",
+        "myhfa.predict.btn": "Complete Profile to Predict",
+        "hero.card1.title": "Booked",
+        "hero.card1.desc": "HKU-SZ Hospital - Gastroenterology<br><span style='color: var(--text-main); font-weight: 500;'>2024-03-15 09:30</span>",
+        "hero.card2.title": "Claim Est.",
+        "hero.card2.desc": "Est. Reimbursement<br><span style='font-size:24px; font-weight:800; color:#10b981; letter-spacing: -0.5px;'>HK$ 4,500</span>",
+        "guide.title": "Beginner's Guide",
+        "guide.desc": "3 Steps to Cross-border Medical Care",
+        "guide.step1.title": "Preparation",
+        "guide.step1.desc": "• <strong>Payment:</strong> Bind WeChat/Alipay with HK cards.<br>• <strong>Booking:</strong> Use Care Hub for triage.<br>• <strong>Backup:</strong> ID and medical records.",
+        "guide.step2.title": "Visit Day",
+        "guide.step2.desc": "• <strong>Check-in:</strong> Self-service with ID.<br>• <strong>Payment:</strong> Pay as you go.<br>• <strong>Key Action:</strong> Get signed records & receipts.",
+        "guide.step3.title": "Post-visit",
+        "guide.step3.desc": "• <strong>Meds:</strong> Delivery to HK available.<br>• <strong>Follow-up:</strong> Auto-reminders.<br>• <strong>Claim:</strong> Auto-generated by Protection Hub.",
+        "guide.btn": "View Detailed Guide 📖",
+        "protection.card1.tag": "Million Medical",
+        "protection.card1.title": "Mainland Million Medical Ins.",
+        "protection.card1.desc": "<strong>Coverage:</strong> 3M-6M<br><strong>Premium:</strong> ~¥300-1000/yr<br><strong>Feature:</strong> High coverage for serious illness.",
+        "protection.card1.btn": "Details",
+        "protection.card2.tag": "GBA Exclusive",
+        "protection.card2.title": "GBA Critical Illness",
+        "protection.card2.desc": "<strong>Coverage:</strong> Flexible<br><strong>Feature:</strong> Extra payout for GBA common diseases.",
+        "protection.card2.btn": "Details",
+        "protection.card3.tag": "High-end OP",
+        "protection.card3.title": "High-end Outpatient (Msh/Bupa)",
+        "protection.card3.desc": "<strong>Scope:</strong> Private/VIP Direct Billing<br><strong>Feature:</strong> No queue, best experience.",
+        "protection.card3.btn": "Details",
+        "family.alert1": "Mother's medication running low.",
+        "family.alert2": "Spouse dental cleaning suggested.",
+        "myhfa.member.points": "Points 1250",
+        "modal.login.title": "Welcome Back to HFA",
+        "modal.login.account": "Phone / Email",
+        "modal.login.password": "Password",
+        "modal.login.btn": "Login",
+        "modal.hospital.intro": "Introduction",
+        "modal.hospital.address": "Address & Transport",
+        "modal.hospital.bookBtn": "Book Now",
+        "modal.booking.title": "Confirm Booking",
+        "modal.booking.dept": "Department",
+        "modal.booking.doctor": "Doctor",
+        "modal.booking.date": "Date",
+        "modal.booking.patient": "Patient",
+        "modal.booking.submit": "Submit Request",
+        "modal.member.notes": "Health Notes",
+        "modal.member.recent": "Recent Activity",
+        "modal.member.metrics": "Key Metrics",
+        "modal.member.bp": "Blood Pressure (mmHg)",
+        "modal.member.bs": "Blood Sugar (mmol/L)",
+        "modal.member.fullRecord": "View Full Record",
+        "modal.addMember.title": "Add Family Member",
+        "modal.addMember.name": "Full Name",
+        "modal.addMember.role": "Relationship",
+        "modal.addMember.health": "Health Status / History",
+        "modal.addMember.btn": "Confirm Add",
+        "modal.mall.title": "Points Mall",
+        "modal.mall.points": "Available Points:",
+        "modal.mall.item1.title": "Free Dental Cleaning",
+        "modal.mall.item1.cost": "1,000 Points",
+        "modal.mall.item2.title": "HK$ 100 Checkup Coupon",
+        "modal.mall.item2.cost": "500 Points",
+        "modal.mall.btn": "Redeem Now",
+        "modal.pred.title": "Complete Health Profile",
+        "modal.pred.sec1": "1. Demographics",
+        "modal.pred.age": "Age",
+        "modal.pred.gender": "Gender",
+        "modal.pred.history": "Family History",
+        "modal.pred.sec2": "2. Behavioral",
+        "modal.pred.exercise": "Exercise Frequency",
+        "modal.pred.habit": "Lifestyle",
+        "modal.pred.sec3": "3. Medical",
+        "modal.pred.chronic": "Chronic Conditions",
+        "modal.pred.expense": "Last Year Expense (HKD)",
+        "modal.pred.sec4": "4. Financial",
+        "modal.pred.insurance": "Insurance",
+        "modal.pred.btn": "Generate Report",
+        "modal.upload.title": "Upload Medical Data",
+        "modal.upload.drag": "Click or Drag Files Here",
+        "modal.upload.hint": "Supports JPG, PNG, PDF (Max 10MB)",
+        "modal.upload.type": "Document Type",
+        "modal.upload.btn": "Start Upload",
+        "modal.guide.title": "Cross-border Medical Guide",
+        "modal.guide.tab1": "Preparation",
+        "modal.guide.tab2": "Visit Day",
+        "modal.guide.tab3": "Post-visit",
+        "modal.guide.t1.b1.title": "1. Payment Binding",
+        "modal.guide.t1.b1.tag": "Important",
+        "modal.guide.t1.b1.desc": "90% of Shenzhen hospitals use online payment. Unbound payment may cause delays.",
+        "modal.guide.t1.b1.tip.title": "Recommended to complete in HK:",
+        "modal.guide.t1.b1.tip.li1": "<strong>WeChat Pay HK:</strong> Select 'Mainland' wallet and bind HK credit card/bank account.",
+        "modal.guide.t1.b1.tip.li2": "<strong>AlipayHK:</strong> Enable 'Cross-border Payment' or use Mainland Alipay with HK card.",
+        "modal.guide.t1.b1.tip.li3": "Ensure roaming data is on for SMS verification.",
+        "modal.guide.t1.b1.tip.li4": "Authorize in HFA App 'Payment Settings' for one-click payment.",
+        "modal.guide.t1.b2.title": "2. ID Check",
+        "modal.guide.t1.b2.desc": "Must carry <strong>Home Return Permit</strong>. Backup photo recommended.",
+        "modal.guide.t1.b3.title": "3. HFA Booking (Core)",
+        "modal.guide.t1.b3.desc": "Use Care Hub for one-click booking. Platform recommends department and doctor.",
+        "modal.guide.t1.b3.tip.title": "Booking Advantages:",
+        "modal.guide.t1.b3.tip.li1": "View estimated cost range.",
+        "modal.guide.t1.b3.tip.li2": "Know required checkups (e.g., fasting).",
+        "modal.guide.t1.b3.tip.li3": "Book 3-7 days in advance.",
+        "modal.guide.t1.b4.title": "4. Prepare Documents",
+        "modal.guide.t1.b4.desc": "Upload HK medical records to HFA for better diagnosis.",
+        "modal.guide.t2.b1.title": "1. Check-in",
+        "modal.guide.t2.b1.desc": "HFA reminds you 30 mins before. Use ID or QR code at self-service kiosk.",
+        "modal.guide.t2.b2.title": "2. Payment (Staged)",
+        "modal.guide.t2.b2.desc": "Pay as you go: Registration -> Doctor -> Checkups -> Meds. Mobile payment supported.",
+        "modal.guide.t2.b3.title": "3. Key Actions",
+        "modal.guide.t2.b3.tag": "For Claim",
+        "modal.guide.t2.b3.desc": "For insurance reimbursement, ask for:",
+        "modal.guide.t2.b3.tip.li1": "<strong>Signed Medical Record:</strong> With hospital stamp.",
+        "modal.guide.t2.b3.tip.li2": "<strong>Official Invoice:</strong> Paper receipt, not just card slip.",
+        "modal.guide.t2.b3.tip.li3": "<strong>Certificates:</strong> Sick leave or referral letter if needed.",
+        "modal.guide.t2.b4.title": "4. Checkup Guide",
+        "modal.guide.t2.b4.desc": "HFA guides you to the right floor and window. System alerts if return visit is needed.",
+        "modal.guide.t3.b1.title": "1. Medication",
+        "modal.guide.t3.b1.desc": "Pick up or delivery to HK. HFA shows pharmacy location.",
+        "modal.guide.t3.b2.title": "2. Follow-up",
+        "modal.guide.t3.b2.desc": "HFA reminds you of follow-up dates and supports one-click re-booking.",
+        "modal.guide.t3.b3.title": "3. Claim Materials (Protection Hub)",
+        "modal.guide.t3.b3.desc": "Upload photos of records/invoices to Protection Hub. System will:",
+        "modal.guide.t3.b3.tip.li1": "Identify reimbursable items.",
+        "modal.guide.t3.b3.tip.li2": "Alert for missing docs.",
+        "modal.guide.t3.b3.tip.li3": "Generate 'Claim Package' for download.",
+        "family.alert.item1": "Mother's medication running low.",
+        "family.alert.item1.time": "In 3 days",
+        "family.alert.item2": "Spouse dental cleaning suggested.",
+        "family.alert.item2.time": "Next week",
+        "myhfa.user.role": "Basic Member",
+        "myhfa.user.points": "Points 1250",
+        "myhfa.predict.badge": "Data Needed",
+        "db.h1.name": "HKU-Shenzhen Hospital",
+        "db.h1.desc": "General practice package fee 200 RMB, international standards. English & Cantonese service available.",
+        "db.h1.addr": "1 Haiyuan 1st Rd, Futian District",
+        "db.h1.trans": "Metro Line 9, Shenzhen Bay Park Station, Exit D1",
+        "db.h2.name": "Shenzhen TCM Hospital",
+        "db.h2.desc": "Renowned for Acupuncture & Massage, with many national-level TCM experts.",
+        "db.h2.addr": "1 Fuhua Rd, Futian District",
+        "db.h2.trans": "Metro Line 1, Huaqiang Rd Station, Exit C",
+        "db.h3.name": "Luohu District People's Hospital",
+        "db.h3.desc": "10 mins from Luohu Port. Strong in Gastroenterology and Reproductive Medicine.",
+        "db.h3.addr": "47 Youyi Rd, Luohu District",
+        "db.h3.trans": "Metro Line 1, Guomao Station, Exit A",
+        "db.h4.name": "Distinct HealthCare (Private)",
+        "db.h4.desc": "No queuing, privacy focused. Suitable for commercial insurance users. International doctors.",
+        "db.h4.addr": "China Resources Land Building, 9668 Shennan Ave, Nanshan",
+        "db.h4.trans": "Metro Line 1, Hi-Tech Park Station",
+        "db.h5.name": "United Family Hospital",
+        "db.h5.desc": "Full English environment, 24h ER, direct billing with major international insurance.",
+        "db.h5.addr": "4033 Fuqiang Rd, Futian District",
+        "db.h5.trans": "Metro Line 4, Shawei Station",
+        "db.h6.name": "Southern Medical University Shenzhen Hospital",
+        "db.h6.desc": "High-level hospital in Guangdong. Leading technology, strong in critical care.",
+        "db.h6.addr": "1333 Xinhu Rd, Baoan District",
+        "db.h6.trans": "Metro Line 1, Xin'an Station, Exit E",
+        "db.h7.name": "Shenzhen Ganglong Hospital",
+        "db.h7.desc": "Located in Longgang. Quality OB/GYN and GP services. Warm environment.",
+        "db.h7.addr": "3012 Longgang Ave, Longgang District",
+        "db.h7.trans": "Metro Line 3, Jixiang Station, Exit B",
+        "db.tags.hk_managed": "HK Managed",
+        "db.tags.insurance": "Insurance Accepted",
+        "db.tags.tcm_strong": "TCM Strong",
+        "db.tags.grade_3a": "Grade 3A",
+        "db.tags.near_port": "Near Port",
+        "db.tags.internet_hosp": "Internet Hosp",
+        "db.tags.high_end": "High-end",
+        "db.tags.good_env": "Good Env",
+        "db.tags.intl_brand": "Intl Brand",
+        "db.tags.multi_lang": "Multi-lang",
+        "db.tags.uni_affiliate": "Uni Affiliate",
+        "db.tags.advanced_equip": "Advanced Equip",
+        "db.tags.obgyn": "OB/GYN",
+        "db.tags.hk_service": "HK Service",
+        "db.w1.title": "Annual Basic Checkup",
+        "db.w1.desc": "Includes CT, Ultrasound, Tumor Screening (50 items).",
+        "db.w1.loc": "Luohu Hospital Checkup Center",
+        "db.w2.title": "Cardiovascular Screening",
+        "db.w2.desc": "For high-risk groups. Deep screening for hidden dangers.",
+        "db.w2.loc": "HKU-Shenzhen Hospital",
+        "db.w3.title": "Family Dental Cleaning",
+        "db.w3.desc": "Shared by 3 people. Ultrasonic cleaning + polishing.",
+        "db.w3.loc": "AKJ Dental (Luohu Port)",
+        "db.w4.title": "TCM Expert Consultation",
+        "db.w4.desc": "Famous doctor appointment, includes one acupuncture session.",
+        "db.w4.loc": "Shenzhen TCM Hospital (Futian)",
+        "db.m1.role": "Self",
+        "db.m1.status": "Healthy",
+        "db.m1.notes": "No history. Penicillin allergy.",
+        "db.m2.role": "Spouse",
+        "db.m2.status": "Good",
+        "db.m2.notes": "No allergies. Annual checkup.",
+        "db.m3.role": "Mother",
+        "db.m3.status": "BP Follow-up",
+        "db.m3.notes": "Hypertension Stage 2. Taking Nifedipine daily. Joint pain.",
+        "db.ins.AIA.normal": "AIA Early Recovery",
+        "db.ins.AIA.high_end": "AIA Global Guardian (High-end)",
+        "db.ins.Prudential.normal": "Prudential Medical Multiplier",
+        "db.ins.Prudential.high_end": "Prudential High-end Medical",
+        "db.ins.Manulife.normal": "Manulife Full Care",
+        "db.ins.Manulife.vivid": "Manulife Vivid Life",
+        "db.ins.Others.normal": "General Hospitalization",
+        "db.ins.Others.accident": "Accident Insurance",
+        "mat.op.rec": "Outpatient Record", "mat.op.rec.d": "Doctor signature & stamp required",
+        "mat.inv": "Original Invoice", "mat.inv.d": "Itemized charges",
+        "mat.ref": "Referral Letter", "mat.ref.d": "If required by plan",
+        "mat.dir": "Direct Billing Auth", "mat.dir.d": "If card used",
+        "mat.dis": "Discharge Summary", "mat.dis.d": "Hospital stamp required",
+        "mat.hinv": "Inpatient Invoice", "mat.hinv.d": "Financial stamp",
+        "mat.fee": "Total Fee List", "mat.fee.d": "Detailed consumables",
+        "mat.pre": "Pre-auth Letter", "mat.pre.d": "Approval before admission",
+        "btn.upload": "📷 Upload"
     }
 };
 
 window.i18n = {
+    currentLang: 'zh-CN',
+    t: (key) => {
+        const lang = window.i18n.currentLang;
+        return (i18nData[lang] && i18nData[lang][key]) || key;
+    },
     setLang: (lang) => {
+        window.i18n.currentLang = lang;
         // Update text
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.dataset.i18n;
@@ -1325,8 +2045,12 @@ window.i18n = {
         const dd = document.getElementById('langDropdown');
         if(dd) dd.classList.remove('show');
         
-        // Save preference (optional)
-        // localStorage.setItem('hfa_lang', lang);
+        // Re-render dynamic content
+        if(window.logic) {
+            window.logic.renderHospitals();
+            window.logic.renderWellness();
+            window.logic.renderFamily();
+        }
     },
     toggleDropdown: () => {
         const dd = document.getElementById('langDropdown');
@@ -1359,87 +2083,87 @@ document.addEventListener("DOMContentLoaded", () => {
 const state = {
     hospitals: [
         { 
-            name: "香港大学深圳医院", 
+            name: "db.h1.name", 
             area: "futian", 
             type: "public", 
-            tags: ["港资管理", "可刷医保"], 
-            desc: "全科门诊打包收费200元，国际化标准。提供英语粤语服务，适合港人就医习惯。",
-            address: "深圳市福田区海园一路1号",
-            transport: "地铁9号线深圳湾公园站D1出口"
+            tags: ["db.tags.hk_managed", "db.tags.insurance"], 
+            desc: "db.h1.desc",
+            address: "db.h1.addr",
+            transport: "db.h1.trans"
         },
         { 
-            name: "深圳市中医院", 
+            name: "db.h2.name", 
             area: "futian", 
             type: "public", 
-            tags: ["中医强项", "三甲"], 
-            desc: "针灸推拿科室全国知名，拥有众多国家级名老中医。",
-            address: "深圳市福田区福华路1号",
-            transport: "地铁1号线华强路站C出口"
+            tags: ["db.tags.tcm_strong", "db.tags.grade_3a"], 
+            desc: "db.h2.desc",
+            address: "db.h2.addr",
+            transport: "db.h2.trans"
         },
         { 
-            name: "罗湖区人民医院", 
+            name: "db.h3.name", 
             area: "luohu", 
             type: "public", 
-            tags: ["近口岸", "互联网医院"], 
-            desc: "距离罗湖口岸仅10分钟车程，消化内科与生殖医学科实力强劲。",
-            address: "深圳市罗湖区友谊路47号",
-            transport: "地铁1号线国贸站A出口"
+            tags: ["db.tags.near_port", "db.tags.internet_hosp"], 
+            desc: "db.h3.desc",
+            address: "db.h3.addr",
+            transport: "db.h3.trans"
         },
         { 
-            name: "卓正医疗 (私立)", 
+            name: "db.h4.name", 
             area: "nanshan", 
             type: "private", 
-            tags: ["高端服务", "环境好"], 
-            desc: "无需排队，注重隐私，适合商业保险用户。医生多具有国际背景。",
-            address: "深圳市南山区深南大道9668号华润置地大厦",
-            transport: "地铁1号线高新园站"
+            tags: ["db.tags.high_end", "db.tags.good_env"], 
+            desc: "db.h4.desc",
+            address: "db.h4.addr",
+            transport: "db.h4.trans"
         },
         { 
-            name: "和睦家医院", 
+            name: "db.h5.name", 
             area: "futian", 
             type: "private", 
-            tags: ["国际品牌", "多语言"], 
-            desc: "提供全英文就诊环境，24小时急诊服务，与国际主流保险直付。",
-            address: "深圳市福田区福强路4033号",
-            transport: "地铁4号线沙尾站"
+            tags: ["db.tags.intl_brand", "db.tags.multi_lang"], 
+            desc: "db.h5.desc",
+            address: "db.h5.addr",
+            transport: "db.h5.trans"
         },
         {
-            name: "南方医科大学深圳医院",
+            name: "db.h6.name",
             area: "baoan",
             type: "public",
-            tags: ["三甲", "大学附属", "设备先进"],
-            desc: "广东省高水平医院建设单位，医疗技术领先，急危重症救治能力强。",
-            address: "深圳市宝安区新湖路1333号",
-            transport: "地铁1号线新安站E出口"
+            tags: ["db.tags.grade_3a", "db.tags.uni_affiliate", "db.tags.advanced_equip"],
+            desc: "db.h6.desc",
+            address: "db.h6.addr",
+            transport: "db.h6.trans"
         },
         {
-            name: "深圳港龙医院",
+            name: "db.h7.name",
             area: "longgang",
             type: "private",
-            tags: ["妇产特色", "港式服务"],
-            desc: "位于龙岗区，提供优质的妇产科及全科服务，环境温馨。",
-            address: "深圳市龙岗区龙岗大道3012号",
-            transport: "地铁3号线吉祥站B出口"
+            tags: ["db.tags.obgyn", "db.tags.hk_service"],
+            desc: "db.h7.desc",
+            address: "db.h7.addr",
+            transport: "db.h7.trans"
         }
     ],
     wellnessPackages: [
-        { id: 1, cat: "checkup", title: "港人年度基础体检", price: "HK$ 1,800", oldPrice: "3,500", desc: "含CT、彩超、肿瘤筛查等50项。", location: "罗湖区人民医院体检中心" },
-        { id: 2, cat: "checkup", title: "心脑血管专项筛查", price: "HK$ 2,200", desc: "针对三高人群，深度排查隐患。", location: "港大深圳医院" },
-        { id: 3, cat: "dental", title: "深港家庭洁牙套餐", price: "HK$ 680", desc: "3人共享，超声波洁牙+抛光。", location: "爱康健口腔 (罗湖口岸店)" },
-        { id: 4, cat: "tcm", title: "名老中医问诊", price: "HK$ 300/次", desc: "三甲名医号源，含针灸一次。", location: "深圳市中医院 (福田院区)" }
+        { id: 1, cat: "checkup", title: "db.w1.title", price: "HK$ 1,800", oldPrice: "3,500", desc: "db.w1.desc", location: "db.w1.loc" },
+        { id: 2, cat: "checkup", title: "db.w2.title", price: "HK$ 2,200", desc: "db.w2.desc", location: "db.w2.loc" },
+        { id: 3, cat: "dental", title: "db.w3.title", price: "HK$ 680", desc: "db.w3.desc", location: "db.w3.loc" },
+        { id: 4, cat: "tcm", title: "db.w4.title", price: "HK$ 300/次", desc: "db.w4.desc", location: "db.w4.loc" }
     ],
     members: [
-        { name: "Chan Tai Man", role: "本人", status: "健康", statusColor: "blue", lastDate: "2024-01-15", bp: "118/75", bs: "5.2", healthNotes: "无既往病史，青霉素过敏。" },
-        { name: "Wong Siu Ming", role: "配偶", status: "健康良好", statusColor: "green", lastDate: "2023-11-12", bp: "120/80", bs: "5.4", healthNotes: "无明显过敏史，每年定期体检。" },
-        { name: "Chan Mei Ling", role: "母亲", status: "血压随访", statusColor: "red", lastDate: "2023-12-05", bp: "145/95", bs: "6.1", healthNotes: "确诊高血压二级，每日服用硝苯地平。需注意关节疼痛。" }
+        { name: "Chan Tai Man", role: "db.m1.role", status: "db.m1.status", statusColor: "blue", lastDate: "2024-01-15", bp: "118/75", bs: "5.2", healthNotes: "db.m1.notes" },
+        { name: "Wong Siu Ming", role: "db.m2.role", status: "db.m2.status", statusColor: "green", lastDate: "2023-11-12", bp: "120/80", bs: "5.4", healthNotes: "db.m2.notes" },
+        { name: "Chan Mei Ling", role: "db.m3.role", status: "db.m3.status", statusColor: "red", lastDate: "2023-12-05", bp: "145/95", bs: "6.1", healthNotes: "db.m3.notes" }
     ]
 };
 
 const insuranceData = {
-    "AIA": ["AIA 友邦及早康复", "AIA 友邦全程守护 (高端)"],
-    "Prudential": ["Prudential 保诚医疗加倍保", "Prudential 高端医疗计划"],
-    "Manulife": ["Manulife 宏利全护航", "Manulife 活耀人生"],
-    "Others": ["一般住院保险", "意外险"]
+    "AIA": ["db.ins.AIA.normal", "db.ins.AIA.high_end"],
+    "Prudential": ["db.ins.Prudential.normal", "db.ins.Prudential.high_end"],
+    "Manulife": ["db.ins.Manulife.normal", "db.ins.Manulife.vivid"],
+    "Others": ["db.ins.Others.normal", "db.ins.Others.accident"]
 };
 
 // --- Utilities ---
@@ -1718,25 +2442,39 @@ const logic = {
         if(!container) return;
         container.innerHTML = "";
         
+        const lang = window.i18n.currentLang;
+        const txtView = lang === 'en-US' ? 'View' : '查看';
+        const txtNoData = lang === 'en-US' ? 'No hospitals found' : (lang === 'zh-HK' ? '暫無符合條件的醫院' : '暂无符合条件的医院');
+        const areaMap = { 
+            'futian': (lang === 'en-US' ? 'Futian' : '福田区'), 
+            'luohu': (lang === 'en-US' ? 'Luohu' : '罗湖区'), 
+            'nanshan': (lang === 'en-US' ? 'Nanshan' : '南山区'), 
+            'baoan': (lang === 'en-US' ? 'Baoan' : '宝安区'), 
+            'longgang': (lang === 'en-US' ? 'Longgang' : '龙岗区') 
+        };
+
         const filtered = state.hospitals.filter(h => {
             return (area === "all" || h.area === area) && (type === "all" || h.type === type);
         });
 
         if(filtered.length === 0) {
-            container.innerHTML = '<div style="padding:20px; text-align:center; color:#999;">暂无符合条件的医院</div>';
+            container.innerHTML = `<div style="padding:20px; text-align:center; color:#999;">${txtNoData}</div>`;
             return;
         }
 
         filtered.forEach((h, index) => {
-            const areaMap = { 'futian': '福田区', 'luohu': '罗湖区', 'nanshan': '南山区', 'baoan': '宝安区', 'longgang': '龙岗区' };
+            const name = window.i18n.t(h.name);
+            const desc = window.i18n.t(h.desc);
+            const tags = h.tags.map(t => window.i18n.t(t));
+
             const div = createEl("div", "card", `
                 <div style="display:flex; justify-content:space-between; align-items:start;">
                     <div style="width: 100%;">
-                        <h4 style="margin-bottom:6px;">${h.name} ${h.tags.map(t => `<span class="tag blue">${t}</span>`).join("")}</h4>
-                        <p style="font-size:13px; color:#64748b; margin-bottom:4px; overflow-wrap: break-word;">${h.desc.substring(0, 45)}...</p>
+                        <h4 style="margin-bottom:6px;">${name} ${tags.map(t => `<span class="tag blue">${t}</span>`).join("")}</h4>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:4px; overflow-wrap: break-word;">${desc.substring(0, 45)}...</p>
                         <p style="font-size:12px; color:#94a3b8;">📍 ${areaMap[h.area] || h.area}</p>
                     </div>
-                    <button class="btn btn-secondary action-btn" style="padding:6px 12px; font-size:12px; margin-left:10px; flex-shrink:0;">查看</button>
+                    <button class="btn btn-secondary action-btn" style="padding:6px 12px; font-size:12px; margin-left:10px; flex-shrink:0;">${txtView}</button>
                 </div>
             `);
             div.style.marginBottom = "16px";
@@ -1750,23 +2488,24 @@ const logic = {
     },
 
     openHospitalModal: (hospital) => {
-        getEl("hospital-modal-title").innerText = hospital.name;
-        getEl("hospital-modal-tags").innerHTML = hospital.tags.map(t => `<span class="tag blue">${t}</span>`).join(" ");
-        getEl("hospital-modal-desc").innerText = hospital.desc;
-        getEl("hospital-modal-addr").innerText = hospital.address;
-        getEl("hospital-modal-transport").innerText = hospital.transport;
+        getEl("hospital-modal-title").innerText = window.i18n.t(hospital.name);
+        getEl("hospital-modal-tags").innerHTML = hospital.tags.map(t => `<span class="tag blue">${window.i18n.t(t)}</span>`).join(" ");
+        getEl("hospital-modal-desc").innerText = window.i18n.t(hospital.desc);
+        getEl("hospital-modal-addr").innerText = window.i18n.t(hospital.address);
+        getEl("hospital-modal-transport").innerText = window.i18n.t(hospital.transport);
         
         const bookBtn = getEl("hospital-book-btn");
-        bookBtn.innerText = `预约 ${hospital.name}`;
+        bookBtn.innerText = `${window.i18n.currentLang === 'en-US' ? 'Book' : '预约'} ${window.i18n.t(hospital.name)}`;
         bookBtn.onclick = () => {
             window.modals.close("hospital-modal");
-            getEl("booking-item-name").innerText = `预约挂号：${hospital.name}`;
+            getEl("booking-item-name").innerText = `${window.i18n.currentLang === 'en-US' ? 'Book' : '预约挂号'}：${window.i18n.t(hospital.name)}`;
             
             // Auto fill Department based on hospital tags or common logic
             const deptSelect = getEl("booking-dept");
             if(deptSelect) {
-                if(hospital.tags.includes("中医强项")) deptSelect.value = "中医科";
-                else if(hospital.tags.includes("妇产特色")) deptSelect.value = "妇产科";
+                // Note: tags are now keys, so we check against keys
+                if(hospital.tags.includes("db.tags.tcm_strong")) deptSelect.value = "中医科";
+                else if(hospital.tags.includes("db.tags.obgyn")) deptSelect.value = "妇产科";
                 else deptSelect.value = "全科";
             }
 
@@ -1809,7 +2548,7 @@ const logic = {
             plans.forEach((p) => {
                 const opt = document.createElement("option");
                 opt.value = p;
-                opt.text = p;
+                opt.text = window.i18n.t(p);
                 planSelect.appendChild(opt);
             });
             updateMatList();
@@ -1824,23 +2563,25 @@ const logic = {
             const content = getEl("mat-content");
             if(!content) return;
 
+            const t = window.i18n.t;
+            const btnUp = t("btn.upload");
             let listHTML = "";
 
             if (type === 'mat-outpatient') {
-                listHTML += `<li><strong>门诊病历</strong>：需医生签名及医院盖章 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
-                listHTML += `<li><strong>发票原件</strong>：含收费项目明细 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                listHTML += `<li><strong>${t("mat.op.rec")}</strong>：${t("mat.op.rec.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
+                listHTML += `<li><strong>${t("mat.inv")}</strong>：${t("mat.inv.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
                 if (plan.includes("AIA") || plan.includes("Manulife")) {
-                   listHTML += `<li><strong>转诊证明</strong>：部分计划如无指定诊所需提供 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                   listHTML += `<li><strong>${t("mat.ref")}</strong>：${t("mat.ref.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
                 }
-                if (plan.includes("高端")) {
-                   listHTML += `<li><strong>直付授权书</strong>：如已使用直付卡 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                if (plan.includes("high_end")) {
+                   listHTML += `<li><strong>${t("mat.dir")}</strong>：${t("mat.dir.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
                 }
             } else {
-                listHTML += `<li><strong>出院小结</strong>：需医院盖章 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
-                listHTML += `<li><strong>住院发票</strong>：财政专用章 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
-                listHTML += `<li><strong>费用总清单</strong>：详细耗材明细 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
-                if (plan.includes("高端")) {
-                    listHTML += `<li><strong>预授权书 (Pre-auth)</strong>：住院前申请的批准函 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                listHTML += `<li><strong>${t("mat.dis")}</strong>：${t("mat.dis.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
+                listHTML += `<li><strong>${t("mat.hinv")}</strong>：${t("mat.hinv.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
+                listHTML += `<li><strong>${t("mat.fee")}</strong>：${t("mat.fee.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
+                if (plan.includes("high_end")) {
+                    listHTML += `<li><strong>${t("mat.pre")}</strong>：${t("mat.pre.d")} <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">${btnUp}</button></li>`;
                 }
             }
             
@@ -1871,25 +2612,33 @@ const logic = {
         if(!grid) return;
         grid.innerHTML = "";
         
+        const lang = window.i18n.currentLang;
+        const txtRec = lang === 'en-US' ? 'Recommended' : (lang === 'zh-HK' ? '推薦' : '推荐');
+        const txtBook = lang === 'en-US' ? 'Book' : (lang === 'zh-HK' ? '預約' : '预约');
+
         state.wellnessPackages.filter(p => p.cat === cat).forEach(p => {
+            const title = window.i18n.t(p.title);
+            const desc = window.i18n.t(p.desc);
+            const location = window.i18n.t(p.location);
+
             const card = createEl("div", "card");
             card.innerHTML = `
                 <div style="display:flex; justify-content:space-between;">
-                    <span class="tag green" style="margin-bottom:8px;">推荐</span>
+                    <span class="tag green" style="margin-bottom:8px;">${txtRec}</span>
                 </div>
-                <h4>${p.title}</h4>
+                <h4>${title}</h4>
                 <div style="margin:12px 0;">
                     <span style="font-size:20px; font-weight:700; color:var(--accent);">${p.price}</span>
                     ${p.oldPrice ? `<span style="text-decoration:line-through; color:#999; font-size:13px; margin-left:5px;">HK$ ${p.oldPrice}</span>` : ''}
                 </div>
-                <p style="font-size:13px; color:#666; margin-bottom:8px;">${p.desc}</p>
+                <p style="font-size:13px; color:#666; margin-bottom:8px;">${desc}</p>
                 <div style="font-size:12px; color:#666; background:#f0f0f0; padding:6px; border-radius:4px; margin-bottom:16px;">
-                    📍 ${p.location}
+                    📍 ${location}
                 </div>
-                <button class="btn btn-primary" style="width:100%;">预约</button>
+                <button class="btn btn-primary" style="width:100%;">${txtBook}</button>
             `;
             card.querySelector("button").onclick = () => {
-                getEl("booking-item-name").innerText = `预约服务：${p.title}`;
+                getEl("booking-item-name").innerText = `${window.i18n.currentLang === 'en-US' ? 'Book Service' : '预约服务'}：${title}`;
                 window.modals.open("booking-modal");
             };
             grid.appendChild(card);
@@ -1911,7 +2660,14 @@ const logic = {
         if(!grid) return;
         grid.innerHTML = "";
         
+        const lang = window.i18n.currentLang;
+        const txtLast = lang === 'en-US' ? 'Last Visit:' : (lang === 'zh-HK' ? '上次就診:' : '上次就诊:');
+        const txtAdd = lang === 'en-US' ? 'Add Family Member' : (lang === 'zh-HK' ? '添加家庭成員' : '添加家庭成员');
+
         state.members.forEach(m => {
+            const role = window.i18n.t(m.role);
+            const status = window.i18n.t(m.status);
+
             const card = createEl("div", "card clickable");
             card.onclick = () => logic.openMemberDetail(m);
             card.innerHTML = `
@@ -1919,11 +2675,11 @@ const logic = {
                     <div style="width:40px; height:40px; background:#f1f5f9; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:12px; font-size:20px;">👤</div>
                     <div>
                         <h4 style="margin:0; font-size:16px;">${m.name}</h4>
-                        <span class="tag blue">${m.role}</span>
+                        <span class="tag blue">${role}</span>
                     </div>
                 </div>
-                <p style="font-size:13px; color:#64748b;">上次就诊: ${m.lastDate}</p>
-                <div style="margin-top:8px;"><span class="tag ${m.statusColor}">${m.status}</span></div>
+                <p style="font-size:13px; color:#64748b;">${txtLast} ${m.lastDate}</p>
+                <div style="margin-top:8px;"><span class="tag ${m.statusColor}">${status}</span></div>
             `;
             grid.appendChild(card);
         });
@@ -1942,16 +2698,19 @@ const logic = {
             <div style="width:60px; height:60px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm); margin-bottom:16px;">
                 <span style="font-size: 30px; color: var(--primary);">+</span>
             </div>
-            <div style="color: #64748b; font-weight:500;">添加家庭成员</div>
+            <div style="color: #64748b; font-weight:500;">${txtAdd}</div>
         `;
         grid.appendChild(addCard);
     },
 
     openMemberDetail: (member) => {
         getEl("member-detail-name").innerText = member.name;
-        getEl("member-detail-role").innerText = member.role;
-        getEl("member-last-record").innerText = `${member.lastDate} - 进行了一次常规检查，${member.status}`;
-        getEl("member-health-notes").innerText = member.healthNotes || "暂无详细健康备注。";
+        getEl("member-detail-role").innerText = window.i18n.t(member.role);
+        
+        const status = window.i18n.t(member.status);
+        const txtCheck = window.i18n.currentLang === 'en-US' ? 'Routine Checkup' : '常规检查';
+        getEl("member-last-record").innerText = `${member.lastDate} - ${txtCheck}, ${status}`;
+        getEl("member-health-notes").innerText = window.i18n.t(member.healthNotes) || "暂无详细健康备注。";
         
         // Visualize BP
         getEl("member-bp-val").innerText = member.bp;
