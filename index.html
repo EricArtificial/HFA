@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFA Cross-border Health Hub | 港人跨境就医平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 现代化配色系统 (Slate & Blue) */
+            --primary: #2563eb;       /* Royal Blue */
+            --primary-light: #60a5fa;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;     /* Emerald */
+            --accent: #f59e0b;        /* Amber */
+            
+            --bg-body: #f8fafc;       /* Slate 50 */
+            --surface: #ffffff;
+            
+            --text-main: #1e293b;     /* Slate 800 */
+            --text-secondary: #475569;/* Slate 600 */
+            --text-muted: #94a3b8;    /* Slate 400 */
+            
+            --border: #e2e8f0;        /* Slate 200 */
+            
+            /* 阴影系统 */
+            --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --nav-height: 76px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding-top: var(--nav-height);
+            /* 背景装饰光晕 */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Utils --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 32px 24px; min-height: calc(100vh - var(--nav-height)); }
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .mb-4 { margin-bottom: 16px; }
+        .mt-4 { margin-top: 16px; }
+        .flex-center { display: flex; align-items: center; justify-content: center; }
+        .flex-between { display: flex; align-items: center; justify-content: space-between; }
+        .gap-2 { gap: 8px; }
+        .gap-4 { gap: 16px; }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 28px; border-radius: 50px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            border: none; font-size: 15px; outline: none; letter-spacing: 0.3px;
+        }
+        .btn:active { transform: scale(0.96); }
+        
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+        .btn-primary:hover { 
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4); 
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary { 
+            background: white; color: var(--primary); 
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-xs);
+        }
+        .btn-secondary:hover { 
+            border-color: var(--primary); 
+            background: #f0f7ff; 
+            transform: translateY(-1px);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--surface); 
+            border-radius: var(--radius-lg); 
+            padding: 32px;
+            box-shadow: var(--shadow-sm); 
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            overflow-wrap: break-word;
+        }
+        .card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: var(--shadow-md); 
+        }
+        .clickable { cursor: pointer; }
+        
+        /* Typography */
+        h1, h2, h3, h4 { letter-spacing: -0.02em; color: var(--text-main); }
+        h1 { font-weight: 800; }
+        .section-title { font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; position: relative; display: inline-block; }
+        .section-title::after {
+            content: ''; position: absolute; bottom: 4px; left: 0; width: 40%; height: 6px;
+            background: var(--primary); opacity: 0.2; border-radius: 4px; z-index: -1;
+        }
+        .section-desc { color: var(--text-secondary); margin-bottom: 40px; font-size: 16px; max-width: 600px; }
+
+        /* Grids */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height);
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            z-index: 100;
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 0 40px;
+        }
+        .logo { 
+            font-size: 22px; font-weight: 800; color: var(--primary); 
+            display: flex; align-items: center; gap: 12px; letter-spacing: -0.03em; flex-shrink: 0;
+        }
+        .logo span { 
+            font-weight: 500; color: var(--text-secondary); font-size: 14px; 
+            padding-left: 12px; border-left: 1px solid var(--border); 
+            letter-spacing: 0;
+        }
+        .nav-links { display: flex; gap: 40px; flex-shrink: 0; }
+        .nav-item { 
+            cursor: pointer; color: var(--text-secondary); font-weight: 600; font-size: 15px;
+            padding: 26px 0; position: relative; transition: color 0.2s; flex-shrink: 0;
+        }
+        .nav-item:hover, .nav-item.active { color: var(--primary); }
+        .nav-item.active::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); 
+            width: 20px; height: 3px; background: var(--primary); border-radius: 4px 4px 0 0;
+        }
+
+        /* --- Animation --- */
+        .page-section { display: none; opacity: 0; transform: translateY(15px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .page-section.active { display: block; opacity: 1; transform: translateY(0); }
+
+        /* --- Inputs & Forms (Forced Visibility) --- */
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--text-main); }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%; padding: 12px 14px; 
+            border: 1px solid var(--border); border-radius: var(--radius-md);
+            font-family: inherit; font-size: 15px; 
+            background-color: #ffffff !important;
+            color: #1e293b !important; /* Force Dark Color */
+            transition: all 0.2s;
+            line-height: normal;
+        }
+
+        .form-textarea { resize: vertical; min-height: 80px; }
+        
+        /* Auto-fill fix */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #1e293b !important;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus { 
+            border-color: var(--primary); 
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); 
+            outline: none;
+        }
+        
+        ::placeholder { color: #94a3b8; opacity: 1; }
+
+        .input-group { display: flex; gap: 8px; width: 100%; align-items: stretch; }
+        .input-group .form-input { flex-grow: 1; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+        .input-group-btn {
+            border: 1px solid var(--border); border-left: none;
+            background: #f8fafc; color: var(--text-secondary);
+            padding: 0 16px; border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        }
+        .input-group-btn:hover { background: #e2e8f0; }
+
+        /* --- Components --- */
+        .tag { 
+            display: inline-flex; align-items: center; padding: 4px 12px; 
+            border-radius: 20px; font-size: 12px; margin-right: 6px; font-weight: 600; 
+        }
+        .tag.blue { background: #eff6ff; color: var(--primary); }
+        .tag.green { background: #ecfdf5; color: var(--secondary); }
+        .tag.red { background: #fef2f2; color: #ef4444; }
+        .tag.orange { background: #fff7ed; color: #f97316; }
+
+        .tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 32px; gap: 32px; }
+        .tab-btn { 
+            padding: 16px 0; cursor: pointer; color: var(--text-muted); 
+            font-weight: 600; position: relative; transition: color 0.2s; font-size: 15px;
+        }
+        .tab-btn.active { color: var(--primary); }
+        .tab-btn.active::after { 
+            content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; 
+            background: var(--primary); 
+        }
+
+        /* --- Hero --- */
+        .hero { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+            align-items: center; 
+            padding: 80px 0 100px; 
+            position: relative; 
+        }
+        .hero-content { max-width: 600px; }
+        .hero h1 { 
+            font-size: 56px; line-height: 1.1; margin-bottom: 24px; 
+            background: linear-gradient(135deg, var(--text-main) 0%, #475569 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6;
+        }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        
+        .hero-visual { 
+            position: relative; 
+            width: 100%; 
+            height: 400px; 
+            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(12px);
+            padding: 24px; 
+            border-radius: 20px; 
+            box-shadow: var(--shadow-lg);
+            position: absolute; 
+            border: 1px solid rgba(255,255,255,0.8);
+            animation: float 6s ease-in-out infinite;
+            min-width: 260px;
+        }
+        .c1 { top: 10%; left: 5%; z-index: 2; animation-delay: 0s; }
+        .c2 { bottom: 15%; right: 5%; z-index: 3; animation-delay: 3s; }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* --- Guide Section --- */
+        .guide-section {
+            margin-top: 80px; 
+            background: white; 
+            padding: 60px; 
+            border-radius: 32px; 
+            box-shadow: var(--shadow-md); 
+            border: 1px solid #f1f5f9;
+        }
+        .guide-steps {
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 40px; 
+            margin: 40px 0;
+        }
+        .guide-step { position: relative; padding-left: 16px; }
+        .guide-step-num {
+            font-size: 80px; 
+            font-weight: 900; 
+            color: #f1f5f9; 
+            position: absolute; 
+            top: -45px; 
+            left: -20px; 
+            z-index: 0;
+            line-height: 1;
+        }
+        .guide-step-content { position: relative; z-index: 1; }
+        .guide-step h4 { margin-bottom: 16px; font-size: 20px; font-weight: 700; }
+        .guide-step p { font-size: 15px; color: #64748b; line-height: 1.8; }
+        
+        /* --- Feature Cards --- */
+        .feature-icon {
+            width: 56px; height: 56px; 
+            border-radius: 16px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 28px; margin-bottom: 20px;
+        }
+        .bg-blue-light { background: #eff6ff; color: var(--primary); }
+        .bg-orange-light { background: #fff7ed; color: #f97316; }
+        .bg-green-light { background: #ecfdf5; color: var(--secondary); }
+        .bg-purple-light { background: #f5f3ff; color: #8b5cf6; }
+
+        /* --- Modals --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6); z-index: 1000; display: none;
+            align-items: center; justify-content: center; backdrop-filter: blur(8px);
+        }
+        .modal { 
+            background: white; width: 500px; max-width: 92%; padding: 40px; 
+            border-radius: 24px; position: relative; 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 90vh; overflow-y: auto;
+        }
+        .close-modal { 
+            position: absolute; top: 24px; right: 24px; width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: #f1f5f9; color: #64748b;
+            font-size: 20px; cursor: pointer; transition: all 0.2s;
+        }
+        .close-modal:hover { background: #e2e8f0; color: #333; }
+        @keyframes modalPop { from { transform: scale(0.95) translateY(10px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+
+        /* --- Guide Modal Specific --- */
+        .guide-content { display: none; animation: fadeIn 0.3s ease; }
+        .guide-content.active { display: block; }
+        .guide-block { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px dashed #e2e8f0; }
+        .guide-block:last-child { border-bottom: none; }
+        .guide-block h4 { margin-bottom: 12px; font-size: 18px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .guide-block p { font-size: 15px; color: #475569; margin-bottom: 12px; line-height: 1.6; }
+        .tips-box { background: #f8fafc; padding: 16px; border-radius: 12px; border-left: 4px solid var(--secondary); font-size: 14px; color: #334155; }
+        .tips-box ul { padding-left: 20px; margin-top: 8px; }
+        .tips-box li { margin-bottom: 4px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Toast --- */
+        .toast-container { position: fixed; bottom: 32px; right: 32px; z-index: 2000; display: flex; flex-direction: column; gap: 12px; }
+        .toast {
+            background: rgba(30, 41, 59, 0.95); color: white; padding: 14px 28px; border-radius: 50px;
+            box-shadow: var(--shadow-lg); font-size: 14px; font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+        .toast.success { background: rgba(16, 185, 129, 0.95); }
+        .toast.error { background: rgba(239, 68, 68, 0.95); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            :root { --nav-height: 64px; }
+            
+            /* Layout & Spacing */
+            .container { padding: 20px 16px; }
+            .card { padding: 20px; border-radius: 16px; }
+            .section-title { font-size: 24px; }
+            .section-desc { font-size: 14px; margin-bottom: 24px; }
+            
+            /* Navbar */
+            .navbar { padding: 0 16px; justify-content: space-between; flex-wrap: nowrap; }
+            .logo { font-size: 18px; }
+            .logo svg { width: 32px; height: 32px; }
+            .logo span { display: none; }
+            
+            /* Scrollable Nav Pills */
+            .nav-links { 
+                position: fixed; top: var(--nav-height); left: 0; width: 100%; 
+                background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+                padding: 8px 16px; gap: 12px; 
+                border-bottom: 1px solid var(--border);
+                overflow-x: auto; -webkit-overflow-scrolling: touch;
+                justify-content: flex-start; order: 3;
+                box-shadow: var(--shadow-sm);
+            }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .nav-item { 
+                padding: 8px 16px; 
+                background: #f1f5f9; border-radius: 20px; 
+                font-size: 13px; color: var(--text-secondary);
+                white-space: nowrap; height: auto; line-height: 1.5;
+            }
+            .nav-item.active { background: var(--primary); color: white; }
+            .nav-item.active::after { display: none; }
+            
+            /* Adjust body padding for double nav */
+            body { padding-top: calc(var(--nav-height) + 54px); }
+
+            /* Hero */
+            .hero { grid-template-columns: 1fr; text-align: center; padding: 20px 0 40px; gap: 32px; }
+            .hero h1 { font-size: 32px; margin-bottom: 16px; }
+            .hero p { font-size: 15px; margin-bottom: 24px; }
+            
+            .hero-actions { flex-direction: column; width: 100%; gap: 12px; }
+            .hero-actions .btn { width: 100%; }
+            
+            .hero-visual { height: 280px; margin-top: 20px; }
+            .hero-card { 
+                padding: 16px; min-width: auto; width: 85%; 
+                font-size: 13px;
+            }
+            .c1 { top: 0; left: 50%; transform: translateX(-50%); animation: none; }
+            .c2 { bottom: 0; right: 50%; transform: translateX(50%); animation: none; }
+            
+            /* Grids & Components */
+            .grid-2, .grid-3, .grid-4, .guide-steps { grid-template-columns: 1fr; gap: 16px; }
+            
+            .guide-section { padding: 24px 20px; margin-top: 40px; }
+            .guide-step { margin-bottom: 40px; padding-left: 0; text-align: center; }
+            .guide-step-num { 
+                position: static; display: block; margin: 0 auto 10px; 
+                font-size: 48px; line-height: 1;
+            }
+            
+            /* Modals */
+            .modal { width: 92%; padding: 24px; max-height: 85vh; }
+            .close-modal { top: 16px; right: 16px; }
+            
+            /* Hide Login Text on Mobile if needed, or keep small */
+            #loginBtn { padding: 6px 12px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M85 50 A 35 35 0 1 1 50 15" stroke="var(--primary)" stroke-width="6" stroke-linecap="round"/>
+                <path d="M30 68 Q 50 78 70 68" stroke="var(--primary)" stroke-width="5" fill="none"/>
+                <path d="M30 78 Q 50 88 70 78" stroke="var(--primary)" stroke-width="5" fill="none"/>
+                <path d="M55 55 L 80 30 M 80 30 L 68 30 M 80 30 L 80 42" stroke="var(--primary)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15 50 L 30 50 L 40 25 L 50 75 L 60 45" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M55 40 Q 85 10 90 10 Q 95 45 55 40 Z" fill="var(--secondary)"/>
+            </svg>
+            HFA <span>跨境医疗服务中心</span>
+        </div>
+        <div class="nav-links">
+            <div class="nav-item active" data-target="home">Home</div>
+            <div class="nav-item" data-target="care">Care Hub</div>
+            <div class="nav-item" data-target="protection">Protection Hub</div>
+            <div class="nav-item" data-target="wellness">Wellness Hub</div>
+            <div class="nav-item" data-target="family">Family Hub</div>
+            <div class="nav-item" data-target="myhfa">My HFA</div>
+        </div>
+        <div>
+            <button class="btn btn-secondary" id="loginBtn" style="padding: 8px 20px; font-size: 14px;">登录 / 注册</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HOME SECTION -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>港人跨境就医<br>安心无忧新选择</h1>
+                    <p>连接香港与深圳优质医疗资源。全流程就医指导、费用透明预估、理赔材料辅助及家庭健康协同，一站式解决您的跨境医疗烦恼。</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="window.router.navigate('care')">我要去深圳看病 ➔</button>
+                        <button class="btn btn-secondary" onclick="window.router.navigate('protection')">查看能报销多少</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card c1">
+                        <div class="flex-center gap-2 mb-4" style="justify-content: flex-start;">
+                            <span style="background:#dbeafe; color:#2563eb; padding:8px; border-radius:10px; font-size: 18px;">🏥</span>
+                            <div style="font-weight: 600; font-size: 16px;">预约成功</div>
+                        </div>
+                        <div style="font-size: 14px; color: #64748b; line-height: 1.5;">港大深圳医院 - 消化内科<br><span style="color: var(--text-main); font-weight: 500;">2024-03-15 09:30</span></div>
+                    </div>
+                    <div class="hero-card c2">
+                        <div class="flex-center gap-2 mb-4" style="justify-content: flex-start;">
+                            <span style="background:#dcfce7; color:#10b981; padding:8px; border-radius:10px; font-size: 18px;">💰</span>
+                            <div style="font-weight: 600; font-size: 16px;">理赔预估</div>
+                        </div>
+                        <div style="font-size: 14px; color: #64748b;">预计可报销额度<br><span style="font-size:24px; font-weight:800; color:#10b981; letter-spacing: -0.5px;">HK$ 4,500</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-4">
+                <div class="card clickable" onclick="window.router.navigate('care')">
+                    <div class="feature-icon bg-blue-light">🚑</div>
+                    <h3>就医指引</h3>
+                    <p style="font-size: 14px; color: #64748b; margin-top: 8px; line-height:1.6;">身体不适不知去哪家医院？查询就诊流程与三甲推荐。</p>
+                </div>
+                <div class="card clickable" onclick="window.router.navigate('care')">
+                    <div class="feature-icon bg-orange-light">💴</div>
+                    <h3>费用预估</h3>
+                    <p style="font-size: 14px; color: #64748b; margin-top: 8px; line-height:1.6;">看病前算一算，心里有数。支持公立与私立价格对比。</p>
+                </div>
+                <div class="card clickable" onclick="window.router.navigate('wellness')">
+                    <div class="feature-icon bg-green-light">🧘</div>
+                    <h3>健康增值</h3>
+                    <p style="font-size: 14px; color: #64748b; margin-top: 8px; line-height:1.6;">严选深圳高端体检、洗牙及中医服务，性价比之选。</p>
+                </div>
+                <div class="card clickable" onclick="window.router.navigate('family')">
+                    <div class="feature-icon bg-purple-light">👨‍👩‍👧</div>
+                    <h3>家庭协同</h3>
+                    <p style="font-size: 14px; color: #64748b; margin-top: 8px; line-height:1.6;">一站式管理父母与子女健康档案，远程预约更放心。</p>
+                </div>
+            </div>
+            
+            <div class="guide-section">
+                <div class="text-center mb-4">
+                    <h3 class="section-title">新手通关指南</h3>
+                    <p class="section-desc" style="margin: 10px auto 0;">跨境医疗全流程详解，三步搞定</p>
+                </div>
+                
+                <div class="guide-steps">
+                    <div class="guide-step">
+                        <div class="guide-step-num">01</div>
+                        <div class="guide-step-content">
+                            <h4>行前准备</h4>
+                            <p>
+                                • <strong>支付绑定：</strong> 微信/支付宝关联香港卡。<br>
+                                • <strong>预约挂号：</strong> Care Hub 智能导诊。<br>
+                                • <strong>资料备份：</strong> 证件与过往病历。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                         <div class="guide-step-num">02</div>
+                        <div class="guide-step-content">
+                            <h4>就诊当日</h4>
+                            <p>
+                                • <strong>报到取号：</strong> 身份证/回乡证自助报到。<br>
+                                • <strong>分段缴费：</strong> 挂号/检查/取药分别付。<br>
+                                • <strong>关键动作：</strong> 索要签名病历与发票。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="guide-step">
+                         <div class="guide-step-num">03</div>
+                        <div class="guide-step-content">
+                            <h4>后续与理赔</h4>
+                            <p>
+                                • <strong>取药代煎：</strong> 中药可快递回港。<br>
+                                • <strong>自动提醒：</strong> 系统推送复诊日期。<br>
+                                • <strong>理赔包：</strong> Protection Hub 自动生成。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-secondary" id="btn-view-guide">查看图文详解 📖</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARE HUB -->
+        <section id="care" class="page-section">
+            <h2 class="section-title">Care Hub 就医关怀中心</h2>
+            <p class="section-desc">智能规划您的深圳就医路径，透明化费用与流程。</p>
+
+            <div class="grid-2">
+                <!-- 路径规划器 -->
+                <div class="card">
+                    <h3>🩺 智能导诊</h3>
+                    <div class="form-group">
+                        <label class="form-label">症状描述</label>
+                        <input type="text" id="care-symptom" class="form-input" placeholder="例如：反复胃痛、胃胀、头晕、骨折...">
+                    </div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">就诊类型</label>
+                            <select class="form-select">
+                                <option>普通门诊</option>
+                                <option>专家门诊</option>
+                                <option>急诊</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">香港保险</label>
+                            <select class="form-select">
+                                <option>有，包含内地医疗</option>
+                                <option>有，但不确定</option>
+                                <option>没有</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="btn-care-plan" style="width: 100%;">生成就医建议</button>
+                    
+                    <div id="care-result" class="hidden" style="margin-top: 20px; background: #f0f9ff; padding: 20px; border-radius: 12px; border: 1px solid #e0f2fe;">
+                        <!-- JS Populate -->
+                    </div>
+                </div>
+
+                <!-- 费用估算 -->
+                <div class="card">
+                    <h3>💰 费用区间估算</h3>
+                    <div class="form-group">
+                        <label class="form-label">医院类型</label>
+                        <select id="cost-hospital-type" class="form-select">
+                            <option value="public">公立三甲 (性价比高)</option>
+                            <option value="private">私立/高端 (服务好)</option>
+                        </select>
+                    </div>
+                    <label class="form-label">预计检查项目 (系统自动推荐)</label>
+                    <div id="cost-checkboxes" style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+                        <!-- Dynamic checkboxes will be rendered here -->
+                         <div style="color:#94a3b8; font-size:14px; padding:10px 0;">请先左侧输入症状生成建议...</div>
+                    </div>
+                    
+                    <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+                        <span style="font-size:14px; color:#64748b;">预估总费用 (CNY)</span>
+                        <span style="font-size: 28px; font-weight: 800; color: var(--accent);" id="cost-display">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin: 40px 0 20px; display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="section-title" style="margin:0;">🏥 推荐医院列表</h3>
+                <div style="display: flex; gap: 12px;">
+                    <select id="filter-area" class="form-select" style="width: 140px; padding-right: 30px;">
+                        <option value="all">所有区域</option>
+                        <option value="futian">福田区</option>
+                        <option value="luohu">罗湖区</option>
+                        <option value="nanshan">南山区</option>
+                        <option value="baoan">宝安区</option>
+                        <option value="longgang">龙岗区</option>
+                    </select>
+                    <select id="filter-type" class="form-select" style="width: 140px; padding-right: 30px;">
+                        <option value="all">所有类型</option>
+                        <option value="public">公立三甲</option>
+                        <option value="private">私立高端</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="hospital-list">
+                <!-- JS Populated -->
+            </div>
+        </section>
+
+        <!-- PROTECTION HUB -->
+        <section id="protection" class="page-section">
+            <h2 class="section-title">Protection Hub 理赔保障中心</h2>
+            <div style="background: #fffbeb; color: #b45309; padding: 16px; border-radius: 12px; margin-bottom: 32px; border: 1px solid #fcd34d; font-size: 14px;">
+                <strong>⚠️ 重要提示：</strong> 本平台仅提供信息辅助与资料整理，不代表保险公司官方承诺。具体赔付以您的保单条款为准。
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>🧐 可报销性自查</h3>
+                    <div class="form-group">
+                        <label class="form-label">收费项目名称</label>
+                        <div class="input-group">
+                            <input type="text" class="form-input" placeholder="例如：胃镜检查、洗牙">
+                            <button class="input-group-btn" title="上传单据自动识别">📷</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">费用金额 (CNY)</label>
+                        <input type="number" id="claim-amount" class="form-input" placeholder="0" min="0">
+                    </div>
+                    <button class="btn btn-primary" id="btn-check-claim">判断可能性</button>
+                    <div id="claim-result" class="hidden" style="margin-top: 16px; padding: 12px; border-radius: 8px;"></div>
+                </div>
+
+                <div class="card">
+                    <h3>📑 理赔材料清单</h3>
+                    <div class="grid-2">
+                         <div class="form-group">
+                            <label class="form-label">保险公司</label>
+                            <select id="insurance-company-select" class="form-select">
+                                <option value="AIA">AIA 友邦</option>
+                                <option value="Prudential">Prudential 保诚</option>
+                                <option value="Manulife">Manulife 宏利</option>
+                                <option value="Others">其他 / 不确定</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">具体险种</label>
+                            <select id="insurance-plan-select" class="form-select">
+                                <!-- Dynamic options -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="tabs" style="margin-bottom: 16px; gap: 20px;">
+                        <div class="tab-btn active" data-tab="mat-outpatient">门诊就医</div>
+                        <div class="tab-btn" data-tab="mat-inpatient">住院治疗</div>
+                    </div>
+                    <div id="mat-content" style="background: #f8fafc; padding: 16px; border-radius: 12px; min-height: 120px;">
+                        <!-- Content -->
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <h3 class="section-title">🛡️ 港人内地保险精选推荐</h3>
+                <p class="section-desc">补充香港保险的不足，性价比极高的内地医疗保障。</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <span class="tag blue">百万医疗险</span>
+                        <h4 style="margin: 10px 0;">内地百万医疗险 (e.g. 众安尊享e生)</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                            <strong>保额：</strong> 300万-600万<br>
+                            <strong>保费：</strong> 约 ¥300-1000/年<br>
+                            <strong>特点：</strong> 覆盖住院大病，免赔额通常1万。适合作为大病兜底。
+                        </p>
+                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;">查看详情</button>
+                    </div>
+                    <div class="card">
+                        <span class="tag orange">大湾区专属</span>
+                        <h4 style="margin: 10px 0;">大湾区专属重疾险</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                            <strong>保额：</strong> 灵活可选<br>
+                            <strong>特点：</strong> 针对湾区高发重疾额外赔付，费率较香港重疾险有优势，投保简便。
+                        </p>
+                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;">查看详情</button>
+                    </div>
+                    <div class="card">
+                        <span class="tag green">高端门诊</span>
+                        <h4 style="margin: 10px 0;">高端门诊医疗险 (Msh/Bupa)</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                            <strong>范围：</strong> 私立医院/昂贵医院直付<br>
+                            <strong>特点：</strong> 覆盖日常门诊、牙科、体检，无需排队，体验极佳。
+                        </p>
+                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WELLNESS HUB -->
+        <section id="wellness" class="page-section">
+            <h2 class="section-title">Wellness Hub 健康增值中心</h2>
+            <div class="tabs" id="wellness-tabs">
+                <div class="tab-btn active" data-cat="checkup">高端体检</div>
+                <div class="tab-btn" data-cat="dental">牙科/口腔</div>
+                <div class="tab-btn" data-cat="tcm">中医调理</div>
+            </div>
+            
+            <div class="grid-3" id="wellness-grid">
+                <!-- JS Populated -->
+            </div>
+            
+            <div class="card" style="margin-top: 32px; background: linear-gradient(to right, #ecfdf5, #ffffff); border: 1px solid #d1fae5;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h3>我的健康积分: <span style="color: var(--secondary); font-size: 32px; font-weight:800;">1,250</span></h3>
+                        <p style="font-size: 14px; color: #065f46;">通过体检、就医打卡获取积分，可兑换免费洁牙或抵扣现金。</p>
+                    </div>
+                    <button class="btn btn-secondary" onclick="window.modals.open('mall-modal')">进入积分商城</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAMILY HUB -->
+        <section id="family" class="page-section">
+            <h2 class="section-title">Family Hub 家庭健康协同</h2>
+            <div class="grid-3" id="family-grid">
+                <!-- JS Populated -->
+            </div>
+            
+            <div class="card" style="margin-top: 32px; background: #fefce8; border: 1px solid #fef08a;">
+                <h4 style="color: #854d0e; margin-bottom: 8px;">🔔 家庭健康提醒</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eab308; color: #a16207; font-size:14px;">
+                        <span>母亲的降压药快用完了，请提醒复诊。</span>
+                        <span style="font-weight:600;">3天后</span>
+                    </li>
+                     <li style="display: flex; justify-content: space-between; padding: 8px 0; color: #a16207; font-size:14px;">
+                        <span>配偶洁牙预约建议。</span>
+                        <span>下周</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- MY HFA -->
+        <section id="myhfa" class="page-section">
+            <h2 class="section-title">My HFA 个人中心</h2>
+            <div class="grid-2">
+                 <div class="card">
+                    <div style="display:flex; align-items:center; gap:20px; margin-bottom:20px;">
+                        <div style="width:80px; height:80px; background:var(--primary); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:32px;">陈</div>
+                        <div>
+                            <h3>Chan Tai Man</h3>
+                            <div style="display:flex; gap:8px; margin-top:8px;">
+                                <span class="tag blue">普通会员</span>
+                                <span class="tag green">积分 1250</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <button class="btn btn-secondary" style="font-size:13px;" onclick="window.modals.open('upload-data-modal')">📂 上传医疗文档</button>
+                        <button class="btn btn-secondary" style="font-size:13px;">⚙️ 账户设置</button>
+                    </div>
+                </div>
+                
+                <div class="card" style="background:#f8fafc;">
+                    <h3 style="margin-bottom:16px;">未来医疗支出预测模型</h3>
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;">
+                        <span style="color:#64748b; font-size:14px;">预计年度总支出</span>
+                        <span id="predicted-expense" style="font-size:32px; font-weight:800; color:var(--text-main);">--</span>
+                    </div>
+                    <div style="margin-bottom:20px;">
+                        <span style="color:#64748b; font-size:14px;">风险等级：</span>
+                        <span id="risk-badge" class="tag" style="background:#e2e8f0; color:#64748b;">需完善数据</span>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%;" onclick="window.modals.open('prediction-modal')">完善画像以获取预测</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODALS -->
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal" style="width:400px;">
+            <div class="close-modal">&times;</div>
+            <h3 style="text-align:center; margin-bottom:24px;">欢迎回到 HFA</h3>
+            <div class="form-group">
+                <label class="form-label">手机号 / 邮箱</label>
+                <input type="text" class="form-input" placeholder="输入账号">
+            </div>
+            <div class="form-group">
+                <label class="form-label">密码</label>
+                <input type="password" class="form-input" placeholder="输入密码">
+            </div>
+            <button class="btn btn-primary" style="width:100%;">登录</button>
+        </div>
+    </div>
+
+    <!-- Hospital Detail Modal -->
+    <div id="hospital-modal" class="modal-overlay">
+        <div class="modal" style="width: 600px;">
+            <div class="close-modal">&times;</div>
+            <h3 id="hospital-modal-title" style="margin-bottom: 10px;">医院名称</h3>
+            <div id="hospital-modal-tags" style="margin-bottom: 20px;"></div>
+            
+            <p class="section-separator">简介</p>
+            <p id="hospital-modal-desc" style="color: #475569; margin-bottom: 20px;"></p>
+            
+            <p class="section-separator">地址与交通</p>
+            <p style="margin-bottom: 5px;">📍 <span id="hospital-modal-addr"></span></p>
+            <p style="margin-bottom: 20px;">🚇 <span id="hospital-modal-transport"></span></p>
+            
+            <button id="hospital-book-btn" class="btn btn-primary" style="width: 100%;">立即预约</button>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal" style="width: 500px;">
+            <div class="close-modal">&times;</div>
+            <h3 style="margin-bottom: 20px;">确认预约信息</h3>
+            <div style="background: #f1f5f9; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; color: var(--primary);" id="booking-item-name">
+                --
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label class="form-label">就诊科室</label>
+                    <select id="booking-dept" class="form-select">
+                        <option>全科</option>
+                        <option>消化内科</option>
+                        <option>骨科</option>
+                        <option>妇产科</option>
+                        <option>中医科</option>
+                        <option>口腔科</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">意向医师</label>
+                    <select id="booking-doctor" class="form-select">
+                        <option>系统智能推荐</option>
+                        <option>主任医师 (需加收诊金)</option>
+                        <option>副主任医师</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">期望日期</label>
+                <input type="date" class="form-input">
+            </div>
+            <div class="form-group">
+                <label class="form-label">就诊人</label>
+                <select id="booking-patient-select" class="form-select">
+                    <!-- Dynamic -->
+                </select>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="window.modals.close('booking-modal'); window.toast('预约提交成功！请留意短信通知', 'success');">提交预约申请</button>
+        </div>
+    </div>
+
+    <!-- Member Detail Modal -->
+    <div id="member-detail-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="close-modal">&times;</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h3 id="member-detail-name">Member Name</h3>
+                <span id="member-detail-role" class="tag blue">Role</span>
+            </div>
+            
+            <div class="card" style="padding: 20px; background: #f8fafc; border:none; margin-bottom: 20px;">
+                <h4 style="font-size:16px; margin-bottom:12px;">健康档案备注</h4>
+                <p id="member-health-notes" style="font-size:14px; color:#64748b; line-height: 1.6;">--</p>
+            </div>
+
+            <div class="card" style="padding: 20px; background: #fffbeb; border:none; margin-bottom: 20px;">
+                <h4 style="font-size:16px; margin-bottom:12px;">最近动态</h4>
+                <p id="member-last-record" style="font-size:14px; color:#854d0e;">--</p>
+            </div>
+
+            <h4 style="font-size:16px; margin-bottom:12px;">核心健康指标</h4>
+            <div style="margin-bottom: 16px;">
+                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>血压 (mmHg)</span>
+                    <span id="member-bp-val" style="font-weight:600;">--</span>
+                </div>
+                <div class="progress-bar"><div id="member-bp-bar" class="progress-fill" style="width:0%; background:#10b981;"></div></div>
+            </div>
+             <div style="margin-bottom: 24px;">
+                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;">
+                    <span>血糖 (mmol/L)</span>
+                    <span id="member-bs-val" style="font-weight:600;">--</span>
+                </div>
+                <div class="progress-bar"><div id="member-bs-bar" class="progress-fill" style="width:0%; background:#3b82f6;"></div></div>
+            </div>
+
+            <button class="btn btn-secondary" style="width:100%;">查看完整健康档案</button>
+        </div>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div id="add-member-modal" class="modal-overlay">
+        <div class="modal" style="width:400px;">
+            <div class="close-modal">&times;</div>
+            <h3>添加家庭成员</h3>
+            <div class="form-group" style="margin-top:20px;">
+                <label class="form-label">真实姓名</label>
+                <input type="text" id="new-member-name" class="form-input" placeholder="请输入姓名">
+            </div>
+            <div class="form-group">
+                <label class="form-label">关系</label>
+                <select id="new-member-role" class="form-select">
+                    <option>父亲</option>
+                    <option>母亲</option>
+                    <option>配偶</option>
+                    <option>子女</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">健康状况/既往病史</label>
+                <textarea id="new-member-notes" class="form-textarea" placeholder="例如：花粉过敏、高血压二级、正在服用降压药..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;" onclick="window.logic.addMember()">确认添加</button>
+        </div>
+    </div>
+    
+    <!-- Points Mall Modal -->
+    <div id="mall-modal" class="modal-overlay">
+        <div class="modal" style="width:600px;">
+            <div class="close-modal">&times;</div>
+            <h3>积分兑换商城</h3>
+            <p style="color:#64748b; margin-bottom:20px;">当前可用积分：<strong style="color:var(--secondary);">1,250</strong></p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px;">
+                    <h4>免费洁牙券</h4>
+                    <p style="color:#f59e0b; font-weight:bold; margin:8px 0;">1,000 积分</p>
+                    <button class="btn btn-primary" style="width:100%; font-size:13px; padding:8px;" onclick="window.toast('兑换成功！券码已发送至手机', 'success')">立即兑换</button>
+                </div>
+                 <div style="border:1px solid #e2e8f0; border-radius:12px; padding:16px;">
+                    <h4>HK$ 100 体检抵扣</h4>
+                    <p style="color:#f59e0b; font-weight:bold; margin:8px 0;">500 积分</p>
+                    <button class="btn btn-primary" style="width:100%; font-size:13px; padding:8px;" onclick="window.toast('兑换成功！下单时自动抵扣', 'success')">立即兑换</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Prediction Data Modal -->
+    <div id="prediction-modal" class="modal-overlay">
+        <div class="modal" style="width: 700px;">
+            <div class="close-modal">&times;</div>
+            <h3 style="margin-bottom: 24px;">完善健康画像</h3>
+            <div class="grid-2">
+                <div>
+                    <p class="section-separator">1. 人口学特征</p>
+                    <div class="form-group">
+                        <label class="form-label">年龄</label>
+                        <input type="number" id="pred-age" class="form-input" value="35">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">性别</label>
+                        <select id="pred-gender" class="form-select"><option value="m">男</option><option value="f">女</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">家族病史 (多选)</label>
+                        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                            <label><input type="checkbox"> 高血压</label>
+                            <label><input type="checkbox"> 糖尿病</label>
+                            <label><input type="checkbox"> 肿瘤</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="section-separator">2. 行为特征</p>
+                    <div class="form-group">
+                        <label class="form-label">每周运动频率</label>
+                        <select id="pred-exercise" class="form-select">
+                            <option value="0">从不</option>
+                            <option value="1">1-2次</option>
+                            <option value="3">3次以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">生活习惯</label>
+                        <select id="pred-habit" class="form-select">
+                            <option value="none">无不良嗜好</option>
+                            <option value="smoke">吸烟</option>
+                            <option value="drink">饮酒</option>
+                            <option value="both">烟酒均沾</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <p class="section-separator">3. 医疗特征</p>
+                    <div class="form-group">
+                        <label class="form-label">现有慢病数量</label>
+                        <input type="number" id="pred-chronic" class="form-input" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">去年医疗总支出 (HKD)</label>
+                        <input type="number" id="pred-expense-last" class="form-input" value="2000">
+                    </div>
+                </div>
+                <div>
+                     <p class="section-separator">4. 金融特征</p>
+                     <div class="form-group">
+                        <label class="form-label">商业保险配置</label>
+                        <select id="pred-insurance" class="form-select">
+                            <option value="none">无商业保险</option>
+                            <option value="basic">仅基础住院险</option>
+                            <option value="high">高端医疗险</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="window.logic.calculatePrediction()">生成预测报告</button>
+        </div>
+    </div>
+    
+    <!-- Upload Data Modal -->
+    <div id="upload-data-modal" class="modal-overlay">
+        <div class="modal" style="width:500px;">
+            <div class="close-modal">&times;</div>
+            <h3>上传医疗数据</h3>
+            <div style="border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px; text-align: center; margin: 20px 0; background: #f8fafc; cursor: pointer;">
+                <div style="font-size: 40px; margin-bottom: 10px;">☁️</div>
+                <p style="color: #64748b;">点击选择文件 或 拖拽至此</p>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 5px;">支持 JPG, PNG, PDF (最大 10MB)</p>
+            </div>
+            <div class="form-group">
+                <label class="form-label">文档类型</label>
+                <select class="form-select">
+                    <option>体检报告</option>
+                    <option>门诊病历</option>
+                    <option>医疗发票</option>
+                    <option>其他</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" style="width:100%;" onclick="window.toast('文件上传成功！正在解析...', 'success'); window.modals.close('upload-data-modal')">开始上传</button>
+        </div>
+    </div>
+
+    <!-- NEW Guide Modal (Detailed) -->
+    <div id="guide-modal" class="modal-overlay">
+        <div class="modal" style="width: 800px;">
+            <div class="close-modal">&times;</div>
+            <h3 style="text-align:center; margin-bottom: 24px;">港人北上就医通关详解</h3>
+            
+            <div class="tabs" id="guide-tabs" style="justify-content: center;">
+                <div class="tab-btn active" data-tab="guide-pre">01 行前准备</div>
+                <div class="tab-btn" data-tab="guide-day">02 就诊当日</div>
+                <div class="tab-btn" data-tab="guide-post">03 后续与理赔</div>
+            </div>
+
+            <!-- Tab 1 -->
+            <div id="guide-pre" class="guide-content active">
+                <div class="guide-block">
+                    <h4>1. 绑定支付方式 <span class="tag red">重点</span></h4>
+                    <p>深圳医院 90% 采用线上自助缴费，未绑定支付可能导致无法缴费或排队时间极长。</p>
+                    <div class="tips-box">
+                        <strong>建议提前在香港完成：</strong>
+                        <ul>
+                            <li><strong>微信支付 (WeChat Pay HK)：</strong> 在钱包中选择“内地”地区，绑定香港信用卡或银行账户。</li>
+                            <li><strong>支付宝 (AlipayHK)：</strong> 开通“跨境支付”功能，或下载内地版支付宝绑定香港信用卡。</li>
+                            <li>确保手机已开通漫游数据，能接收银行验证码。</li>
+                            <li>完成后可进入 HFA App →「支付设置」进行授权绑定，方便一键支付挂号费。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="guide-block">
+                    <h4>2. 身份证件检查</h4>
+                    <p>必须携带<strong>回乡证 (港澳居民来往内地通行证)</strong> 原件。建议手机拍照备份以防遗失。部分医院支持回乡证电子版，但建议携带实体证件。</p>
+                </div>
+                <div class="guide-block">
+                    <h4>3. HFA 预约挂号 (核心步骤)</h4>
+                    <p>通过 Care Hub 完成一键预约，平台会自动推荐合适科室、医生级别（普通/专家）及显示排期。</p>
+                    <div class="tips-box">
+                        <strong>预约优势：</strong>
+                        <ul>
+                            <li>提前查看预计费用区间（短期支出预测）。</li>
+                            <li>知晓可能需要的检查项（如需空腹，系统会提示）。</li>
+                            <li>建议提前 3–7 天在 HFA 完成预约，热门专家号需更早。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="guide-block">
+                    <h4>4. 准备资料</h4>
+                    <p>可在 HFA 上传香港既往病历、化验报告、影像资料及服用中的药物列表。医生能更精准判断，减少不必要检查。</p>
+                </div>
+            </div>
+
+            <!-- Tab 2 -->
+            <div id="guide-day" class="guide-content">
+                <div class="guide-block">
+                    <h4>1. 报到流程</h4>
+                    <p>到院前 30 分钟 HFA 会自动发送提醒。到达医院后，根据 HFA 院内导航前往自助报到机。使用回乡证或预约二维码进行报到。</p>
+                </div>
+                <div class="guide-block">
+                    <h4>2. 缴费方式 (分段式)</h4>
+                    <p>内地就医通常分阶段缴费：挂号费 → 医生开单 → 检查费 → 检查完回诊 → 药费。每个环节都支持手机支付（微信/支付宝）。</p>
+                </div>
+                <div class="guide-block">
+                    <h4>3. 就诊关键动作 <span class="tag red">理赔必看</span></h4>
+                    <p>为了后续回港报销保险，请务必向医生或护士明确提出以下要求：</p>
+                    <div class="tips-box">
+                        <ul>
+                            <li><strong>打印病历：</strong> 必须包含医生签名和医院盖章。</li>
+                            <li><strong>打印发票：</strong> 需要正式的纸质发票（收据），而非仅有刷卡小票。</li>
+                            <li><strong>出具证明：</strong> 如有需要，请医生开具病假条或转诊单。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="guide-block">
+                    <h4>4. 检查指引</h4>
+                    <p>HFA 会根据医院流程提示您检查科室所在的楼层、窗口号以及平均等待时间。检查后是否需要回诊室找医生看报告，系统也会提示。</p>
+                </div>
+            </div>
+
+            <!-- Tab 3 -->
+            <div id="guide-post" class="guide-content">
+                <div class="guide-block">
+                    <h4>1. 取药 / 代煎</h4>
+                    <p>中药可选择当场取药或选择快递回港（部分机构支持）。HFA 会提示药房位置与排队时段。</p>
+                </div>
+                <div class="guide-block">
+                    <h4>2. 复诊预约</h4>
+                    <p>医生建议复诊时间后，HFA 会在对应日期自动弹出「是否复诊」提醒，支持一键再次预约，无需重复填写资料。</p>
+                </div>
+                <div class="guide-block">
+                    <h4>3. 理赔材料整理 (Protection Hub)</h4>
+                    <p>将病历、发票、检查报告、药单拍照上传至 Protection Hub。系统会自动完成：</p>
+                    <div class="tips-box">
+                        <ul>
+                            <li>可报项目识别与金额预测。</li>
+                            <li>拒赔风险提示（如检查缺材料、报告格式不符）。</li>
+                            <li>自动生成「完整理赔包」，可直接下载提交给保险代理人。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+    <script>
+/**
+ * HFA Application Logic
+ * Pure Native JavaScript implementation
+ */
+
+// --- Data & State ---
+const state = {
+    hospitals: [
+        { 
+            name: "香港大学深圳医院", 
+            area: "futian", 
+            type: "public", 
+            tags: ["港资管理", "可刷医保"], 
+            desc: "全科门诊打包收费200元，国际化标准。提供英语粤语服务，适合港人就医习惯。",
+            address: "深圳市福田区海园一路1号",
+            transport: "地铁9号线深圳湾公园站D1出口"
+        },
+        { 
+            name: "深圳市中医院", 
+            area: "futian", 
+            type: "public", 
+            tags: ["中医强项", "三甲"], 
+            desc: "针灸推拿科室全国知名，拥有众多国家级名老中医。",
+            address: "深圳市福田区福华路1号",
+            transport: "地铁1号线华强路站C出口"
+        },
+        { 
+            name: "罗湖区人民医院", 
+            area: "luohu", 
+            type: "public", 
+            tags: ["近口岸", "互联网医院"], 
+            desc: "距离罗湖口岸仅10分钟车程，消化内科与生殖医学科实力强劲。",
+            address: "深圳市罗湖区友谊路47号",
+            transport: "地铁1号线国贸站A出口"
+        },
+        { 
+            name: "卓正医疗 (私立)", 
+            area: "nanshan", 
+            type: "private", 
+            tags: ["高端服务", "环境好"], 
+            desc: "无需排队，注重隐私，适合商业保险用户。医生多具有国际背景。",
+            address: "深圳市南山区深南大道9668号华润置地大厦",
+            transport: "地铁1号线高新园站"
+        },
+        { 
+            name: "和睦家医院", 
+            area: "futian", 
+            type: "private", 
+            tags: ["国际品牌", "多语言"], 
+            desc: "提供全英文就诊环境，24小时急诊服务，与国际主流保险直付。",
+            address: "深圳市福田区福强路4033号",
+            transport: "地铁4号线沙尾站"
+        },
+        {
+            name: "南方医科大学深圳医院",
+            area: "baoan",
+            type: "public",
+            tags: ["三甲", "大学附属", "设备先进"],
+            desc: "广东省高水平医院建设单位，医疗技术领先，急危重症救治能力强。",
+            address: "深圳市宝安区新湖路1333号",
+            transport: "地铁1号线新安站E出口"
+        },
+        {
+            name: "深圳港龙医院",
+            area: "longgang",
+            type: "private",
+            tags: ["妇产特色", "港式服务"],
+            desc: "位于龙岗区，提供优质的妇产科及全科服务，环境温馨。",
+            address: "深圳市龙岗区龙岗大道3012号",
+            transport: "地铁3号线吉祥站B出口"
+        }
+    ],
+    wellnessPackages: [
+        { id: 1, cat: "checkup", title: "港人年度基础体检", price: "HK$ 1,800", oldPrice: "3,500", desc: "含CT、彩超、肿瘤筛查等50项。", location: "罗湖区人民医院体检中心" },
+        { id: 2, cat: "checkup", title: "心脑血管专项筛查", price: "HK$ 2,200", desc: "针对三高人群，深度排查隐患。", location: "港大深圳医院" },
+        { id: 3, cat: "dental", title: "深港家庭洁牙套餐", price: "HK$ 680", desc: "3人共享，超声波洁牙+抛光。", location: "爱康健口腔 (罗湖口岸店)" },
+        { id: 4, cat: "tcm", title: "名老中医问诊", price: "HK$ 300/次", desc: "三甲名医号源，含针灸一次。", location: "深圳市中医院 (福田院区)" }
+    ],
+    members: [
+        { name: "Chan Tai Man", role: "本人", status: "健康", statusColor: "blue", lastDate: "2024-01-15", bp: "118/75", bs: "5.2", healthNotes: "无既往病史，青霉素过敏。" },
+        { name: "Wong Siu Ming", role: "配偶", status: "健康良好", statusColor: "green", lastDate: "2023-11-12", bp: "120/80", bs: "5.4", healthNotes: "无明显过敏史，每年定期体检。" },
+        { name: "Chan Mei Ling", role: "母亲", status: "血压随访", statusColor: "red", lastDate: "2023-12-05", bp: "145/95", bs: "6.1", healthNotes: "确诊高血压二级，每日服用硝苯地平。需注意关节疼痛。" }
+    ]
+};
+
+const insuranceData = {
+    "AIA": ["AIA 友邦及早康复", "AIA 友邦全程守护 (高端)"],
+    "Prudential": ["Prudential 保诚医疗加倍保", "Prudential 高端医疗计划"],
+    "Manulife": ["Manulife 宏利全护航", "Manulife 活耀人生"],
+    "Others": ["一般住院保险", "意外险"]
+};
+
+// --- Utilities ---
+const getEl = (id) => document.getElementById(id);
+const createEl = (tag, className = "", content = "") => {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (content) el.innerHTML = content;
+    return el;
+};
+
+// --- Toast System ---
+window.toast = (message, type = "info") => {
+    const container = getEl("toast-container");
+    const toast = createEl("div", `toast ${type}`, message);
+    container.appendChild(toast);
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(100%)";
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+};
+
+// --- Router / Navigation ---
+window.router = {
+    navigate: (targetId) => {
+        // Nav Links Update
+        document.querySelectorAll(".nav-item").forEach(item => {
+            if (item.dataset.target === targetId) item.classList.add("active");
+            else item.classList.remove("active");
+        });
+
+        // Section Update
+        document.querySelectorAll(".page-section").forEach(sec => {
+            sec.classList.remove("active");
+            if (sec.id === targetId) sec.classList.add("active");
+        });
+        
+        window.scrollTo(0, 0);
+    }
+};
+
+// --- Modal System ---
+window.modals = {
+    open: (id) => {
+        const modal = getEl(id);
+        const overlay = document.getElementById(id); // The overlay is the ID
+        if (overlay) {
+            overlay.style.display = "flex";
+            // Bind close logic
+            overlay.onclick = (e) => {
+                if (e.target === overlay) window.modals.close(id);
+            };
+            const closeBtn = overlay.querySelector(".close-modal");
+            if(closeBtn) closeBtn.onclick = () => window.modals.close(id);
+        }
+        
+        // Dynamic population for booking modal
+        if (id === 'booking-modal') {
+             const select = getEl('booking-patient-select');
+             if (select) {
+                 select.innerHTML = '';
+                 // Add self
+                 const meOpt = document.createElement('option');
+                 meOpt.text = "Chan Tai Man (本人)";
+                 select.add(meOpt);
+                 // Add family
+                 state.members.forEach(m => {
+                     const opt = document.createElement('option');
+                     opt.text = `${m.name} (${m.role})`;
+                     select.add(opt);
+                 });
+             }
+        }
+    },
+    close: (id) => {
+        const overlay = getEl(id);
+        if (overlay) overlay.style.display = "none";
+    }
+};
+
+// --- Logic Modules ---
+const logic = {
+    init: () => {
+        logic.setupNav();
+        logic.renderHospitals();
+        logic.renderWellness();
+        logic.renderFamily();
+        logic.setupCareHub();
+        logic.setupProtectionHub();
+        logic.setupGlobalListeners();
+        logic.setupGuideModal();
+    },
+
+    setupNav: () => {
+        document.querySelectorAll(".nav-item").forEach(item => {
+            item.onclick = () => window.router.navigate(item.dataset.target);
+        });
+    },
+
+    setupGlobalListeners: () => {
+        const loginBtn = getEl("loginBtn");
+        if(loginBtn) loginBtn.onclick = () => window.modals.open("login-modal");
+        
+        const guideBtn = getEl("btn-view-guide");
+        if(guideBtn) guideBtn.onclick = () => window.modals.open("guide-modal");
+    },
+    
+    // New Guide Modal Logic
+    setupGuideModal: () => {
+        const tabBtns = document.querySelectorAll("#guide-tabs .tab-btn");
+        const contents = document.querySelectorAll(".guide-content");
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                // Remove active from all tabs
+                tabBtns.forEach(b => b.classList.remove("active"));
+                // Hide all contents
+                contents.forEach(c => c.classList.remove("active"));
+                
+                // Activate clicked tab
+                const target = e.currentTarget;
+                target.classList.add("active");
+                
+                // Show target content
+                const tabId = target.dataset.tab;
+                if(tabId) {
+                    const content = getEl(tabId);
+                    if(content) content.classList.add("active");
+                }
+            });
+        });
+    },
+
+    // Care Hub
+    setupCareHub: () => {
+        // Cost Calculator Function
+        const calcCost = () => {
+            const typeSelect = getEl("cost-hospital-type");
+            const type = typeSelect ? typeSelect.value : 'public';
+            const checks = document.querySelectorAll(".cost-check:checked");
+            
+            let total = type === 'public' ? 100 : 500; // Base fee: Public 100, Private 500
+            checks.forEach(c => total += parseInt(c.value));
+            
+            const display = getEl("cost-display");
+            if(display) display.innerText = total.toLocaleString();
+        };
+        
+        // Bind change events for manual adjustments
+        const typeSelect = getEl("cost-hospital-type");
+        if(typeSelect) typeSelect.onchange = calcCost;
+        // Logic will bind events to dynamic checkboxes later
+
+        // Generate Plan & Auto-fill Cost Estimate based on symptoms
+        const planBtn = getEl("btn-care-plan");
+        if(planBtn) {
+            planBtn.onclick = () => {
+                const symptomInput = getEl("care-symptom");
+                const symptom = symptomInput.value.trim();
+                
+                if(!symptom) { 
+                    window.toast("请输入症状描述", "error"); 
+                    return; 
+                }
+                
+                // 1. Keyword matching & Items Generation
+                let recommendedDept = "全科";
+                let items = []; // { name, price, desc }
+
+                if (symptom.match(/胃|腹|肚子|消化|呕|吐/)) {
+                    recommendedDept = "消化内科";
+                    items = [
+                        { name: "无痛胃镜/肠镜", price: 1500, desc: "含麻醉费及一次性耗材" },
+                        { name: "幽门螺杆菌检测(C13)", price: 150, desc: "吹气检测，金标准" },
+                        { name: "腹部彩超", price: 200, desc: "肝胆胰脾肾筛查" },
+                        { name: "常规药费", price: 400, desc: "护胃药及抗生素" }
+                    ];
+                } else if (symptom.match(/头|晕|脑|神经|痛/)) {
+                    recommendedDept = "神经内科";
+                    items = [
+                        { name: "头部CT平扫", price: 300, desc: "快速排除出血" },
+                        { name: "头部MRI (核磁)", price: 800, desc: "精细检查脑血管" },
+                        { name: "颈椎MRI", price: 800, desc: "排除颈椎压迫" },
+                        { name: "血流变检测", price: 200, desc: "血液粘稠度分析" }
+                    ];
+                } else if (symptom.match(/骨|腰|腿|手|脚|跌|伤|脊/)) {
+                    recommendedDept = "骨科";
+                    items = [
+                        { name: "X光拍片", price: 120, desc: "骨折初筛，便宜快捷" },
+                        { name: "关节MRI", price: 800, desc: "软组织与韧带损伤" },
+                        { name: "外用药/支具", price: 400, desc: "固定与止痛" }
+                    ];
+                } else if (symptom.match(/热|烧|咳|感冒|流感/)) {
+                    recommendedDept = "呼吸内科";
+                    items = [
+                         { name: "血常规+CRP", price: 60, desc: "区分病毒/细菌感染" },
+                         { name: "胸部CT", price: 400, desc: "排除肺炎" },
+                         { name: "流感抗原筛查", price: 150, desc: "甲流/乙流/支原体" },
+                         { name: "雾化/输液", price: 300, desc: "对症治疗" }
+                    ];
+                } else {
+                     recommendedDept = "全科门诊";
+                     items = [
+                         { name: "血常规+生化全套", price: 300, desc: "基础健康指标" },
+                         { name: "医生诊金", price: 200, desc: "详细问诊费" }
+                     ];
+                }
+                
+                // 2. Render Checkboxes
+                const container = getEl("cost-checkboxes");
+                if(container) {
+                    container.innerHTML = "";
+                    items.forEach(item => {
+                        const div = document.createElement("div");
+                        div.style.background = "#f8fafc";
+                        div.style.padding = "8px 12px";
+                        div.style.borderRadius = "8px";
+                        div.style.border = "1px solid #e2e8f0";
+                        div.style.width = "48%"; // approx 2 columns
+                        div.style.flexGrow = "1";
+                        
+                        div.innerHTML = `
+                            <label style="display:flex; align-items:center; cursor:pointer; width:100%;">
+                                <input type="checkbox" class="cost-check" value="${item.price}" checked style="margin-right:8px;">
+                                <div style="flex-grow:1;">
+                                    <div style="font-weight:600; font-size:14px;">${item.name}</div>
+                                    <div style="font-size:12px; color:#64748b;">${item.desc}</div>
+                                </div>
+                                <div style="font-weight:600; color:#0f172a;">¥${item.price}</div>
+                            </label>
+                        `;
+                        container.appendChild(div);
+                    });
+                    // Re-bind change events
+                    document.querySelectorAll(".cost-check").forEach(c => c.onchange = calcCost);
+                }
+                
+                // 3. Trigger calculation immediately
+                calcCost(); 
+
+                // 4. Update UI results
+                const resultBox = getEl("care-result");
+                resultBox.innerHTML = '<div style="text-align:center; color:#999;">正在分析智能导诊...</div>';
+                resultBox.classList.remove("hidden");
+                
+                setTimeout(() => {
+                    resultBox.innerHTML = `
+                        <h4 style="color:var(--primary); margin-bottom:10px;">推荐科室：${recommendedDept}</h4>
+                        <p style="font-size:14px; color:#666;">根据您的描述，建议前往三甲医院${recommendedDept}就诊。</p>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #e2e8f0; font-size:13px; color:var(--secondary);">
+                            ✅ 右侧费用预估已根据病情自动勾选了建议检查项目。
+                        </div>
+                    `;
+                    window.toast(`方案生成成功，已自动预估${recommendedDept}费用`, "success");
+                }, 500);
+            };
+        }
+
+        // Hospital Filters
+        const filterHospitals = () => {
+            const areaEl = getEl("filter-area");
+            const typeEl = getEl("filter-type");
+            if(areaEl && typeEl) {
+                logic.renderHospitals(areaEl.value, typeEl.value);
+            }
+        };
+        const fArea = getEl("filter-area");
+        const fType = getEl("filter-type");
+        if(fArea) fArea.onchange = filterHospitals;
+        if(fType) fType.onchange = filterHospitals;
+    },
+
+    renderHospitals: (area = "all", type = "all") => {
+        const container = getEl("hospital-list");
+        if(!container) return;
+        container.innerHTML = "";
+        
+        const filtered = state.hospitals.filter(h => {
+            return (area === "all" || h.area === area) && (type === "all" || h.type === type);
+        });
+
+        if(filtered.length === 0) {
+            container.innerHTML = '<div style="padding:20px; text-align:center; color:#999;">暂无符合条件的医院</div>';
+            return;
+        }
+
+        filtered.forEach((h, index) => {
+            const areaMap = { 'futian': '福田区', 'luohu': '罗湖区', 'nanshan': '南山区', 'baoan': '宝安区', 'longgang': '龙岗区' };
+            const div = createEl("div", "card", `
+                <div style="display:flex; justify-content:space-between; align-items:start;">
+                    <div style="width: 100%;">
+                        <h4 style="margin-bottom:6px;">${h.name} ${h.tags.map(t => `<span class="tag blue">${t}</span>`).join("")}</h4>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:4px; overflow-wrap: break-word;">${h.desc.substring(0, 45)}...</p>
+                        <p style="font-size:12px; color:#94a3b8;">📍 ${areaMap[h.area] || h.area}</p>
+                    </div>
+                    <button class="btn btn-secondary action-btn" style="padding:6px 12px; font-size:12px; margin-left:10px; flex-shrink:0;">查看</button>
+                </div>
+            `);
+            div.style.marginBottom = "16px";
+            div.style.padding = "16px";
+            
+            // Bind Click Event
+            div.querySelector(".action-btn").onclick = () => logic.openHospitalModal(h);
+            
+            container.appendChild(div);
+        });
+    },
+
+    openHospitalModal: (hospital) => {
+        getEl("hospital-modal-title").innerText = hospital.name;
+        getEl("hospital-modal-tags").innerHTML = hospital.tags.map(t => `<span class="tag blue">${t}</span>`).join(" ");
+        getEl("hospital-modal-desc").innerText = hospital.desc;
+        getEl("hospital-modal-addr").innerText = hospital.address;
+        getEl("hospital-modal-transport").innerText = hospital.transport;
+        
+        const bookBtn = getEl("hospital-book-btn");
+        bookBtn.innerText = `预约 ${hospital.name}`;
+        bookBtn.onclick = () => {
+            window.modals.close("hospital-modal");
+            getEl("booking-item-name").innerText = `预约挂号：${hospital.name}`;
+            
+            // Auto fill Department based on hospital tags or common logic
+            const deptSelect = getEl("booking-dept");
+            if(deptSelect) {
+                if(hospital.tags.includes("中医强项")) deptSelect.value = "中医科";
+                else if(hospital.tags.includes("妇产特色")) deptSelect.value = "妇产科";
+                else deptSelect.value = "全科";
+            }
+
+            window.modals.open("booking-modal");
+        };
+
+        window.modals.open("hospital-modal");
+    },
+
+    // Protection Hub
+    setupProtectionHub: () => {
+        const btnCheck = getEl("btn-check-claim");
+        if(btnCheck) {
+            btnCheck.onclick = () => {
+                const amtInput = getEl("claim-amount");
+                const amt = parseInt(amtInput.value) || 0;
+                const res = getEl("claim-result");
+                res.classList.remove("hidden");
+                if(amt < 300) {
+                    res.style.background = "#ffebee";
+                    res.style.color = "#c62828";
+                    res.innerHTML = "❌ <strong>可能不可报销：</strong> 金额低于通常的起付线。";
+                } else {
+                    res.style.background = "#e8f5e9";
+                    res.style.color = "#2e7d32";
+                    res.innerHTML = "✅ <strong>可能可报销：</strong> 请保留好发票和病历。";
+                }
+            };
+        }
+
+        const updateInsurancePlans = () => {
+            const companySelect = getEl("insurance-company-select");
+            const planSelect = getEl("insurance-plan-select");
+            if(!companySelect || !planSelect) return;
+
+            const company = companySelect.value;
+            planSelect.innerHTML = ""; // clear
+            
+            const plans = insuranceData[company] || insuranceData["Others"];
+            plans.forEach((p) => {
+                const opt = document.createElement("option");
+                opt.value = p;
+                opt.text = p;
+                planSelect.appendChild(opt);
+            });
+            updateMatList();
+        };
+
+        const updateMatList = () => {
+            const activeTab = document.querySelector("#protection .tab-btn.active");
+            const type = activeTab ? activeTab.dataset.tab : 'mat-outpatient';
+            const planSelect = getEl("insurance-plan-select");
+            const plan = planSelect ? planSelect.value : "";
+            
+            const content = getEl("mat-content");
+            if(!content) return;
+
+            let listHTML = "";
+
+            if (type === 'mat-outpatient') {
+                listHTML += `<li><strong>门诊病历</strong>：需医生签名及医院盖章 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                listHTML += `<li><strong>发票原件</strong>：含收费项目明细 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                if (plan.includes("AIA") || plan.includes("Manulife")) {
+                   listHTML += `<li><strong>转诊证明</strong>：部分计划如无指定诊所需提供 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                }
+                if (plan.includes("高端")) {
+                   listHTML += `<li><strong>直付授权书</strong>：如已使用直付卡 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                }
+            } else {
+                listHTML += `<li><strong>出院小结</strong>：需医院盖章 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                listHTML += `<li><strong>住院发票</strong>：财政专用章 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                listHTML += `<li><strong>费用总清单</strong>：详细耗材明细 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                if (plan.includes("高端")) {
+                    listHTML += `<li><strong>预授权书 (Pre-auth)</strong>：住院前申请的批准函 <button class="btn btn-secondary" style="padding:2px 8px; font-size:12px; margin-left:10px;">📷 上传</button></li>`;
+                }
+            }
+            
+            content.innerHTML = `<ul style="padding-left:20px; line-height:2; color:#555;">${listHTML}</ul>`;
+        };
+        
+        // Listeners
+        document.querySelectorAll("#protection .tab-btn").forEach(btn => {
+            btn.onclick = (e) => {
+                document.querySelectorAll("#protection .tab-btn").forEach(b => b.classList.remove("active"));
+                e.target.classList.add("active");
+                updateMatList();
+            };
+        });
+        
+        const compSel = getEl("insurance-company-select");
+        if(compSel) compSel.onchange = updateInsurancePlans;
+        
+        const planSel = getEl("insurance-plan-select");
+        if(planSel) planSel.onchange = updateMatList;
+        
+        updateInsurancePlans(); // Init plans
+    },
+
+    // Wellness Hub
+    renderWellness: (cat = "checkup") => {
+        const grid = getEl("wellness-grid");
+        if(!grid) return;
+        grid.innerHTML = "";
+        
+        state.wellnessPackages.filter(p => p.cat === cat).forEach(p => {
+            const card = createEl("div", "card");
+            card.innerHTML = `
+                <div style="display:flex; justify-content:space-between;">
+                    <span class="tag green" style="margin-bottom:8px;">推荐</span>
+                </div>
+                <h4>${p.title}</h4>
+                <div style="margin:12px 0;">
+                    <span style="font-size:20px; font-weight:700; color:var(--accent);">${p.price}</span>
+                    ${p.oldPrice ? `<span style="text-decoration:line-through; color:#999; font-size:13px; margin-left:5px;">HK$ ${p.oldPrice}</span>` : ''}
+                </div>
+                <p style="font-size:13px; color:#666; margin-bottom:8px;">${p.desc}</p>
+                <div style="font-size:12px; color:#666; background:#f0f0f0; padding:6px; border-radius:4px; margin-bottom:16px;">
+                    📍 ${p.location}
+                </div>
+                <button class="btn btn-primary" style="width:100%;">预约</button>
+            `;
+            card.querySelector("button").onclick = () => {
+                getEl("booking-item-name").innerText = `预约服务：${p.title}`;
+                window.modals.open("booking-modal");
+            };
+            grid.appendChild(card);
+        });
+
+        // Tabs
+        document.querySelectorAll("#wellness-tabs .tab-btn").forEach(btn => {
+            btn.onclick = (e) => {
+                document.querySelectorAll("#wellness-tabs .tab-btn").forEach(b => b.classList.remove("active"));
+                e.target.classList.add("active");
+                logic.renderWellness(e.target.dataset.cat);
+            };
+        });
+    },
+
+    // Family Hub
+    renderFamily: () => {
+        const grid = getEl("family-grid");
+        if(!grid) return;
+        grid.innerHTML = "";
+        
+        state.members.forEach(m => {
+            const card = createEl("div", "card clickable");
+            card.onclick = () => logic.openMemberDetail(m);
+            card.innerHTML = `
+                <div style="display:flex; align-items:center; margin-bottom:12px;">
+                    <div style="width:40px; height:40px; background:#f1f5f9; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:12px; font-size:20px;">👤</div>
+                    <div>
+                        <h4 style="margin:0; font-size:16px;">${m.name}</h4>
+                        <span class="tag blue">${m.role}</span>
+                    </div>
+                </div>
+                <p style="font-size:13px; color:#64748b;">上次就诊: ${m.lastDate}</p>
+                <div style="margin-top:8px;"><span class="tag ${m.statusColor}">${m.status}</span></div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Add the 'Add Member' button card
+        const addCard = createEl("div", "card clickable");
+        addCard.style.border = "2px dashed #cbd5e1";
+        addCard.style.background = "#f8fafc";
+        addCard.style.display = "flex";
+        addCard.style.flexDirection = "column";
+        addCard.style.alignItems = "center";
+        addCard.style.justifyContent = "center";
+        addCard.style.minHeight = "200px";
+        addCard.onclick = () => window.modals.open("add-member-modal");
+        addCard.innerHTML = `
+            <div style="width:60px; height:60px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-sm); margin-bottom:16px;">
+                <span style="font-size: 30px; color: var(--primary);">+</span>
+            </div>
+            <div style="color: #64748b; font-weight:500;">添加家庭成员</div>
+        `;
+        grid.appendChild(addCard);
+    },
+
+    openMemberDetail: (member) => {
+        getEl("member-detail-name").innerText = member.name;
+        getEl("member-detail-role").innerText = member.role;
+        getEl("member-last-record").innerText = `${member.lastDate} - 进行了一次常规检查，${member.status}`;
+        getEl("member-health-notes").innerText = member.healthNotes || "暂无详细健康备注。";
+        
+        // Visualize BP
+        getEl("member-bp-val").innerText = member.bp;
+        const systolic = parseInt(member.bp.split('/')[0]) || 0;
+        const bpPercent = Math.min((systolic / 180) * 100, 100);
+        getEl("member-bp-bar").style.width = `${bpPercent}%`;
+        getEl("member-bp-bar").style.background = systolic > 140 ? "#ef4444" : "#10b981";
+
+        // Visualize BS
+        getEl("member-bs-val").innerText = member.bs;
+        const bsVal = parseFloat(member.bs) || 0;
+        const bsPercent = Math.min((bsVal / 10) * 100, 100);
+        getEl("member-bs-bar").style.width = `${bsPercent}%`;
+
+        window.modals.open("member-detail-modal");
+    },
+
+    addMember: () => {
+        const nameInput = getEl("new-member-name");
+        const roleSelect = getEl("new-member-role");
+        const notesInput = getEl("new-member-notes");
+
+        if(nameInput && nameInput.value) {
+            state.members.push({ 
+                name: nameInput.value, 
+                role: roleSelect.value, 
+                status: "未关联档案", 
+                statusColor: "green", 
+                lastDate: "--",
+                bp: "--",
+                bs: "--",
+                healthNotes: notesInput.value || "无"
+            });
+            logic.renderFamily();
+            window.modals.close("add-member-modal");
+            window.toast("成员添加成功", "success");
+            nameInput.value = "";
+            notesInput.value = "";
+        }
+    },
+
+    // Prediction Logic (New)
+    calculatePrediction: () => {
+        // 1. Demographics
+        const age = parseInt(getEl("pred-age").value) || 30;
+        const gender = getEl("pred-gender").value;
+        const familyHistory = document.querySelectorAll("#prediction-modal input[type='checkbox']:checked").length;
+        
+        // 2. Behavior
+        const exercise = parseInt(getEl("pred-exercise").value) || 0;
+        const habits = getEl("pred-habit").value;
+        
+        // 3. Medical
+        const chronicCount = parseInt(getEl("pred-chronic").value) || 0;
+        const lastExpense = parseInt(getEl("pred-expense-last").value) || 0;
+        
+        // 4. Financial
+        const insurance = getEl("pred-insurance").value;
+        
+        // Algorithm (Dummy)
+        let baseScore = 5000; // Base expense
+        
+        // Age factor
+        if (age > 45) baseScore += (age - 45) * 200;
+        if (age > 65) baseScore += 5000;
+        
+        // Gender factor
+        if (gender === 'f' && age > 45 && age < 55) baseScore += 1500; // Menopause related checks
+        
+        // Family History
+        baseScore += familyHistory * 2000;
+        
+        // Behavior
+        if (exercise >= 3) baseScore -= 1000;
+        if (habits !== 'none') baseScore += 2000;
+        if (habits === 'both') baseScore += 2000;
+        
+        // Medical
+        baseScore += chronicCount * 3000;
+        // Use historical data weight
+        if (lastExpense > 0) {
+            baseScore = (baseScore + lastExpense) / 2;
+        }
+        
+        // Financial Mitigation (Insurance reduces out-of-pocket risk, but here we predict TOTAL expense)
+        // Let's calculate "Risk Level" based on score relative to insurance
+        let riskLevel = "低风险";
+        let riskColor = "green";
+        
+        if (baseScore > 15000) { riskLevel = "中等风险"; riskColor = "#f59e0b"; }
+        if (baseScore > 30000) { riskLevel = "高风险"; riskColor = "#ef4444"; }
+        
+        // Insurance Impact on Risk Perception
+        if (insurance === 'basic' && baseScore > 20000) { riskLevel = "极高风险 (保障不足)"; riskColor = "#b91c1c"; }
+        if (insurance === 'high') { riskLevel = "风险可控 (保障充足)"; riskColor = "green"; }
+        
+        // Update UI
+        getEl("predicted-expense").innerText = Math.round(baseScore).toLocaleString();
+        const badge = getEl("risk-badge");
+        badge.innerText = riskLevel;
+        badge.style.background = riskColor === 'green' ? '#ecfdf5' : (riskColor === '#ef4444' ? '#fef2f2' : '#fffbeb');
+        badge.style.color = riskColor;
+        
+        window.modals.close("prediction-modal");
+        window.toast("预测模型计算完成", "success");
+    }
+};
+
+window.logic = logic;
+document.addEventListener("DOMContentLoaded", logic.init);
+    </script>
+</body>
+</html>
