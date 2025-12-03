@@ -734,35 +734,35 @@
 
             <div style="margin-top: 32px;">
                 <h3 class="section-title" data-i18n="protection.rec.title">🛡️ 港人内地保险精选推荐</h3>
-                <p class="section-desc">补充香港保险的不足，性价比极高的内地医疗保障。</p>
+                <p class="section-desc" data-i18n="protection.rec.desc">补充香港保险的不足，性价比极高的内地医疗保障。</p>
                 <div class="grid-3">
                     <div class="card">
-                        <span class="tag blue">百万医疗险</span>
-                        <h4 style="margin: 10px 0;">内地百万医疗险 (e.g. 众安尊享e生)</h4>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                        <span class="tag blue" data-i18n="protection.card1.tag">百万医疗险</span>
+                        <h4 style="margin: 10px 0;" data-i18n="protection.card1.title">内地百万医疗险 (e.g. 众安尊享e生)</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;" data-i18n="protection.card1.desc">
                             <strong>保额：</strong> 300万-600万<br>
                             <strong>保费：</strong> 约 ¥300-1000/年<br>
                             <strong>特点：</strong> 覆盖住院大病，免赔额通常1万。适合作为大病兜底。
                         </p>
-                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;">查看详情</button>
+                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" data-i18n="protection.card1.btn">查看详情</button>
                     </div>
                     <div class="card">
-                        <span class="tag orange">大湾区专属</span>
-                        <h4 style="margin: 10px 0;">大湾区专属重疾险</h4>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                        <span class="tag orange" data-i18n="protection.card2.tag">大湾区专属</span>
+                        <h4 style="margin: 10px 0;" data-i18n="protection.card2.title">大湾区专属重疾险</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;" data-i18n="protection.card2.desc">
                             <strong>保额：</strong> 灵活可选<br>
                             <strong>特点：</strong> 针对湾区高发重疾额外赔付，费率较香港重疾险有优势，投保简便。
                         </p>
-                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;">查看详情</button>
+                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" data-i18n="protection.card2.btn">查看详情</button>
                     </div>
                     <div class="card">
-                        <span class="tag green">高端门诊</span>
-                        <h4 style="margin: 10px 0;">高端门诊医疗险 (Msh/Bupa)</h4>
-                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;">
+                        <span class="tag green" data-i18n="protection.card3.tag">高端门诊</span>
+                        <h4 style="margin: 10px 0;" data-i18n="protection.card3.title">高端门诊医疗险 (Msh/Bupa)</h4>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 16px;" data-i18n="protection.card3.desc">
                             <strong>范围：</strong> 私立医院/昂贵医院直付<br>
                             <strong>特点：</strong> 覆盖日常门诊、牙科、体检，无需排队，体验极佳。
                         </p>
-                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;">查看详情</button>
+                        <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" data-i18n="protection.card3.btn">查看详情</button>
                     </div>
                 </div>
             </div>
@@ -772,9 +772,9 @@
         <section id="wellness" class="page-section">
             <h2 class="section-title" data-i18n="wellness.title">Wellness Hub 健康增值中心</h2>
             <div class="tabs" id="wellness-tabs">
-                <div class="tab-btn active" data-cat="checkup">高端体检</div>
-                <div class="tab-btn" data-cat="dental">牙科/口腔</div>
-                <div class="tab-btn" data-cat="tcm">中医调理</div>
+                <div class="tab-btn active" data-cat="checkup" data-i18n="wellness.tab.checkup">高端体检</div>
+                <div class="tab-btn" data-cat="dental" data-i18n="wellness.tab.dental">牙科/口腔</div>
+                <div class="tab-btn" data-cat="tcm" data-i18n="wellness.tab.tcm">中医调理</div>
             </div>
             
             <div class="grid-3" id="wellness-grid">
@@ -785,7 +785,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <h3><span data-i18n="wellness.mall.title">我的健康积分:</span> <span style="color: var(--secondary); font-size: 32px; font-weight:800;">1,250</span></h3>
-                        <p style="font-size: 14px; color: #065f46;">通过体检、就医打卡获取积分，可兑换免费洁牙或抵扣现金。</p>
+                        <p style="font-size: 14px; color: #065f46;" data-i18n="wellness.mall.desc">通过体检、就医打卡获取积分，可兑换免费洁牙或抵扣现金。</p>
                     </div>
                     <button class="btn btn-secondary" onclick="window.modals.open('mall-modal')" data-i18n="wellness.mall.btn">进入积分商城</button>
                 </div>
@@ -1267,8 +1267,13 @@ const i18nData = {
         "protection.mat.tab1": "门诊就医",
         "protection.mat.tab2": "住院治疗",
         "protection.rec.title": "🛡️ 港人内地保险精选推荐",
+        "protection.rec.desc": "补充香港保险的不足，性价比极高的内地医疗保障。",
         "wellness.title": "Wellness Hub 健康增值中心",
+        "wellness.tab.checkup": "高端体检",
+        "wellness.tab.dental": "牙科/口腔",
+        "wellness.tab.tcm": "中医调理",
         "wellness.mall.title": "我的健康积分:",
+        "wellness.mall.desc": "通过体检、就医打卡获取积分，可兑换免费洁牙或抵扣现金。",
         "wellness.mall.btn": "进入积分商城",
         "family.title": "Family Hub 家庭健康协同",
         "family.alert.title": "🔔 家庭健康提醒",
@@ -1371,7 +1376,26 @@ const i18nData = {
         "modal.pred.sec4": "4. 金融特征",
         "modal.pred.insurance": "商业保险配置",
         "modal.pred.btn": "生成预测报告",
+        "modal.pred.options.gender.m": "男",
+        "modal.pred.options.gender.f": "女",
+        "modal.pred.options.history.bp": "高血压",
+        "modal.pred.options.history.db": "糖尿病",
+        "modal.pred.options.history.tumor": "肿瘤",
+        "modal.pred.options.exercise.0": "从不",
+        "modal.pred.options.exercise.1": "1-2次",
+        "modal.pred.options.exercise.3": "3次以上",
+        "modal.pred.options.habit.none": "无不良嗜好",
+        "modal.pred.options.habit.smoke": "吸烟",
+        "modal.pred.options.habit.drink": "饮酒",
+        "modal.pred.options.habit.both": "烟酒均沾",
+        "modal.pred.options.ins.none": "无商业保险",
+        "modal.pred.options.ins.basic": "仅基础住院险",
+        "modal.pred.options.ins.high": "高端医疗险",
         "modal.upload.title": "上传医疗数据",
+        "modal.upload.options.report": "体检报告",
+        "modal.upload.options.record": "门诊病历",
+        "modal.upload.options.invoice": "医疗发票",
+        "modal.upload.options.other": "其他",
         "modal.upload.drag": "点击选择文件 或 拖拽至此",
         "modal.upload.hint": "支持 JPG, PNG, PDF (最大 10MB)",
         "modal.upload.type": "文档类型",
@@ -1633,8 +1657,13 @@ const i18nData = {
         "protection.mat.tab1": "門診就醫",
         "protection.mat.tab2": "住院治療",
         "protection.rec.title": "🛡️ 港人內地保險精選推薦",
+        "protection.rec.desc": "補充香港保險的不足，性價比極高的內地醫療保障。",
         "wellness.title": "Wellness Hub 健康增值中心",
+        "wellness.tab.checkup": "高端體檢",
+        "wellness.tab.dental": "牙科/口腔",
+        "wellness.tab.tcm": "中醫調理",
         "wellness.mall.title": "我的健康積分:",
+        "wellness.mall.desc": "通過體檢、就醫打卡獲取積分，可兌換免費潔牙或抵扣現金。",
         "wellness.mall.btn": "進入積分商城",
         "family.title": "Family Hub 家庭健康協同",
         "family.alert.title": "🔔 家庭健康提醒",
@@ -1737,7 +1766,26 @@ const i18nData = {
         "modal.pred.sec4": "4. 金融特徵",
         "modal.pred.insurance": "商業保險配置",
         "modal.pred.btn": "生成預測報告",
+        "modal.pred.options.gender.m": "男",
+        "modal.pred.options.gender.f": "女",
+        "modal.pred.options.history.bp": "高血壓",
+        "modal.pred.options.history.db": "糖尿病",
+        "modal.pred.options.history.tumor": "腫瘤",
+        "modal.pred.options.exercise.0": "從不",
+        "modal.pred.options.exercise.1": "1-2次",
+        "modal.pred.options.exercise.3": "3次以上",
+        "modal.pred.options.habit.none": "無不良嗜好",
+        "modal.pred.options.habit.smoke": "吸煙",
+        "modal.pred.options.habit.drink": "飲酒",
+        "modal.pred.options.habit.both": "煙酒均沾",
+        "modal.pred.options.ins.none": "無商業保險",
+        "modal.pred.options.ins.basic": "僅基礎住院險",
+        "modal.pred.options.ins.high": "高端醫療險",
         "modal.upload.title": "上傳醫療數據",
+        "modal.upload.options.report": "體檢報告",
+        "modal.upload.options.record": "門診病歷",
+        "modal.upload.options.invoice": "醫療發票",
+        "modal.upload.options.other": "其他",
         "modal.upload.drag": "點擊選擇文件 或 拖拽至此",
         "modal.upload.hint": "支持 JPG, PNG, PDF (最大 10MB)",
         "modal.upload.type": "文檔類型",
@@ -1999,8 +2047,13 @@ const i18nData = {
         "protection.mat.tab1": "Outpatient",
         "protection.mat.tab2": "Inpatient",
         "protection.rec.title": "🛡️ Recommended Mainland Insurance",
+        "protection.rec.desc": "Supplementing HK insurance with high cost-performance mainland medical coverage.",
         "wellness.title": "Wellness Hub",
+        "wellness.tab.checkup": "Premium Checkup",
+        "wellness.tab.dental": "Dental Care",
+        "wellness.tab.tcm": "TCM Wellness",
         "wellness.mall.title": "My Health Points:",
+        "wellness.mall.desc": "Earn points via checkups & visits to redeem free dental cleaning or cash coupons.",
         "wellness.mall.btn": "Points Mall",
         "family.title": "Family Hub",
         "family.alert.title": "🔔 Health Alerts",
@@ -2102,7 +2155,26 @@ const i18nData = {
         "modal.pred.sec4": "4. Financial",
         "modal.pred.insurance": "Insurance",
         "modal.pred.btn": "Generate Report",
+        "modal.pred.options.gender.m": "Male",
+        "modal.pred.options.gender.f": "Female",
+        "modal.pred.options.history.bp": "Hypertension",
+        "modal.pred.options.history.db": "Diabetes",
+        "modal.pred.options.history.tumor": "Tumor",
+        "modal.pred.options.exercise.0": "Never",
+        "modal.pred.options.exercise.1": "1-2 times",
+        "modal.pred.options.exercise.3": "3+ times",
+        "modal.pred.options.habit.none": "None",
+        "modal.pred.options.habit.smoke": "Smoking",
+        "modal.pred.options.habit.drink": "Drinking",
+        "modal.pred.options.habit.both": "Both",
+        "modal.pred.options.ins.none": "None",
+        "modal.pred.options.ins.basic": "Basic Inpatient",
+        "modal.pred.options.ins.high": "High-end Medical",
         "modal.upload.title": "Upload Medical Data",
+        "modal.upload.options.report": "Checkup Report",
+        "modal.upload.options.record": "Medical Record",
+        "modal.upload.options.invoice": "Invoice",
+        "modal.upload.options.other": "Other",
         "modal.upload.drag": "Click or Drag Files Here",
         "modal.upload.hint": "Supports JPG, PNG, PDF (Max 10MB)",
         "modal.upload.type": "Document Type",
@@ -2356,6 +2428,7 @@ window.i18n = {
             window.logic.renderHospitals();
             window.logic.renderWellness();
             window.logic.renderFamily();
+            if(window.logic.renderProtectionHub) window.logic.renderProtectionHub();
         }
     },
     toggleDropdown: () => {
@@ -2837,25 +2910,8 @@ const logic = {
             };
         }
 
-        const updateInsurancePlans = () => {
-            const companySelect = getEl("insurance-company-select");
-            const planSelect = getEl("insurance-plan-select");
-            if(!companySelect || !planSelect) return;
-
-            const company = companySelect.value;
-            planSelect.innerHTML = ""; // clear
-            
-            const plans = insuranceData[company] || insuranceData["Others"];
-            plans.forEach((p) => {
-                const opt = document.createElement("option");
-                opt.value = p;
-                opt.text = window.i18n.t(p);
-                planSelect.appendChild(opt);
-            });
-            updateMatList();
-        };
-
-        const updateMatList = () => {
+        // Define logic methods for Protection Hub
+        logic.updateMatList = () => {
             const activeTab = document.querySelector("#protection .tab-btn.active");
             const type = activeTab ? activeTab.dataset.tab : 'mat-outpatient';
             const planSelect = getEl("insurance-plan-select");
@@ -2888,23 +2944,52 @@ const logic = {
             
             content.innerHTML = `<ul style="padding-left:20px; line-height:2; color:#555;">${listHTML}</ul>`;
         };
+
+        logic.updateInsurancePlans = (keepSelection = false) => {
+            const companySelect = getEl("insurance-company-select");
+            const planSelect = getEl("insurance-plan-select");
+            if(!companySelect || !planSelect) return;
+
+            const currentVal = planSelect.value;
+            const company = companySelect.value;
+            planSelect.innerHTML = ""; // clear
+            
+            const plans = insuranceData[company] || insuranceData["Others"];
+            plans.forEach((p) => {
+                const opt = document.createElement("option");
+                opt.value = p;
+                opt.text = window.i18n.t(p);
+                planSelect.appendChild(opt);
+            });
+            
+            if(keepSelection && currentVal) {
+                planSelect.value = currentVal;
+            }
+            
+            logic.updateMatList();
+        };
+
+        // Exposed render function for i18n
+        logic.renderProtectionHub = () => {
+             logic.updateInsurancePlans(true); // Keep selection when re-rendering for language change
+        };
         
         // Listeners
         document.querySelectorAll("#protection .tab-btn").forEach(btn => {
             btn.onclick = (e) => {
                 document.querySelectorAll("#protection .tab-btn").forEach(b => b.classList.remove("active"));
                 e.target.classList.add("active");
-                updateMatList();
+                logic.updateMatList();
             };
         });
         
         const compSel = getEl("insurance-company-select");
-        if(compSel) compSel.onchange = updateInsurancePlans;
+        if(compSel) compSel.onchange = () => logic.updateInsurancePlans(false);
         
         const planSel = getEl("insurance-plan-select");
-        if(planSel) planSel.onchange = updateMatList;
+        if(planSel) planSel.onchange = logic.updateMatList;
         
-        updateInsurancePlans(); // Init plans
+        logic.updateInsurancePlans(false); // Init plans
     },
 
     // Wellness Hub
